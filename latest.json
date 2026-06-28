@@ -1,0 +1,272 @@
+{
+ "collectedAt": "2026-06-28",
+ "brand": "Los Ojos",
+ "productCount": 24,
+ "note": "Ornek baslangic verisi (24 urun). Program ilk calistiginda 372 urunun tamamiyla guncellenir.",
+ "products": {
+  "154459170": {
+   "name": "Los Ojos Kadin Siyah Yuksek Bel Jogger Esofman Alti Joggers",
+   "price": 564.5,
+   "ratingCount": 9610,
+   "rating": 4.48,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": 832,
+   "favorite": 150200,
+   "pageView": 376
+  },
+  "129998832": {
+   "name": "Los Ojos Kadin Siyah Yuksek Bel Toparlayici Cift Cepli Ispanyol Paca Tayt Bootcut",
+   "price": 589.5,
+   "ratingCount": 11208,
+   "rating": 4.29,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": 1700,
+   "favorite": 385200,
+   "pageView": 1400
+  },
+  "154385500": {
+   "name": "Los Ojos Kadin Lacivert Yuksek Bel Jogger Esofman Alti",
+   "price": 564.5,
+   "ratingCount": 3416,
+   "rating": 4.59,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": 371,
+   "favorite": 65200,
+   "pageView": null
+  },
+  "1045500907": {
+   "name": "Los Ojos x Ece Bordo Yuksek Bel Spor Tayt Mono Leggings",
+   "price": 594.5,
+   "ratingCount": 266,
+   "rating": 3.83,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 21200,
+   "pageView": null
+  },
+  "903872945": {
+   "name": "Los Ojos Sekillendirici Sort Shapewear Shorts",
+   "price": 894.5,
+   "ratingCount": 112,
+   "rating": 3.93,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 18200,
+   "pageView": null
+  },
+  "904602868": {
+   "name": "Los Ojos Lazer Kesim Yuksek Bel Gorunmez Boxer High Waisted Boyshort",
+   "price": 399.5,
+   "ratingCount": 2479,
+   "rating": 4.5,
+   "orderL3D": 2000,
+   "orderL3D_raw": "2B+",
+   "basket": 15000,
+   "favorite": 219900,
+   "pageView": 3400
+  },
+  "97827284": {
+   "name": "Los Ojos Kadin Siyah Yuksek Bel Toparlayici Cift Cepli Biker Sort",
+   "price": 474.5,
+   "ratingCount": 943,
+   "rating": 4.45,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 45600,
+   "pageView": null
+  },
+  "903874990": {
+   "name": "Los Ojos 3 Adet Gorunmez Lazer Kesim Boxer Kulot Laser Cut Boyshort",
+   "price": 639.5,
+   "ratingCount": 526,
+   "rating": 4.31,
+   "orderL3D": 500,
+   "orderL3D_raw": "500+",
+   "basket": 2100,
+   "favorite": 100800,
+   "pageView": 1500
+  },
+  "1045500926": {
+   "name": "Los Ojos x Ece Siyah Yuksek Bel Spor Tayt Mono Leggings",
+   "price": 594.5,
+   "ratingCount": 208,
+   "rating": 4.02,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 12100,
+   "pageView": null
+  },
+  "344201097": {
+   "name": "Los Ojos Siyah Hafif Destekli Sirt Detayli Kapli Spor Sutyeni",
+   "price": 464.5,
+   "ratingCount": 1379,
+   "rating": 4.14,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": 486,
+   "favorite": 92100,
+   "pageView": 595
+  },
+  "901427614": {
+   "name": "Los Ojos Ekru Genis Kalip Genis Paca Esofman Alti Straight Leg",
+   "price": 749.5,
+   "ratingCount": 42,
+   "rating": 3.64,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 13300,
+   "pageView": null
+  },
+  "901446700": {
+   "name": "Los Ojos Siyah Fitilli Kisa Kollu Kisa Tulum Short Romper",
+   "price": 614.5,
+   "ratingCount": 602,
+   "rating": 4.54,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": 981,
+   "favorite": 76100,
+   "pageView": 515
+  },
+  "1045500918": {
+   "name": "Los Ojos x Ece Lacivert Yuksek Bel Spor Tayt Mono Leggings",
+   "price": 594.5,
+   "ratingCount": 119,
+   "rating": 3.87,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 7800,
+   "pageView": null
+  },
+  "1045500574": {
+   "name": "Los Ojos x Ece Siyah Halter Yaka Top Halter Tank",
+   "price": 449.5,
+   "ratingCount": 283,
+   "rating": 4.13,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": 912,
+   "favorite": 49200,
+   "pageView": 810
+  },
+  "1045500913": {
+   "name": "Los Ojos x Ece Vizon Yuksek Bel Spor Tayt Mono Leggings",
+   "price": 594.5,
+   "ratingCount": 109,
+   "rating": 4.04,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 12000,
+   "pageView": null
+  },
+  "1140402581": {
+   "name": "Los Ojos x Ece Siyah Kare Yaka Askili Kisa Spor Tulum Unitard",
+   "price": 599.5,
+   "ratingCount": 28,
+   "rating": 4.11,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": 508,
+   "favorite": 10400,
+   "pageView": 572
+  },
+  "901445961": {
+   "name": "Los Ojos Gri Melanj Genis Kalip Genis Paca Esofman Alti Straight Leg",
+   "price": 749.5,
+   "ratingCount": 70,
+   "rating": 4.14,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 25400,
+   "pageView": null
+  },
+  "1142355784": {
+   "name": "Los Ojos x Ece Siyah Bel Detayli Kisa Tayt Ruched Biker Shorts",
+   "price": 499.5,
+   "ratingCount": 13,
+   "rating": 4.92,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 2000,
+   "pageView": null
+  },
+  "834016195": {
+   "name": "Los Ojos x Melodi Beyaz Oversize Genis Kalip Tisort Boyfriend T-Shirt",
+   "price": 494.5,
+   "ratingCount": 369,
+   "rating": 4.58,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": 324,
+   "favorite": 16500,
+   "pageView": null
+  },
+  "1142355991": {
+   "name": "Los Ojos x Ece Mocha Melanj Bel Detayli Kisa Tayt Ruched Biker Shorts",
+   "price": 499.5,
+   "ratingCount": 18,
+   "rating": 4.78,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 1800,
+   "pageView": null
+  },
+  "1045513205": {
+   "name": "Los Ojos x Ece Kahverengi Modal Kumasli Uzun Kollu Esofmanli Pijama Takimi",
+   "price": 744.5,
+   "ratingCount": 706,
+   "rating": 4.26,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 87600,
+   "pageView": null
+  },
+  "1142355827": {
+   "name": "Los Ojos x Ece Pembe Bel Detayli Kisa Tayt Ruched Biker Shorts",
+   "price": 499.5,
+   "ratingCount": 15,
+   "rating": 4.47,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 4400,
+   "pageView": null
+  },
+  "834013420": {
+   "name": "Los Ojos x Melodi Siyah Oversize Genis Kalip Tisort Boyfriend T-Shirt",
+   "price": 494.5,
+   "ratingCount": 321,
+   "rating": 4.55,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 11500,
+   "pageView": null
+  },
+  "1140402505": {
+   "name": "Los Ojos x Ece Bordo Kare Yaka Askili Kisa Spor Tulum Unitard",
+   "price": 599.5,
+   "ratingCount": 20,
+   "rating": 4.05,
+   "orderL3D": null,
+   "orderL3D_raw": null,
+   "basket": null,
+   "favorite": 3300,
+   "pageView": null
+  }
+ }
+}

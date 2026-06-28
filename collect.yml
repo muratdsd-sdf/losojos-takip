@@ -1,0 +1,32 @@
+name: Los Ojos veri topla
+
+on:
+  schedule:
+    - cron: "0 6 * * *"        # her gun 06:00 UTC (Turkiye saati ~09:00)
+  workflow_dispatch: {}          # elle de calistirilabilsin (Run workflow butonu)
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Depoyu al
+        uses: actions/checkout@v4
+
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Veriyi topla
+        run: python collector.py
+
+      - name: Veriyi kaydet (commit)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "veri: $(date +%F)" || echo "Degisiklik yok, atlaniyor."
+          git push

@@ -1,0 +1,228 @@
+{
+ "brand": "Los Ojos",
+ "names": {
+  "154459170": "Los Ojos Kadin Siyah Yuksek Bel Jogger Esofman Alti Joggers",
+  "129998832": "Los Ojos Kadin Siyah Yuksek Bel Toparlayici Cift Cepli Ispanyol Paca Tayt Bootcut",
+  "154385500": "Los Ojos Kadin Lacivert Yuksek Bel Jogger Esofman Alti",
+  "1045500907": "Los Ojos x Ece Bordo Yuksek Bel Spor Tayt Mono Leggings",
+  "903872945": "Los Ojos Sekillendirici Sort Shapewear Shorts",
+  "904602868": "Los Ojos Lazer Kesim Yuksek Bel Gorunmez Boxer High Waisted Boyshort",
+  "97827284": "Los Ojos Kadin Siyah Yuksek Bel Toparlayici Cift Cepli Biker Sort",
+  "903874990": "Los Ojos 3 Adet Gorunmez Lazer Kesim Boxer Kulot Laser Cut Boyshort",
+  "1045500926": "Los Ojos x Ece Siyah Yuksek Bel Spor Tayt Mono Leggings",
+  "344201097": "Los Ojos Siyah Hafif Destekli Sirt Detayli Kapli Spor Sutyeni",
+  "901427614": "Los Ojos Ekru Genis Kalip Genis Paca Esofman Alti Straight Leg",
+  "901446700": "Los Ojos Siyah Fitilli Kisa Kollu Kisa Tulum Short Romper",
+  "1045500918": "Los Ojos x Ece Lacivert Yuksek Bel Spor Tayt Mono Leggings",
+  "1045500574": "Los Ojos x Ece Siyah Halter Yaka Top Halter Tank",
+  "1045500913": "Los Ojos x Ece Vizon Yuksek Bel Spor Tayt Mono Leggings",
+  "1140402581": "Los Ojos x Ece Siyah Kare Yaka Askili Kisa Spor Tulum Unitard",
+  "901445961": "Los Ojos Gri Melanj Genis Kalip Genis Paca Esofman Alti Straight Leg",
+  "1142355784": "Los Ojos x Ece Siyah Bel Detayli Kisa Tayt Ruched Biker Shorts",
+  "834016195": "Los Ojos x Melodi Beyaz Oversize Genis Kalip Tisort Boyfriend T-Shirt",
+  "1142355991": "Los Ojos x Ece Mocha Melanj Bel Detayli Kisa Tayt Ruched Biker Shorts",
+  "1045513205": "Los Ojos x Ece Kahverengi Modal Kumasli Uzun Kollu Esofmanli Pijama Takimi",
+  "1142355827": "Los Ojos x Ece Pembe Bel Detayli Kisa Tayt Ruched Biker Shorts",
+  "834013420": "Los Ojos x Melodi Siyah Oversize Genis Kalip Tisort Boyfriend T-Shirt",
+  "1140402505": "Los Ojos x Ece Bordo Kare Yaka Askili Kisa Spor Tulum Unitard"
+ },
+ "snapshots": [
+  {
+   "date": "2026-06-28",
+   "products": {
+    "154459170": {
+     "rc": 9610,
+     "o3": null,
+     "b": 832,
+     "f": 150200,
+     "v": 376,
+     "p": 564.5
+    },
+    "129998832": {
+     "rc": 11208,
+     "o3": null,
+     "b": 1700,
+     "f": 385200,
+     "v": 1400,
+     "p": 589.5
+    },
+    "154385500": {
+     "rc": 3416,
+     "o3": null,
+     "b": 371,
+     "f": 65200,
+     "v": null,
+     "p": 564.5
+    },
+    "1045500907": {
+     "rc": 266,
+     "o3": null,
+     "b": null,
+     "f": 21200,
+     "v": null,
+     "p": 594.5
+    },
+    "903872945": {
+     "rc": 112,
+     "o3": null,
+     "b": null,
+     "f": 18200,
+     "v": null,
+     "p": 894.5
+    },
+    "904602868": {
+     "rc": 2479,
+     "o3": 2000,
+     "b": 15000,
+     "f": 219900,
+     "v": 3400,
+     "p": 399.5
+    },
+    "97827284": {
+     "rc": 943,
+     "o3": null,
+     "b": null,
+     "f": 45600,
+     "v": null,
+     "p": 474.5
+    },
+    "903874990": {
+     "rc": 526,
+     "o3": 500,
+     "b": 2100,
+     "f": 100800,
+     "v": 1500,
+     "p": 639.5
+    },
+    "1045500926": {
+     "rc": 208,
+     "o3": null,
+     "b": null,
+     "f": 12100,
+     "v": null,
+     "p": 594.5
+    },
+    "344201097": {
+     "rc": 1379,
+     "o3": null,
+     "b": 486,
+     "f": 92100,
+     "v": 595,
+     "p": 464.5
+    },
+    "901427614": {
+     "rc": 42,
+     "o3": null,
+     "b": null,
+     "f": 13300,
+     "v": null,
+     "p": 749.5
+    },
+    "901446700": {
+     "rc": 602,
+     "o3": null,
+     "b": 981,
+     "f": 76100,
+     "v": 515,
+     "p": 614.5
+    },
+    "1045500918": {
+     "rc": 119,
+     "o3": null,
+     "b": null,
+     "f": 7800,
+     "v": null,
+     "p": 594.5
+    },
+    "1045500574": {
+     "rc": 283,
+     "o3": null,
+     "b": 912,
+     "f": 49200,
+     "v": 810,
+     "p": 449.5
+    },
+    "1045500913": {
+     "rc": 109,
+     "o3": null,
+     "b": null,
+     "f": 12000,
+     "v": null,
+     "p": 594.5
+    },
+    "1140402581": {
+     "rc": 28,
+     "o3": null,
+     "b": 508,
+     "f": 10400,
+     "v": 572,
+     "p": 599.5
+    },
+    "901445961": {
+     "rc": 70,
+     "o3": null,
+     "b": null,
+     "f": 25400,
+     "v": null,
+     "p": 749.5
+    },
+    "1142355784": {
+     "rc": 13,
+     "o3": null,
+     "b": null,
+     "f": 2000,
+     "v": null,
+     "p": 499.5
+    },
+    "834016195": {
+     "rc": 369,
+     "o3": null,
+     "b": 324,
+     "f": 16500,
+     "v": null,
+     "p": 494.5
+    },
+    "1142355991": {
+     "rc": 18,
+     "o3": null,
+     "b": null,
+     "f": 1800,
+     "v": null,
+     "p": 499.5
+    },
+    "1045513205": {
+     "rc": 706,
+     "o3": null,
+     "b": null,
+     "f": 87600,
+     "v": null,
+     "p": 744.5
+    },
+    "1142355827": {
+     "rc": 15,
+     "o3": null,
+     "b": null,
+     "f": 4400,
+     "v": null,
+     "p": 499.5
+    },
+    "834013420": {
+     "rc": 321,
+     "o3": null,
+     "b": null,
+     "f": 11500,
+     "v": null,
+     "p": 494.5
+    },
+    "1140402505": {
+     "rc": 20,
+     "o3": null,
+     "b": null,
+     "f": 3300,
+     "v": null,
+     "p": 599.5
+    }
+   }
+  }
+ ]
+}
