@@ -1,82 +1,305 @@
 {
  "brand": "Los Ojos",
  "names": {
-  "154459170": "Los Ojos Kadin Siyah Yuksek Bel Jogger Esofman Alti Joggers",
-  "129998832": "Los Ojos Kadin Siyah Yuksek Bel Toparlayici Cift Cepli Ispanyol Paca Tayt Bootcut",
-  "154385500": "Los Ojos Kadin Lacivert Yuksek Bel Jogger Esofman Alti",
-  "1045500907": "Los Ojos x Ece Bordo Yuksek Bel Spor Tayt Mono Leggings",
-  "903872945": "Los Ojos Sekillendirici Sort Shapewear Shorts",
-  "904602868": "Los Ojos Lazer Kesim Yuksek Bel Gorunmez Boxer High Waisted Boyshort",
-  "97827284": "Los Ojos Kadin Siyah Yuksek Bel Toparlayici Cift Cepli Biker Sort",
-  "903874990": "Los Ojos 3 Adet Gorunmez Lazer Kesim Boxer Kulot Laser Cut Boyshort",
-  "1045500926": "Los Ojos x Ece Siyah Yuksek Bel Spor Tayt Mono Leggings",
-  "344201097": "Los Ojos Siyah Hafif Destekli Sirt Detayli Kapli Spor Sutyeni",
-  "901427614": "Los Ojos Ekru Genis Kalip Genis Paca Esofman Alti Straight Leg",
-  "901446700": "Los Ojos Siyah Fitilli Kisa Kollu Kisa Tulum Short Romper",
-  "1045500918": "Los Ojos x Ece Lacivert Yuksek Bel Spor Tayt Mono Leggings",
+  "86380439": "Los Ojos Kadın Melanj Siyah Yüksek Bel Çift Cepli T",
+  "86380558": "Los Ojos Kadın Sarı Yüksek Belli Çift Cepli Tayt",
+  "86385705": "Los Ojos Kadın Mercan Kemerli Yüksek Bel Çift Cepli",
+  "86406024": "Los Ojos Kadın Siyah Yüksek Bel Çift Cepli Toparlay",
+  "86701561": "Los Ojos Kadın Lavanta Yüksek Belli Çift Cepli Tayt",
+  "86701991": "Los Ojos Kadın Lacivert Yüksek Bel Çift Cepli Topar",
+  "97545674": "Los Ojos Kadın Melanj Gri Yüksek Bel Çift Cepli Top",
+  "97646324": "Los Ojos Kadın Bej Yüksek Bel Dikişsiz Fitilli Topa",
+  "97827059": "Los Ojos Kadın Lacivert Yüksek Bel Toparlayıcı Çift",
+  "97827124": "Los Ojos Kadın Beyaz Yüksek Bel Toparlayıcı Çift Ce",
+  "97827284": "Los Ojos Kadın Siyah Yüksek Bel Toparlayıcı Çift Ce",
+  "97827389": "Los Ojos Kadın Antrasit Yüksek Bel Toparlayıcı Çift",
+  "97827558": "Los Ojos Kadın Lavanta Yüksek Bel Toparlayıcı Çift ",
+  "97831278": "Los Ojos Kadın Bej Yüksek Bel Toparlayıcı Çift Cepl",
+  "115481492": "Los Ojos Kadın Siyah Yüksek Bel Toparlayıcı Bisikle",
+  "115481498": "Los Ojos Kadın Mercan Yüksek Bel Toparlayıcı Bisikl",
+  "116896804": "Los Ojos Kadın Bej Yüksek Bel Toparlayıcı Bisikletç",
+  "117047707": "Los Ojos Kadın Lavanta Yüksek Bel Toparlayıcı Spor ",
+  "117361457": "Los Ojos Kadın Bej Yüksek Bel Toparlayıcı Spor Tayt",
+  "120101108": "Los Ojos Antrasit Hafif Destekli Sırt Detaylı Kaplı",
+  "120101162": "Los Ojos Bej Hafif Destekli Sırt Detaylı Kaplı Spor",
+  "120101254": "Los Ojos Mercan Hafif Destekli Sırt Detaylı Kaplı S",
+  "120101310": "Los Ojos Lavanta Hafif Destekli Sırt Detaylı Kaplı ",
+  "120199038": "Los Ojos Mercan Hafif Destekli Sırt Detaylı Kaplı C",
+  "120273863": "Los Ojos Beyaz Hafif Destekli Sırt Detaylı Kaplı Cr",
+  "120274055": "Los Ojos Siyah Hafif Destekli Sırt Detaylı Kaplı Cr",
+  "120593525": "Los Ojos Lacivert Hafif Destekli Sırt Detaylı Kaplı",
+  "120593574": "Los Ojos Bej Hafif Destekli Sırt Detaylı Kaplı Crop",
+  "125467332": "Los Ojos Kadın Bej Yüksek Bel Toparlayıcı Çift Cepl",
+  "127061975": "Los Ojos Kadın Lacivert Yüksek Bel Toparlayıcı Çift",
+  "129998832": "Los Ojos Kadın Siyah Yüksek Bel Toparlayıcı Çift Ce",
+  "129999160": "Los Ojos Kadın Lavanta Yüksek Bel Toparlayıcı Çift ",
+  "154385500": "Los Ojos Kadın Lacivert Yüksek Bel Jogger Eşofman A",
+  "154459170": "Los Ojos Kadın Siyah Yüksek Bel Jogger Eşofman Altı",
+  "154466841": "Los Ojos Kadın Lavanta Yüksek Bel Jogger Eşofman Al",
+  "154468172": "Los Ojos Kadın Antrasit Yüksek Bel Jogger Eşofman A",
+  "154468851": "Los Ojos Kadın Bej Yüksek Bel Jogger Eşofman Altı J",
+  "154925393": "Los Ojos Lavanta V Yaka Hafif Destekli Kaplı Spor S",
+  "155570909": "Los Ojos Antrasit V Yaka Hafif Destekli Kaplı Spor ",
+  "155813505": "Los Ojos Lacivert V Yaka Hafif Destekli Kaplı Spor ",
+  "156043784": "Los Ojos Siyah V Yaka Hafif Destekli Kaplı Spor Süt",
+  "180618170": "Los Ojos Kadın Melanj Gri Kapüşonlu Oversize Şardon",
+  "180660584": "Los Ojos Kadın Siyah Kapüşonlu Fermuarlı Sweatshirt",
+  "181018751": "Los Ojos Kadın Mavi Gri Paçası Lastikli Jogger Eşof",
+  "181687574": "Los Ojos Kadın Yeşil Paçası Lastikli Jogger Eşofman",
+  "181688640": "Los Ojos Kadın Siyah Paçası Lastikli Jogger Eşofman",
+  "182391985": "Los Ojos Kadın Gri Batik Desenli Pijama Takımı Tie-",
+  "182766677": "Los Ojos Kadın Melanj Gri Paçası Lastikli Jogger Eş",
+  "302230814": "Los Ojos Kadın Ekru Yüksek Bel Fitilli Toparlayıcı ",
+  "302230830": "Los Ojos Kadın Siyah Yüksek Bel Fitilli Toparlayıcı",
+  "304362938": "Los Ojos Kadın Mavi Askılı Fitilli Kare Yaka Crop T",
+  "304363393": "Los Ojos Mavi Melanj Tank Top Bisiklet Yaka Sporcu ",
+  "304364653": "Los Ojos Kadın Gri 2 Katmanlı Spor Şort - Şortlu Ta",
+  "304364684": "Los Ojos Kadın Antrasit 2 Katmanlı Spor Şort - Şort",
+  "304365085": "Los Ojos Kadın Siyah 2 Katmanlı Spor Şort - Şortlu ",
+  "304366648": "Los Ojos Kadın Beyaz 2 Katmanlı Spor Şort - Şortlu ",
+  "304909286": "Los Ojos Kadın Pembe Askılı Hafif Destekli Kaplı Sp",
+  "304912405": "Los Ojos Kadın Siyah Askılı Hafif Destekli Kaplı Sp",
+  "304912565": "Los Ojos Kadın Beyaz Askılı Hafif Destekli Kaplı Sp",
+  "304916239": "Los Ojos Kadın Antrasit Yeşil Batik Desenli Pijama ",
+  "304918071": "Los Ojos Kadın Mavi Yeşil Batik Desenli Pijama Takı",
+  "344096123": "Los Ojos Beyaz Hafif Destekli Sırt Detaylı Kaplı Sp",
+  "344201097": "Los Ojos Siyah Hafif Destekli Sırt Detaylı Kaplı Sp",
+  "649970162": "Los Ojos Siyah Yüksek Bel Spor Tayt Basics",
+  "655389476": "Los Ojos Haki Yüksek Bel Çift Cepli Toparlayıcı Spo",
+  "655402004": "Los Ojos Gri Yüksek Bel Dikiş Detaylı Toparlayıcı S",
+  "655829041": "Los Ojos Lacivert Çapraz Bel Detaylı Tayt Envelope",
+  "659054744": "Los Ojos Kadın Lacivert Kargo Cepli Beli ve Paçası ",
+  "659945562": "Los Ojos Taş Kapüşonlu Yumuşak Dokulu Crop Sweatshi",
+  "664938067": "Los Ojos Beyaz 2 Katmanlı Tenis Eteği - Şort Etek -",
+  "664943802": "Los Ojos Lacivert Hafif Destekli Büzgülü Askı Detay",
+  "664969524": "Los Ojos Pembe 2 Katmanlı Tenis Eteği - Spor Etek T",
+  "692791737": "Los Ojos Kadın Gri Yüksek Bel Toparlayıcı Çift Cepl",
+  "699273115": "Los Ojos Haki Halter Yaka Içi Sütyenli T-shirt Tank",
+  "699273269": "Los Ojos Lacivert Halter Yaka Içi Sütyenli T-shirt ",
+  "707066322": "Los Ojos Gri 2 Katmanlı Pileli Tenis Eteği - Spor E",
+  "723215471": "Los Ojos Kadın Yeşil Beyaz Kapüşonlu Oversize Şardo",
+  "723215662": "Los Ojos Kadın Gül Kurusu Beyaz Kapüşonlu Oversize ",
+  "723215690": "Los Ojos Kadın Siyah Beyaz Kapüşonlu Oversize Şardo",
+  "723215890": "Los Ojos Kadın Bej Beyaz Kapüşonlu Oversize Şardonl",
+  "723217744": "Los Ojos Kadın Lacivert Beyaz Kapüşonlu Oversize Şa",
+  "736230221": "Los Ojos Kadın Yeşil Batik Desenli Pijama Takımı PJ",
+  "736230301": "Los Ojos Kadın Mavi Batik Desenli Pijama Takımı PJ",
+  "736250093": "Los Ojos 3 Adet Seamless Boxer Külot 3xBoyshort",
+  "736250156": "Los Ojos Kahverengi Seamless Klasik Külot Classic",
+  "736364210": "Los Ojos Mor Seamless Klasik Külot Classic",
+  "736364306": "Los Ojos 3 Adet Fitilli Seamless Klasik Külot 3xcla",
+  "736364331": "Los Ojos 3 Adet Fitilli Seamless Klasik Külot 3xcla",
+  "736364369": "Los Ojos 3 Adet Seamless Klasik Külot 3xClassic",
+  "772023310": "Los Ojos x Melodi Siyah Pamuklu Fitilli Uzun Kollu ",
+  "772023338": "Los Ojos x Melodi Gri Pamuklu Fitilli Uzun Kollu Cr",
+  "772023360": "Los Ojos x Melodi Beyaz Pamuklu Fitilli Uzun Kollu ",
+  "772023674": "Los Ojos x Melodi Siyah Pamuklu Fitilli Crop T-Shir",
+  "772023694": "Los Ojos x Melodi Beyaz Pamuklu Fitilli Crop T-Shir",
+  "772024287": "Los Ojos x Melodi Pembe Tenis Elbisesi Spor Elbise ",
+  "772024314": "Los Ojos x Melodi Siyah Tenis Elbisesi Spor Elbise ",
+  "772024341": "Los Ojos x Melodi Beyaz Pamuklu Fitilli Boxer Külot",
+  "772297298": "Los Ojos x Melodi Bronz Yüksek Bel Seamless Tayt Hi",
+  "772297445": "Los Ojos x Melodi Bronz Yüksek Bel Seamless Spor Ta",
+  "772297580": "Los Ojos x Melodi Siyah Oversize/geniş Kalıp Pamukl",
+  "772297613": "Los Ojos x Melodi Yeşil Fitilli Seamless Spor Sütye",
+  "772297994": "Los Ojos x Melodi Pembe Fitilli Seamless Spor Sütye",
+  "772298094": "Los Ojos x Melodi Soft Haki Yüksek Bel Seamless Spo",
+  "772308529": "Los Ojos x Melodi Siyah Seamless Destekli Askılı Sp",
+  "772312344": "Los Ojos x Melodi Ekru Pamuklu Kalın Askılı Crop To",
+  "772312424": "Los Ojos x Melodi Gri Pamuklu Kalın Askılı Crop Top",
+  "801142206": "Los Ojos Antrasit Yüksek Bel Kışlık Içi Polarlı Spo",
+  "801143022": "Los Ojos Lacivert Yüksek Bel Kışlık Içi Polarlı Spo",
+  "812664383": "Los Ojos Lacivert Yüksek Bel Dikişsiz Toparlayıcı S",
+  "812666599": "Los Ojos Vizon Yüksek Bel Dikişsiz Toparlayıcı Spor",
+  "812667204": "Los Ojos Siyah Yüksek Bel Dikişsiz Toparlayıcı Spor",
+  "833037197": "Los Ojos Kadın Lila Askılı Hafif Destekli Kaplı Spo",
+  "834007684": "Los Ojos x Melodi Gri Melanj İspanyol Paça Jarse Pa",
+  "834009380": "Los Ojos x Melodi Gri Melanj Oversize Geniş Kalıp T",
+  "834011598": "Los Ojos x Melodi Siyah İspanyol Paça Jarse Pantolo",
+  "834012875": "Los Ojos x Melodi Lacivert Bedene Oturan Tişört Sho",
+  "834012876": "Los Ojos x Melodi Beyaz Uzun Kollu Kısa Bluz Long F",
+  "834013420": "Los Ojos x Melodi Siyah Oversize Geniş Kalıp Tişört",
+  "834013696": "Los Ojos x Melodi Krem-Siyah Brezilya Modeli Bikini",
+  "834013724": "Los Ojos x Melodi Lacivert Oversize Geniş Kalıp Tiş",
+  "834013914": "Los Ojos x Melodi Siyah Fitilli Uzun Kollu Kısa Tul",
+  "834014535": "Los Ojos x Melodi Gri Melanj Bedene Oturan Tişört S",
+  "834014564": "Los Ojos x Melodi Gri Melanj Uzun Kollu Kısa Bluz L",
+  "834014681": "Los Ojos x Melodi Siyah Uzun Kollu Kısa Bluz Long F",
+  "834016195": "Los Ojos x Melodi Beyaz Oversize Geniş Kalıp Tişört",
+  "834017738": "Los Ojos x Melodi Gri Melanj Fitilli Uzun Kollu Kıs",
+  "834181204": "Los Ojos x Melodi Krem-Siyah Fitilli Halter Yaka Bi",
+  "834181419": "Los Ojos Melodi Beyaz İnce Yumuşak Dokulu Jogger Eş",
+  "834181440": "Los Ojos x Melodi Gri İnce Yumuşak Dokulu Jogger Eş",
+  "834187765": "Los Ojos Beyaz Biker Şort Kısa Spor Tayt Envelope B",
+  "834190680": "Los Ojos x Melodi Siyah-Krem Dokulu Bikini Üstü Ban",
+  "834193253": "Los Ojos Melodi Krem-Siyah Dokulu Bikini Üstü Bande",
+  "834193362": "Los Ojos x Melodi Pudra-Krem Fitilli Kare Yaka Biki",
+  "834267382": "Los Ojos Lacivert Biker Şort Kısa Spor Tayt Envelop",
+  "834269789": "Los Ojos Gri Biker Şort Kısa Spor Tayt Envelope Bik",
+  "847775174": "Los Ojos Siyah Esnek ve Toparlayıcı Spor Tayt Basic",
+  "901071773": "Los Ojos x Melodi Bordo İspanyol Paça Jarse Pantolo",
+  "901077842": "Los Ojos x Melodi Bordo Bedene Oturan Tişört Short ",
+  "901082243": "Los Ojos x Melodi Bordo Fitilli Uzun Kollu Kısa Tul",
+  "901427614": "Los Ojos Ekru Geniş Kalıp Geniş Paça Eşofman Altı S",
+  "901437826": "Los Ojos Lacivert Geniş Kalıp Beli Büzgülü Crop Swe",
+  "901437831": "Los Ojos Gri Melanj Geniş Kalıp Beli Büzgülü Crop S",
+  "901437849": "Los Ojos Bordo Geniş Kalıp Beli Büzgülü Crop Sweats",
+  "901442645": "Los Ojos Bordo Fitilli Kısa Kollu Kısa Tulum Short ",
+  "901442999": "Los Ojos Lacivert Fitilli Kısa Kollu Kısa Tulum Sho",
+  "901443021": "Los Ojos Gri Melanj Fitilli Kısa Kollu Kısa Tulum S",
+  "901443585": "Los Ojos Gri Melanj Geniş Kalıp Kapüşonlu Sweatshir",
+  "901443685": "Los Ojos Siyah Geniş Kalıp Bisiklet Yaka Sweatshirt",
+  "901443907": "Los Ojos Ekru Geniş Kalıp Beli Büzgülü Crop Sweatsh",
+  "901443921": "Los Ojos Bordo Geniş Kalıp Bisiklet Yaka Sweatshirt",
+  "901444108": "Los Ojos Ekru Geniş Kalıp Bisiklet Yaka Sweatshirt ",
+  "901444133": "Los Ojos Lacivert Geniş Kalıp Bisiklet Yaka Sweatsh",
+  "901445433": "Los Ojos Siyah Geniş Kalıp Beli Büzgülü Crop Sweats",
+  "901445961": "Los Ojos Gri Melanj Geniş Kalıp Geniş Paça Eşofman ",
+  "901446700": "Los Ojos Siyah Fitilli Kısa Kollu Kısa Tulum Short ",
+  "903872945": "Los Ojos Şekillendirici Şort Shapewear Shorts",
+  "903874990": "Los Ojos 3 Adet Görünmez Lazer Kesim Boxer Külot La",
+  "904602868": "Los Ojos Lazer Kesim Yüksek Bel Görünmez Boxer High",
+  "945479967": "Los Ojos Lacivert Katlanabilir Bel Detaylı Şort Lou",
+  "945480081": "Los Ojos Siyah Katlanabilir Bel Detaylı Şort Lounge",
+  "945651489": "Los Ojos Beyaz Düz Kesim Tişört Regular T-Shirt",
+  "945651550": "Los Ojos Gri Düz Kesim Tişört Regular T-Shirt",
+  "945652349": "Los Ojos Lacivert Düz Kesim Tişört Regular T-Shirt",
+  "946702965": "Los Ojos x Melodi Bordo Oversize Geniş Kalıp Tişört",
+  "946947837": "Los Ojos Bordo Yüksek Bel Bikini Altı Sporty Bottom",
+  "947445358": "Los Ojos Siyah-Beyaz Çizgili U Yaka Spor Mayo Sport",
+  "947445417": "Los Ojos Bordo U Yaka Spor Mayo Sporty One Piece",
+  "947445481": "Los Ojos Siyah-Beyaz Çizgili Kare Yaka Spor Bikini ",
+  "947445614": "Los Ojos Bordo-Beyaz Çizgili Kare Yaka Spor Bikini ",
+  "947445615": "Los Ojos Siyah U Yaka Spor Mayo Sporty One Piece",
+  "947445642": "Los Ojos Siyah Yüksek Bel Bikini Altı Sporty Bottom",
+  "947445665": "Los Ojos Lacivert U Yaka Spor Mayo Sporty One Piece",
+  "954359466": "Los Ojos Lacivert Fitilli Uzun Kollu Kısa Tulum Rom",
+  "1045498653": "Los Ojos x Ece Lacivert Fermuarlı Spor Ceket Collar",
+  "1045498667": "Los Ojos x Ece Bordo Fermuarlı Spor Ceket Collared",
+  "1045500349": "Los Ojos x Ece Lacivert Halter Yaka Top Halter Tank",
+  "1045500357": "Los Ojos x Ece Vizon Halter Yaka Top Halter Tank",
   "1045500574": "Los Ojos x Ece Siyah Halter Yaka Top Halter Tank",
-  "1045500913": "Los Ojos x Ece Vizon Yuksek Bel Spor Tayt Mono Leggings",
-  "1140402581": "Los Ojos x Ece Siyah Kare Yaka Askili Kisa Spor Tulum Unitard",
-  "901445961": "Los Ojos Gri Melanj Genis Kalip Genis Paca Esofman Alti Straight Leg",
-  "1142355784": "Los Ojos x Ece Siyah Bel Detayli Kisa Tayt Ruched Biker Shorts",
-  "834016195": "Los Ojos x Melodi Beyaz Oversize Genis Kalip Tisort Boyfriend T-Shirt",
-  "1142355991": "Los Ojos x Ece Mocha Melanj Bel Detayli Kisa Tayt Ruched Biker Shorts",
-  "1045513205": "Los Ojos x Ece Kahverengi Modal Kumasli Uzun Kollu Esofmanli Pijama Takimi",
-  "1142355827": "Los Ojos x Ece Pembe Bel Detayli Kisa Tayt Ruched Biker Shorts",
-  "834013420": "Los Ojos x Melodi Siyah Oversize Genis Kalip Tisort Boyfriend T-Shirt",
-  "1140402505": "Los Ojos x Ece Bordo Kare Yaka Askili Kisa Spor Tulum Unitard"
+  "1045500907": "Los Ojos x Ece Bordo Yüksek Bel Spor Tayt Mono Legg",
+  "1045500913": "Los Ojos x Ece Vizon Yüksek Bel Spor Tayt Mono Legg",
+  "1045500918": "Los Ojos x Ece Lacivert Yüksek Bel Spor Tayt Mono L",
+  "1045500926": "Los Ojos x Ece Siyah Yüksek Bel Spor Tayt Mono Legg",
+  "1045501538": "Los Ojos x Ece Mocha Melanj Uzun Kollu U Yaka Spor ",
+  "1045501600": "Los Ojos x Ece Siyah Uzun Kollu U Yaka Spor Bluz Sc",
+  "1045511750": "Los Ojos x Ece Mocha Melanj Bel Detaylı İspanyol Pa",
+  "1045512318": "Los Ojos x Ece Kahverengi Modal Kumaşlı Uzun Kollu ",
+  "1045512324": "Los Ojos x Ece Antrasit Modal Kumaşlı Uzun Kollu Şo",
+  "1045513205": "Los Ojos x Ece Kahverengi Modal Kumaşlı Uzun Kollu ",
+  "1045513767": "Los Ojos x Ece Gri Melanj Petek Dokulu Düğmeli Pija",
+  "1053715194": "Los Ojos x Ece Vizon Petek Dokulu Düğmeli Pijama Ta",
+  "1057245120": "Los Ojos Lacivert Çapraz Bel Detaylı Tayt New Envel",
+  "1140323566": "Los Ojos x Ece Pembe Spor Sütyeni Super Crop Top",
+  "1140323595": "Los Ojos x Ece Siyah Kalp Yaka Spor Sütyeni Sweethe",
+  "1140323664": "Los Ojos x Ece Siyah Spor Sütyeni Super Crop Top",
+  "1140323672": "Los Ojos x Ece Bej Spor Sütyeni Super Crop Top",
+  "1140323675": "Los Ojos x Ece Pembe Yüksek Bel Kısa Tayt Mono Bike",
+  "1140323676": "Los Ojos x Ece Mocha Spor Sütyeni Super Crop Top",
+  "1140323682": "Los Ojos x Ece Bordo Kalp Yaka Spor Sütyeni Sweethe",
+  "1140323706": "Los Ojos x Ece Mocha Melanj Kalp Yaka Spor Sütyeni ",
+  "1140323715": "Los Ojos x Ece Vizon Kalp Yaka Spor Sütyeni Sweethe",
+  "1140323739": "Los Ojos x Ece Siyah Yüksek Bel Kısa Tayt Mono Bike",
+  "1140323801": "Los Ojos x Ece Antrasit Modal Kumaşlı Askılı Şortlu",
+  "1140323837": "Los Ojos x Ece Vizon Modal Kumaşlı Kısa Kollu Şortl",
+  "1140323852": "Los Ojos x Ece Pembe 2 Katmanlı Tenis Eteği Skort",
+  "1140323872": "Los Ojos x Ece Pembe Modal Kumaşlı Askılı Şortlu Pi",
+  "1140323876": "Los Ojos x Ece Kahverengi Modal Kumaşlı Askılı Şort",
+  "1140323899": "Los Ojos x Ece Vizon Modal Kumaşlı Askılı Şortlu Pi",
+  "1140402155": "Los Ojos x Ece Vizon Kare Yaka Askılı Kısa Spor Tul",
+  "1140402581": "Los Ojos x Ece Siyah Kare Yaka Askılı Kısa Spor Tul",
+  "1140485981": "Los Ojos x Ece Pembe Fermuarlı Spor Ceket Collared",
+  "1140486909": "Los Ojos x Ece Pembe Yüksek Bel Spor Tayt Mono Legg",
+  "1140487306": "Los Ojos x Ece Pembe Bel Detaylı İspanyol Paça Pant",
+  "1142355609": "Los Ojos x Ece Bej Melanj Bel Detaylı Kısa Tayt Ruc",
+  "1142355784": "Los Ojos x Ece Siyah Bel Detaylı Kısa Tayt Ruched B",
+  "1142355991": "Los Ojos x Ece Mocha Melanj Bel Detaylı Kısa Tayt R"
  },
  "snapshots": [
   {
    "date": "2026-06-28",
    "products": {
-    "154459170": {
-     "rc": 9610,
-     "o3": null,
-     "b": 832,
-     "f": 150200,
-     "v": 376,
-     "p": 564.5
-    },
-    "129998832": {
-     "rc": 11208,
-     "o3": null,
-     "b": 1700,
-     "f": 385200,
-     "v": 1400,
-     "p": 589.5
-    },
-    "154385500": {
-     "rc": 3416,
-     "o3": null,
-     "b": 371,
-     "f": 65200,
-     "v": null,
-     "p": 564.5
-    },
-    "1045500907": {
-     "rc": 266,
+    "86380439": {
+     "rc": 2,
      "o3": null,
      "b": null,
-     "f": 21200,
+     "f": null,
      "v": null,
-     "p": 594.5
+     "p": 724.5
     },
-    "903872945": {
-     "rc": 112,
+    "86380558": {
+     "rc": 1,
      "o3": null,
      "b": null,
-     "f": 18200,
+     "f": null,
      "v": null,
-     "p": 894.5
+     "p": 724.5
     },
-    "904602868": {
-     "rc": 2479,
-     "o3": 2000,
-     "b": 15000,
-     "f": 219900,
-     "v": 3400,
-     "p": 399.5
+    "86385705": {
+     "rc": 49,
+     "o3": null,
+     "b": null,
+     "f": 1000,
+     "v": null,
+     "p": 579.5
+    },
+    "86406024": {
+     "rc": 2432,
+     "o3": null,
+     "b": null,
+     "f": 72000,
+     "v": null,
+     "p": 579.5
+    },
+    "86701561": {
+     "rc": 1,
+     "o3": null,
+     "b": null,
+     "f": null,
+     "v": null,
+     "p": 579.5
+    },
+    "86701991": {
+     "rc": 645,
+     "o3": null,
+     "b": null,
+     "f": 15900,
+     "v": null,
+     "p": 579.5
+    },
+    "97545674": {
+     "rc": 24,
+     "o3": null,
+     "b": null,
+     "f": 1000,
+     "v": null,
+     "p": 579.5
+    },
+    "97646324": {
+     "rc": 10,
+     "o3": null,
+     "b": null,
+     "f": 450,
+     "v": null,
+     "p": 659.5
+    },
+    "97827059": {
+     "rc": 204,
+     "o3": null,
+     "b": null,
+     "f": 4100,
+     "v": null,
+     "p": 474.5
+    },
+    "97827124": {
+     "rc": 67,
+     "o3": null,
+     "b": null,
+     "f": 1600,
+     "v": null,
+     "p": 474.5
     },
     "97827284": {
      "rc": 943,
@@ -86,125 +309,853 @@
      "v": null,
      "p": 474.5
     },
-    "903874990": {
-     "rc": 526,
-     "o3": 500,
-     "b": 2100,
-     "f": 100800,
-     "v": 1500,
-     "p": 639.5
-    },
-    "1045500926": {
-     "rc": 208,
+    "97827389": {
+     "rc": 99,
      "o3": null,
      "b": null,
-     "f": 12100,
+     "f": 2700,
      "v": null,
-     "p": 594.5
+     "p": 474.5
+    },
+    "97827558": {
+     "rc": 14,
+     "o3": null,
+     "b": null,
+     "f": 639,
+     "v": null,
+     "p": 619.5
+    },
+    "97831278": {
+     "rc": 71,
+     "o3": null,
+     "b": null,
+     "f": 1400,
+     "v": null,
+     "p": 474.5
+    },
+    "115481492": {
+     "rc": 626,
+     "o3": null,
+     "b": null,
+     "f": 27600,
+     "v": null,
+     "p": 364.5
+    },
+    "115481498": {
+     "rc": 27,
+     "o3": null,
+     "b": null,
+     "f": 646,
+     "v": null,
+     "p": 364.5
+    },
+    "116896804": {
+     "rc": 195,
+     "o3": null,
+     "b": null,
+     "f": 5000,
+     "v": null,
+     "p": 364.5
+    },
+    "117047707": {
+     "rc": 18,
+     "o3": null,
+     "b": null,
+     "f": 671,
+     "v": null,
+     "p": 549.5
+    },
+    "117361457": {
+     "rc": 99,
+     "o3": null,
+     "b": null,
+     "f": 3700,
+     "v": null,
+     "p": 549.5
+    },
+    "120101108": {
+     "rc": 291,
+     "o3": null,
+     "b": null,
+     "f": 13200,
+     "v": null,
+     "p": 464.5
+    },
+    "120101162": {
+     "rc": 242,
+     "o3": null,
+     "b": null,
+     "f": 6800,
+     "v": null,
+     "p": 464.5
+    },
+    "120101254": {
+     "rc": 182,
+     "o3": null,
+     "b": null,
+     "f": 3800,
+     "v": null,
+     "p": 464.5
+    },
+    "120101310": {
+     "rc": 234,
+     "o3": null,
+     "b": null,
+     "f": 8600,
+     "v": null,
+     "p": 464.5
+    },
+    "120199038": {
+     "rc": 142,
+     "o3": null,
+     "b": null,
+     "f": 2500,
+     "v": null,
+     "p": 439.5
+    },
+    "120273863": {
+     "rc": 278,
+     "o3": null,
+     "b": null,
+     "f": 9800,
+     "v": null,
+     "p": 439.5
+    },
+    "120274055": {
+     "rc": 595,
+     "o3": null,
+     "b": null,
+     "f": 31600,
+     "v": null,
+     "p": 439.5
+    },
+    "120593525": {
+     "rc": 356,
+     "o3": null,
+     "b": null,
+     "f": 11100,
+     "v": null,
+     "p": 439.5
+    },
+    "120593574": {
+     "rc": 156,
+     "o3": null,
+     "b": null,
+     "f": 5500,
+     "v": null,
+     "p": 439.5
+    },
+    "125467332": {
+     "rc": 77,
+     "o3": null,
+     "b": null,
+     "f": 1700,
+     "v": null,
+     "p": 514.5
+    },
+    "127061975": {
+     "rc": 364,
+     "o3": null,
+     "b": null,
+     "f": 6000,
+     "v": null,
+     "p": 514.5
+    },
+    "129998832": {
+     "rc": 11208,
+     "o3": null,
+     "b": 1700,
+     "f": 385200,
+     "v": 1400,
+     "p": 589.5
+    },
+    "129999160": {
+     "rc": 340,
+     "o3": null,
+     "b": null,
+     "f": 17600,
+     "v": null,
+     "p": 589.5
+    },
+    "154385500": {
+     "rc": 3416,
+     "o3": null,
+     "b": 372,
+     "f": 65200,
+     "v": null,
+     "p": 564.5
+    },
+    "154459170": {
+     "rc": 9610,
+     "o3": null,
+     "b": 831,
+     "f": 150200,
+     "v": 373,
+     "p": 564.5
+    },
+    "154466841": {
+     "rc": 572,
+     "o3": null,
+     "b": null,
+     "f": 8900,
+     "v": null,
+     "p": 564.5
+    },
+    "154468172": {
+     "rc": 2185,
+     "o3": null,
+     "b": null,
+     "f": 40500,
+     "v": null,
+     "p": 564.5
+    },
+    "154468851": {
+     "rc": 896,
+     "o3": null,
+     "b": null,
+     "f": 20800,
+     "v": null,
+     "p": 564.5
+    },
+    "154925393": {
+     "rc": 149,
+     "o3": null,
+     "b": null,
+     "f": 5500,
+     "v": null,
+     "p": 469.5
+    },
+    "155570909": {
+     "rc": 146,
+     "o3": null,
+     "b": null,
+     "f": 6200,
+     "v": null,
+     "p": 469.5
+    },
+    "155813505": {
+     "rc": 537,
+     "o3": null,
+     "b": null,
+     "f": 30600,
+     "v": null,
+     "p": 469.5
+    },
+    "156043784": {
+     "rc": 727,
+     "o3": null,
+     "b": null,
+     "f": 24100,
+     "v": null,
+     "p": 469.5
+    },
+    "180618170": {
+     "rc": 129,
+     "o3": null,
+     "b": null,
+     "f": 4300,
+     "v": null,
+     "p": 610.49
+    },
+    "180660584": {
+     "rc": 28,
+     "o3": null,
+     "b": null,
+     "f": 873,
+     "v": null,
+     "p": 999.5
+    },
+    "181018751": {
+     "rc": 53,
+     "o3": null,
+     "b": null,
+     "f": 1300,
+     "v": null,
+     "p": 844.5
+    },
+    "181687574": {
+     "rc": 24,
+     "o3": null,
+     "b": null,
+     "f": 582,
+     "v": null,
+     "p": 334.96
+    },
+    "181688640": {
+     "rc": 173,
+     "o3": null,
+     "b": null,
+     "f": 5900,
+     "v": null,
+     "p": 844.5
+    },
+    "182391985": {
+     "rc": 18,
+     "o3": null,
+     "b": null,
+     "f": 1700,
+     "v": null,
+     "p": 814.5
+    },
+    "182766677": {
+     "rc": 135,
+     "o3": null,
+     "b": null,
+     "f": 5200,
+     "v": null,
+     "p": 398.21
+    },
+    "302230814": {
+     "rc": 109,
+     "o3": null,
+     "b": null,
+     "f": 8400,
+     "v": null,
+     "p": 394.5
+    },
+    "302230830": {
+     "rc": 136,
+     "o3": null,
+     "b": null,
+     "f": 6800,
+     "v": null,
+     "p": 394.5
+    },
+    "304362938": {
+     "rc": 8,
+     "o3": null,
+     "b": null,
+     "f": 667,
+     "v": null,
+     "p": 399.5
+    },
+    "304363393": {
+     "rc": 11,
+     "o3": null,
+     "b": null,
+     "f": null,
+     "v": null,
+     "p": 554.5
+    },
+    "304364653": {
+     "rc": 158,
+     "o3": null,
+     "b": null,
+     "f": 8500,
+     "v": null,
+     "p": 579.5
+    },
+    "304364684": {
+     "rc": 509,
+     "o3": null,
+     "b": 459,
+     "f": 24900,
+     "v": 591,
+     "p": 579.5
+    },
+    "304365085": {
+     "rc": 1147,
+     "o3": null,
+     "b": 386,
+     "f": 60200,
+     "v": 531,
+     "p": 579.5
+    },
+    "304366648": {
+     "rc": 625,
+     "o3": null,
+     "b": null,
+     "f": 37700,
+     "v": null,
+     "p": 579.5
+    },
+    "304909286": {
+     "rc": 316,
+     "o3": null,
+     "b": null,
+     "f": 19200,
+     "v": null,
+     "p": 459.5
+    },
+    "304912405": {
+     "rc": 650,
+     "o3": null,
+     "b": null,
+     "f": 28600,
+     "v": null,
+     "p": 459.5
+    },
+    "304912565": {
+     "rc": 1297,
+     "o3": null,
+     "b": null,
+     "f": 82200,
+     "v": null,
+     "p": 459.5
+    },
+    "304916239": {
+     "rc": 6,
+     "o3": null,
+     "b": null,
+     "f": 652,
+     "v": null,
+     "p": 674.5
+    },
+    "304918071": {
+     "rc": 8,
+     "o3": null,
+     "b": null,
+     "f": 419,
+     "v": null,
+     "p": 674.5
+    },
+    "344096123": {
+     "rc": 439,
+     "o3": null,
+     "b": null,
+     "f": 10800,
+     "v": null,
+     "p": 464.5
     },
     "344201097": {
      "rc": 1379,
      "o3": null,
-     "b": 486,
+     "b": 490,
      "f": 92100,
-     "v": 595,
+     "v": 572,
      "p": 464.5
     },
-    "901427614": {
-     "rc": 42,
+    "649970162": {
+     "rc": 391,
      "o3": null,
      "b": null,
-     "f": 13300,
+     "f": 9400,
      "v": null,
-     "p": 749.5
+     "p": 549.5
     },
-    "901446700": {
-     "rc": 602,
-     "o3": null,
-     "b": 981,
-     "f": 76100,
-     "v": 515,
-     "p": 614.5
-    },
-    "1045500918": {
-     "rc": 119,
+    "655389476": {
+     "rc": 38,
      "o3": null,
      "b": null,
-     "f": 7800,
+     "f": 1300,
      "v": null,
-     "p": 594.5
+     "p": 724.5
     },
-    "1045500574": {
-     "rc": 283,
-     "o3": null,
-     "b": 912,
-     "f": 49200,
-     "v": 810,
-     "p": 449.5
-    },
-    "1045500913": {
-     "rc": 109,
+    "655402004": {
+     "rc": 7,
      "o3": null,
      "b": null,
-     "f": 12000,
+     "f": 479,
      "v": null,
-     "p": 594.5
+     "p": 549.5
     },
-    "1140402581": {
-     "rc": 28,
+    "655829041": {
+     "rc": 1595,
      "o3": null,
-     "b": 508,
-     "f": 10400,
-     "v": 572,
-     "p": 599.5
-    },
-    "901445961": {
-     "rc": 70,
-     "o3": null,
-     "b": null,
-     "f": 25400,
+     "b": 320,
+     "f": 61700,
      "v": null,
-     "p": 749.5
+     "p": 424.5
     },
-    "1142355784": {
-     "rc": 13,
+    "659054744": {
+     "rc": 348,
      "o3": null,
      "b": null,
-     "f": 2000,
+     "f": 6800,
      "v": null,
-     "p": 499.5
+     "p": 794.5
     },
-    "834016195": {
-     "rc": 369,
+    "659945562": {
+     "rc": 32,
      "o3": null,
-     "b": 324,
-     "f": 16500,
+     "b": null,
+     "f": 2100,
      "v": null,
-     "p": 494.5
+     "p": 994.5
     },
-    "1142355991": {
+    "664938067": {
+     "rc": 366,
+     "o3": null,
+     "b": null,
+     "f": 30700,
+     "v": null,
+     "p": 345.84
+    },
+    "664943802": {
      "rc": 18,
      "o3": null,
      "b": null,
-     "f": 1800,
+     "f": 599,
      "v": null,
-     "p": 499.5
+     "p": 454.5
     },
-    "1045513205": {
-     "rc": 706,
+    "664969524": {
+     "rc": 174,
      "o3": null,
      "b": null,
-     "f": 87600,
+     "f": 9200,
      "v": null,
-     "p": 744.5
+     "p": 342.04
     },
-    "1142355827": {
-     "rc": 15,
+    "692791737": {
+     "rc": 964,
      "o3": null,
      "b": null,
-     "f": 4400,
+     "f": 76000,
      "v": null,
-     "p": 499.5
+     "p": 589.5
+    },
+    "699273115": {
+     "rc": 134,
+     "o3": null,
+     "b": null,
+     "f": 7300,
+     "v": null,
+     "p": 295.45
+    },
+    "699273269": {
+     "rc": 166,
+     "o3": null,
+     "b": null,
+     "f": 6200,
+     "v": null,
+     "p": 291.55
+    },
+    "707066322": {
+     "rc": 78,
+     "o3": null,
+     "b": null,
+     "f": 4500,
+     "v": null,
+     "p": 376.55
+    },
+    "723215471": {
+     "rc": null,
+     "o3": null,
+     "b": null,
+     "f": null,
+     "v": null,
+     "p": 994.5
+    },
+    "723215662": {
+     "rc": 3,
+     "o3": null,
+     "b": null,
+     "f": 380,
+     "v": null,
+     "p": 994.5
+    },
+    "723215690": {
+     "rc": 6,
+     "o3": null,
+     "b": null,
+     "f": null,
+     "v": null,
+     "p": 994.5
+    },
+    "723215890": {
+     "rc": null,
+     "o3": null,
+     "b": null,
+     "f": 530,
+     "v": null,
+     "p": 994.5
+    },
+    "723217744": {
+     "rc": 6,
+     "o3": null,
+     "b": null,
+     "f": 562,
+     "v": null,
+     "p": 994.5
+    },
+    "736230221": {
+     "rc": 5,
+     "o3": null,
+     "b": null,
+     "f": null,
+     "v": null,
+     "p": 674.5
+    },
+    "736230301": {
+     "rc": 5,
+     "o3": null,
+     "b": null,
+     "f": null,
+     "v": null,
+     "p": 674.5
+    },
+    "736250093": {
+     "rc": 1966,
+     "o3": null,
+     "b": null,
+     "f": 128200,
+     "v": null,
+     "p": 469.5
+    },
+    "736250156": {
+     "rc": 17,
+     "o3": null,
+     "b": null,
+     "f": 433,
+     "v": null,
+     "p": 224.5
+    },
+    "736364210": {
+     "rc": 9,
+     "o3": null,
+     "b": null,
+     "f": 807,
+     "v": null,
+     "p": 224.5
+    },
+    "736364306": {
+     "rc": 223,
+     "o3": null,
+     "b": null,
+     "f": 12500,
+     "v": null,
+     "p": 469.5
+    },
+    "736364331": {
+     "rc": 170,
+     "o3": null,
+     "b": null,
+     "f": 9000,
+     "v": null,
+     "p": 464.5
+    },
+    "736364369": {
+     "rc": 142,
+     "o3": null,
+     "b": null,
+     "f": 10300,
+     "v": null,
+     "p": 469.5
+    },
+    "772023310": {
+     "rc": 212,
+     "o3": null,
+     "b": null,
+     "f": 17600,
+     "v": null,
+     "p": 464.5
+    },
+    "772023338": {
+     "rc": 181,
+     "o3": null,
+     "b": null,
+     "f": 14100,
+     "v": null,
+     "p": 464.5
+    },
+    "772023360": {
+     "rc": 165,
+     "o3": null,
+     "b": null,
+     "f": 10300,
+     "v": null,
+     "p": 464.5
+    },
+    "772023674": {
+     "rc": 93,
+     "o3": null,
+     "b": null,
+     "f": 4700,
+     "v": null,
+     "p": 419.5
+    },
+    "772023694": {
+     "rc": 114,
+     "o3": null,
+     "b": null,
+     "f": 7100,
+     "v": null,
+     "p": 419.5
+    },
+    "772024287": {
+     "rc": 69,
+     "o3": null,
+     "b": null,
+     "f": 13700,
+     "v": 364,
+     "p": 769.5
+    },
+    "772024314": {
+     "rc": 208,
+     "o3": null,
+     "b": null,
+     "f": 42400,
+     "v": 448,
+     "p": 769.5
+    },
+    "772024341": {
+     "rc": 62,
+     "o3": null,
+     "b": null,
+     "f": 4200,
+     "v": null,
+     "p": 449.5
+    },
+    "772297298": {
+     "rc": 17,
+     "o3": null,
+     "b": null,
+     "f": null,
+     "v": null,
+     "p": 884.5
+    },
+    "772297445": {
+     "rc": 35,
+     "o3": null,
+     "b": null,
+     "f": 6000,
+     "v": null,
+     "p": 884.5
+    },
+    "772297580": {
+     "rc": 346,
+     "o3": null,
+     "b": null,
+     "f": 25800,
+     "v": null,
+     "p": 749.5
+    },
+    "772297613": {
+     "rc": 8,
+     "o3": null,
+     "b": null,
+     "f": 905,
+     "v": null,
+     "p": 729.5
+    },
+    "772297994": {
+     "rc": 6,
+     "o3": null,
+     "b": null,
+     "f": 1900,
+     "v": null,
+     "p": 729.5
+    },
+    "772298094": {
+     "rc": 26,
+     "o3": null,
+     "b": null,
+     "f": 4700,
+     "v": null,
+     "p": 884.5
+    },
+    "772308529": {
+     "rc": 20,
+     "o3": null,
+     "b": null,
+     "f": 2400,
+     "v": null,
+     "p": 654.5
+    },
+    "772312344": {
+     "rc": 93,
+     "o3": null,
+     "b": null,
+     "f": 10700,
+     "v": null,
+     "p": 484.5
+    },
+    "772312424": {
+     "rc": 76,
+     "o3": null,
+     "b": null,
+     "f": 6300,
+     "v": null,
+     "p": 484.5
+    },
+    "801142206": {
+     "rc": 72,
+     "o3": null,
+     "b": null,
+     "f": 3400,
+     "v": null,
+     "p": 549.5
+    },
+    "801143022": {
+     "rc": 79,
+     "o3": null,
+     "b": null,
+     "f": 3100,
+     "v": null,
+     "p": 549.5
+    },
+    "812664383": {
+     "rc": 160,
+     "o3": null,
+     "b": null,
+     "f": 7100,
+     "v": null,
+     "p": 669.5
+    },
+    "812666599": {
+     "rc": 5,
+     "o3": null,
+     "b": null,
+     "f": 599,
+     "v": null,
+     "p": 669.5
+    },
+    "812667204": {
+     "rc": 280,
+     "o3": null,
+     "b": null,
+     "f": 9600,
+     "v": null,
+     "p": 669.5
+    },
+    "833037197": {
+     "rc": 28,
+     "o3": null,
+     "b": null,
+     "f": 1600,
+     "v": null,
+     "p": 459.5
+    },
+    "834007684": {
+     "rc": 4101,
+     "o3": null,
+     "b": 905,
+     "f": 277900,
+     "v": 1200,
+     "p": 614.5
+    },
+    "834009380": {
+     "rc": 176,
+     "o3": null,
+     "b": null,
+     "f": 6200,
+     "v": null,
+     "p": 494.5
+    },
+    "834011598": {
+     "rc": 2825,
+     "o3": null,
+     "b": 1000,
+     "f": 145400,
+     "v": 776,
+     "p": 614.5
+    },
+    "834012875": {
+     "rc": 420,
+     "o3": null,
+     "b": null,
+     "f": 14100,
+     "v": null,
+     "p": 389.5
+    },
+    "834012876": {
+     "rc": 508,
+     "o3": null,
+     "b": null,
+     "f": 23300,
+     "v": null,
+     "p": 439.5
     },
     "834013420": {
      "rc": 321,
@@ -214,13 +1165,781 @@
      "v": null,
      "p": 494.5
     },
-    "1140402505": {
+    "834013696": {
+     "rc": 18,
+     "o3": null,
+     "b": null,
+     "f": 2400,
+     "v": null,
+     "p": 599.5
+    },
+    "834013724": {
+     "rc": 147,
+     "o3": null,
+     "b": null,
+     "f": 3900,
+     "v": null,
+     "p": 494.5
+    },
+    "834013914": {
+     "rc": 941,
+     "o3": null,
+     "b": null,
+     "f": 133700,
+     "v": null,
+     "p": 614.5
+    },
+    "834014535": {
+     "rc": 1143,
+     "o3": null,
+     "b": null,
+     "f": 65400,
+     "v": null,
+     "p": 389.5
+    },
+    "834014564": {
+     "rc": 2554,
+     "o3": null,
+     "b": null,
+     "f": 161500,
+     "v": null,
+     "p": 439.5
+    },
+    "834014681": {
+     "rc": 1424,
+     "o3": null,
+     "b": null,
+     "f": 64100,
+     "v": null,
+     "p": 439.5
+    },
+    "834016195": {
+     "rc": 369,
+     "o3": null,
+     "b": 323,
+     "f": 16500,
+     "v": null,
+     "p": 494.5
+    },
+    "834017738": {
+     "rc": 625,
+     "o3": null,
+     "b": null,
+     "f": 76500,
+     "v": null,
+     "p": 614.5
+    },
+    "834181204": {
+     "rc": 9,
+     "o3": null,
+     "b": null,
+     "f": 1300,
+     "v": null,
+     "p": 629.5
+    },
+    "834181419": {
+     "rc": 21,
+     "o3": null,
+     "b": null,
+     "f": 844,
+     "v": null,
+     "p": 839.5
+    },
+    "834181440": {
+     "rc": 33,
+     "o3": null,
+     "b": null,
+     "f": 3400,
+     "v": null,
+     "p": 839.5
+    },
+    "834187765": {
+     "rc": 27,
+     "o3": null,
+     "b": null,
+     "f": 2700,
+     "v": null,
+     "p": 619.5
+    },
+    "834190680": {
+     "rc": 34,
+     "o3": null,
+     "b": null,
+     "f": 4600,
+     "v": null,
+     "p": 629.5
+    },
+    "834193253": {
+     "rc": 48,
+     "o3": null,
+     "b": null,
+     "f": 7900,
+     "v": null,
+     "p": 819.5
+    },
+    "834193362": {
+     "rc": 10,
+     "o3": null,
+     "b": null,
+     "f": 790,
+     "v": null,
+     "p": 799.5
+    },
+    "834267382": {
+     "rc": 42,
+     "o3": null,
+     "b": null,
+     "f": 3900,
+     "v": null,
+     "p": 619.5
+    },
+    "834269789": {
+     "rc": 34,
+     "o3": null,
+     "b": null,
+     "f": 3900,
+     "v": null,
+     "p": 619.5
+    },
+    "847775174": {
+     "rc": 54,
+     "o3": null,
+     "b": null,
+     "f": 3400,
+     "v": null,
+     "p": 282.97
+    },
+    "901071773": {
+     "rc": 716,
+     "o3": null,
+     "b": 383,
+     "f": 87200,
+     "v": 318,
+     "p": 614.5
+    },
+    "901077842": {
+     "rc": 425,
+     "o3": null,
+     "b": null,
+     "f": 20600,
+     "v": null,
+     "p": 389.5
+    },
+    "901082243": {
+     "rc": 117,
+     "o3": null,
+     "b": null,
+     "f": 12900,
+     "v": null,
+     "p": 614.5
+    },
+    "901427614": {
+     "rc": 42,
+     "o3": null,
+     "b": null,
+     "f": 13300,
+     "v": null,
+     "p": 749.5
+    },
+    "901437826": {
+     "rc": 6,
+     "o3": null,
+     "b": null,
+     "f": 499,
+     "v": null,
+     "p": 814.5
+    },
+    "901437831": {
+     "rc": 5,
+     "o3": null,
+     "b": null,
+     "f": 618,
+     "v": null,
+     "p": 814.5
+    },
+    "901437849": {
+     "rc": 10,
+     "o3": null,
+     "b": null,
+     "f": 1500,
+     "v": null,
+     "p": 814.5
+    },
+    "901442645": {
+     "rc": 277,
+     "o3": null,
+     "b": null,
+     "f": 31000,
+     "v": null,
+     "p": 614.5
+    },
+    "901442999": {
+     "rc": 252,
+     "o3": null,
+     "b": null,
+     "f": 25300,
+     "v": null,
+     "p": 779.5
+    },
+    "901443021": {
+     "rc": 206,
+     "o3": null,
+     "b": null,
+     "f": 27900,
+     "v": null,
+     "p": 614.5
+    },
+    "901443585": {
+     "rc": 12,
+     "o3": null,
+     "b": null,
+     "f": 1100,
+     "v": null,
+     "p": 784.5
+    },
+    "901443685": {
+     "rc": 36,
+     "o3": null,
+     "b": null,
+     "f": 2900,
+     "v": null,
+     "p": 679.5
+    },
+    "901443907": {
+     "rc": 12,
+     "o3": null,
+     "b": null,
+     "f": 952,
+     "v": null,
+     "p": 814.5
+    },
+    "901443921": {
+     "rc": 69,
+     "o3": null,
+     "b": null,
+     "f": 15200,
+     "v": null,
+     "p": 679.5
+    },
+    "901444108": {
+     "rc": 32,
+     "o3": null,
+     "b": null,
+     "f": 3400,
+     "v": null,
+     "p": 679.5
+    },
+    "901444133": {
+     "rc": 35,
+     "o3": null,
+     "b": null,
+     "f": 4100,
+     "v": null,
+     "p": 679.5
+    },
+    "901445433": {
+     "rc": 15,
+     "o3": null,
+     "b": null,
+     "f": 2700,
+     "v": null,
+     "p": 814.5
+    },
+    "901445961": {
+     "rc": 70,
+     "o3": null,
+     "b": null,
+     "f": 25400,
+     "v": null,
+     "p": 749.5
+    },
+    "901446700": {
+     "rc": 602,
+     "o3": null,
+     "b": 984,
+     "f": 76100,
+     "v": 506,
+     "p": 614.5
+    },
+    "903872945": {
+     "rc": 112,
+     "o3": null,
+     "b": null,
+     "f": 18200,
+     "v": null,
+     "p": 894.5
+    },
+    "903874990": {
+     "rc": 526,
+     "o3": 500,
+     "b": 2100,
+     "f": 100800,
+     "v": 1500,
+     "p": 639.5
+    },
+    "904602868": {
+     "rc": 2479,
+     "o3": 2000,
+     "b": 15000,
+     "f": 219900,
+     "v": 3400,
+     "p": 399.5
+    },
+    "945479967": {
+     "rc": 31,
+     "o3": null,
+     "b": null,
+     "f": 2200,
+     "v": null,
+     "p": 419.5
+    },
+    "945480081": {
+     "rc": 189,
+     "o3": null,
+     "b": null,
+     "f": 18800,
+     "v": null,
+     "p": 419.5
+    },
+    "945651489": {
+     "rc": 60,
+     "o3": null,
+     "b": null,
+     "f": 6500,
+     "v": null,
+     "p": 454.5
+    },
+    "945651550": {
+     "rc": 16,
+     "o3": null,
+     "b": null,
+     "f": 1200,
+     "v": null,
+     "p": 454.5
+    },
+    "945652349": {
+     "rc": 24,
+     "o3": null,
+     "b": null,
+     "f": 1600,
+     "v": null,
+     "p": 454.5
+    },
+    "946702965": {
+     "rc": 153,
+     "o3": null,
+     "b": 320,
+     "f": 17200,
+     "v": null,
+     "p": 494.5
+    },
+    "946947837": {
+     "rc": 13,
+     "o3": null,
+     "b": null,
+     "f": 737,
+     "v": null,
+     "p": 369.5
+    },
+    "947445358": {
+     "rc": 11,
+     "o3": null,
+     "b": null,
+     "f": 1400,
+     "v": null,
+     "p": 734.5
+    },
+    "947445417": {
+     "rc": 8,
+     "o3": null,
+     "b": null,
+     "f": 943,
+     "v": null,
+     "p": 734.5
+    },
+    "947445481": {
+     "rc": 34,
+     "o3": null,
+     "b": null,
+     "f": 3400,
+     "v": null,
+     "p": 464.5
+    },
+    "947445614": {
+     "rc": 5,
+     "o3": null,
+     "b": null,
+     "f": 457,
+     "v": null,
+     "p": 464.5
+    },
+    "947445615": {
      "rc": 20,
      "o3": null,
      "b": null,
-     "f": 3300,
+     "f": 4200,
+     "v": null,
+     "p": 734.5
+    },
+    "947445642": {
+     "rc": 64,
+     "o3": null,
+     "b": null,
+     "f": 5500,
+     "v": null,
+     "p": 369.5
+    },
+    "947445665": {
+     "rc": 15,
+     "o3": null,
+     "b": null,
+     "f": 1800,
+     "v": null,
+     "p": 734.5
+    },
+    "954359466": {
+     "rc": 393,
+     "o3": null,
+     "b": null,
+     "f": 37800,
+     "v": null,
+     "p": 614.5
+    },
+    "1045498653": {
+     "rc": 107,
+     "o3": null,
+     "b": null,
+     "f": 11600,
+     "v": null,
+     "p": 759.5
+    },
+    "1045498667": {
+     "rc": 154,
+     "o3": null,
+     "b": null,
+     "f": 28000,
+     "v": null,
+     "p": 759.5
+    },
+    "1045500349": {
+     "rc": 96,
+     "o3": null,
+     "b": 305,
+     "f": 11200,
+     "v": null,
+     "p": 449.5
+    },
+    "1045500357": {
+     "rc": 194,
+     "o3": null,
+     "b": 468,
+     "f": 45800,
+     "v": 689,
+     "p": 449.5
+    },
+    "1045500574": {
+     "rc": 283,
+     "o3": null,
+     "b": 915,
+     "f": 49200,
+     "v": 806,
+     "p": 449.5
+    },
+    "1045500907": {
+     "rc": 266,
+     "o3": null,
+     "b": null,
+     "f": 21200,
+     "v": null,
+     "p": 594.5
+    },
+    "1045500913": {
+     "rc": 109,
+     "o3": null,
+     "b": null,
+     "f": 12000,
+     "v": null,
+     "p": 594.5
+    },
+    "1045500918": {
+     "rc": 119,
+     "o3": null,
+     "b": null,
+     "f": 7800,
+     "v": null,
+     "p": 594.5
+    },
+    "1045500926": {
+     "rc": 208,
+     "o3": null,
+     "b": null,
+     "f": 12100,
+     "v": null,
+     "p": 594.5
+    },
+    "1045501538": {
+     "rc": 51,
+     "o3": null,
+     "b": null,
+     "f": 3500,
+     "v": null,
+     "p": 524.5
+    },
+    "1045501600": {
+     "rc": 67,
+     "o3": null,
+     "b": null,
+     "f": 5400,
+     "v": null,
+     "p": 524.5
+    },
+    "1045511750": {
+     "rc": 51,
+     "o3": null,
+     "b": null,
+     "f": 4100,
+     "v": null,
+     "p": 734.5
+    },
+    "1045512318": {
+     "rc": 166,
+     "o3": null,
+     "b": null,
+     "f": 28200,
+     "v": null,
+     "p": 534.5
+    },
+    "1045512324": {
+     "rc": 145,
+     "o3": null,
+     "b": null,
+     "f": 17000,
+     "v": null,
+     "p": 534.5
+    },
+    "1045513205": {
+     "rc": 706,
+     "o3": null,
+     "b": null,
+     "f": 87600,
+     "v": null,
+     "p": 744.5
+    },
+    "1045513767": {
+     "rc": 58,
+     "o3": null,
+     "b": null,
+     "f": 10600,
+     "v": null,
+     "p": 799.5
+    },
+    "1053715194": {
+     "rc": 7,
+     "o3": null,
+     "b": null,
+     "f": 2300,
+     "v": null,
+     "p": 799.5
+    },
+    "1057245120": {
+     "rc": 39,
+     "o3": null,
+     "b": null,
+     "f": 6200,
+     "v": null,
+     "p": 594.5
+    },
+    "1140323566": {
+     "rc": 26,
+     "o3": null,
+     "b": 373,
+     "f": 5900,
+     "v": 452,
+     "p": 424.5
+    },
+    "1140323595": {
+     "rc": 31,
+     "o3": null,
+     "b": null,
+     "f": 4300,
+     "v": null,
+     "p": 469.5
+    },
+    "1140323664": {
+     "rc": 16,
+     "o3": null,
+     "b": null,
+     "f": 1300,
+     "v": null,
+     "p": 424.5
+    },
+    "1140323672": {
+     "rc": null,
+     "o3": null,
+     "b": null,
+     "f": null,
+     "v": null,
+     "p": 424.5
+    },
+    "1140323675": {
+     "rc": 18,
+     "o3": null,
+     "b": null,
+     "f": 3900,
+     "v": null,
+     "p": 469.5
+    },
+    "1140323676": {
+     "rc": 12,
+     "o3": null,
+     "b": null,
+     "f": 912,
+     "v": null,
+     "p": 424.5
+    },
+    "1140323682": {
+     "rc": 4,
+     "o3": null,
+     "b": null,
+     "f": 870,
+     "v": null,
+     "p": 469.5
+    },
+    "1140323706": {
+     "rc": null,
+     "o3": null,
+     "b": null,
+     "f": null,
+     "v": null,
+     "p": 469.5
+    },
+    "1140323715": {
+     "rc": 1,
+     "o3": null,
+     "b": null,
+     "f": null,
+     "v": null,
+     "p": 469.5
+    },
+    "1140323739": {
+     "rc": 15,
+     "o3": null,
+     "b": null,
+     "f": 1400,
+     "v": null,
+     "p": 469.5
+    },
+    "1140323801": {
+     "rc": 18,
+     "o3": null,
+     "b": null,
+     "f": 1600,
+     "v": null,
+     "p": 539.5
+    },
+    "1140323837": {
+     "rc": 28,
+     "o3": null,
+     "b": 662,
+     "f": 8000,
+     "v": 736,
+     "p": 574.5
+    },
+    "1140323852": {
+     "rc": 6,
+     "o3": null,
+     "b": null,
+     "f": 6400,
+     "v": 393,
+     "p": 679.5
+    },
+    "1140323872": {
+     "rc": 25,
+     "o3": null,
+     "b": null,
+     "f": 4900,
+     "v": null,
+     "p": 539.5
+    },
+    "1140323876": {
+     "rc": 16,
+     "o3": null,
+     "b": null,
+     "f": 2200,
+     "v": null,
+     "p": 539.5
+    },
+    "1140323899": {
+     "rc": 18,
+     "o3": null,
+     "b": null,
+     "f": 1600,
+     "v": null,
+     "p": 539.5
+    },
+    "1140402155": {
+     "rc": 11,
+     "o3": null,
+     "b": null,
+     "f": 1000,
      "v": null,
      "p": 599.5
+    },
+    "1140402581": {
+     "rc": 28,
+     "o3": null,
+     "b": 509,
+     "f": 10400,
+     "v": 561,
+     "p": 599.5
+    },
+    "1140485981": {
+     "rc": 17,
+     "o3": null,
+     "b": null,
+     "f": 2900,
+     "v": null,
+     "p": 759.5
+    },
+    "1140486909": {
+     "rc": 11,
+     "o3": null,
+     "b": null,
+     "f": 5800,
+     "v": null,
+     "p": 594.5
+    },
+    "1140487306": {
+     "rc": 31,
+     "o3": null,
+     "b": null,
+     "f": 8100,
+     "v": null,
+     "p": 734.5
+    },
+    "1142355609": {
+     "rc": null,
+     "o3": null,
+     "b": null,
+     "f": null,
+     "v": null,
+     "p": 499.5
+    },
+    "1142355784": {
+     "rc": 13,
+     "o3": null,
+     "b": null,
+     "f": 2000,
+     "v": null,
+     "p": 499.5
+    },
+    "1142355991": {
+     "rc": 18,
+     "o3": null,
+     "b": null,
+     "f": 1800,
+     "v": null,
+     "p": 499.5
     }
    }
   }
