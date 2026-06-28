@@ -11,7 +11,7 @@
    "orderL3D": null,
    "orderL3D_raw": null,
    "basket": null,
-   "favorite": null,
+   "favorite": 64,
    "pageView": null
   },
   "86380558": {
@@ -22,7 +22,7 @@
    "orderL3D": null,
    "orderL3D_raw": null,
    "basket": null,
-   "favorite": null,
+   "favorite": 45,
    "pageView": null
   },
   "86385705": {
@@ -41,9 +41,9 @@
    "price": 579.5,
    "ratingCount": 2432,
    "rating": 4.1,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 23,
+   "orderL3D_raw": "23",
+   "basket": 158,
    "favorite": 72000,
    "pageView": null
   },
@@ -55,7 +55,7 @@
    "orderL3D": null,
    "orderL3D_raw": null,
    "basket": null,
-   "favorite": null,
+   "favorite": 115,
    "pageView": null
   },
   "86701991": {
@@ -65,7 +65,7 @@
    "rating": 4.03,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 26,
    "favorite": 15900,
    "pageView": null
   },
@@ -96,9 +96,9 @@
    "price": 474.5,
    "ratingCount": 204,
    "rating": 4.43,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 29,
+   "orderL3D_raw": "29",
+   "basket": 141,
    "favorite": 4100,
    "pageView": null
   },
@@ -118,11 +118,11 @@
    "price": 474.5,
    "ratingCount": 943,
    "rating": 4.45,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 38,
+   "orderL3D_raw": "38",
+   "basket": 265,
    "favorite": 45600,
-   "pageView": null
+   "pageView": 271
   },
   "97827389": {
    "name": "Los Ojos Kadın Antrasit Yüksek Bel Toparlayıcı Çift",
@@ -131,7 +131,7 @@
    "rating": 4.45,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 27,
    "favorite": 2700,
    "pageView": null
   },
@@ -153,7 +153,7 @@
    "rating": 4.39,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 33,
    "favorite": 1400,
    "pageView": null
   },
@@ -164,9 +164,9 @@
    "rating": 4.24,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 202,
    "favorite": 27600,
-   "pageView": null
+   "pageView": 230
   },
   "115481498": {
    "name": "Los Ojos Kadın Mercan Yüksek Bel Toparlayıcı Bisikl",
@@ -186,7 +186,7 @@
    "rating": 4.32,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 97,
    "favorite": 5000,
    "pageView": null
   },
@@ -219,7 +219,7 @@
    "rating": 4.21,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 91,
    "favorite": 13200,
    "pageView": null
   },
@@ -230,7 +230,7 @@
    "rating": 4.26,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 68,
    "favorite": 6800,
    "pageView": null
   },
@@ -241,7 +241,7 @@
    "rating": 4.14,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 46,
    "favorite": 3800,
    "pageView": null
   },
@@ -250,9 +250,9 @@
    "price": 464.5,
    "ratingCount": 234,
    "rating": 3.96,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 21,
+   "orderL3D_raw": "21",
+   "basket": 67,
    "favorite": 8600,
    "pageView": null
   },
@@ -263,7 +263,7 @@
    "rating": 4.37,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 23,
    "favorite": 2500,
    "pageView": null
   },
@@ -274,7 +274,7 @@
    "rating": 4.3,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 37,
    "favorite": 9800,
    "pageView": null
   },
@@ -285,7 +285,7 @@
    "rating": 4.32,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 41,
    "favorite": 31600,
    "pageView": null
   },
@@ -327,9 +327,9 @@
    "price": 514.5,
    "ratingCount": 364,
    "rating": 4.21,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 26,
+   "orderL3D_raw": "26",
+   "basket": 137,
    "favorite": 6000,
    "pageView": null
   },
@@ -338,8 +338,8 @@
    "price": 589.5,
    "ratingCount": 11208,
    "rating": 4.29,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 100,
+   "orderL3D_raw": "100+",
    "basket": 1700,
    "favorite": 385200,
    "pageView": 1400
@@ -351,7 +351,7 @@
    "rating": 4.18,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 64,
    "favorite": 17600,
    "pageView": null
   },
@@ -360,19 +360,19 @@
    "price": 564.5,
    "ratingCount": 3416,
    "rating": 4.59,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 48,
+   "orderL3D_raw": "48",
    "basket": 372,
    "favorite": 65200,
-   "pageView": null
+   "pageView": 225
   },
   "154459170": {
    "name": "Los Ojos Kadın Siyah Yüksek Bel Jogger Eşofman Altı",
    "price": 564.5,
    "ratingCount": 9610,
    "rating": 4.48,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 100,
+   "orderL3D_raw": "100+",
    "basket": 831,
    "favorite": 150200,
    "pageView": 373
@@ -384,7 +384,7 @@
    "rating": 4.57,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 45,
    "favorite": 8900,
    "pageView": null
   },
@@ -393,9 +393,9 @@
    "price": 564.5,
    "ratingCount": 2185,
    "rating": 4.49,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 25,
+   "orderL3D_raw": "25",
+   "basket": 164,
    "favorite": 40500,
    "pageView": null
   },
@@ -406,7 +406,7 @@
    "rating": 4.54,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 48,
    "favorite": 20800,
    "pageView": null
   },
@@ -417,7 +417,7 @@
    "rating": 4.31,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 47,
    "favorite": 5500,
    "pageView": null
   },
@@ -428,7 +428,7 @@
    "rating": 4.25,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 33,
    "favorite": 6200,
    "pageView": null
   },
@@ -439,7 +439,7 @@
    "rating": 4.4,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 41,
    "favorite": 30600,
    "pageView": null
   },
@@ -450,7 +450,7 @@
    "rating": 4.32,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 42,
    "favorite": 24100,
    "pageView": null
   },
@@ -527,7 +527,7 @@
    "rating": 4.24,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 37,
    "favorite": 5200,
    "pageView": null
   },
@@ -538,7 +538,7 @@
    "rating": 4.01,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 51,
    "favorite": 8400,
    "pageView": null
   },
@@ -549,7 +549,7 @@
    "rating": 4.04,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 77,
    "favorite": 6800,
    "pageView": null
   },
@@ -572,7 +572,7 @@
    "orderL3D": null,
    "orderL3D_raw": null,
    "basket": null,
-   "favorite": null,
+   "favorite": 285,
    "pageView": null
   },
   "304364653": {
@@ -580,19 +580,19 @@
    "price": 579.5,
    "ratingCount": 158,
    "rating": 4.44,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 21,
+   "orderL3D_raw": "21",
+   "basket": 121,
    "favorite": 8500,
-   "pageView": null
+   "pageView": 144
   },
   "304364684": {
    "name": "Los Ojos Kadın Antrasit 2 Katmanlı Spor Şort - Şort",
    "price": 579.5,
    "ratingCount": 509,
    "rating": 4.53,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 100,
+   "orderL3D_raw": "100+",
    "basket": 459,
    "favorite": 24900,
    "pageView": 591
@@ -602,8 +602,8 @@
    "price": 579.5,
    "ratingCount": 1147,
    "rating": 4.53,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 70,
+   "orderL3D_raw": "70",
    "basket": 386,
    "favorite": 60200,
    "pageView": 531
@@ -615,42 +615,42 @@
    "rating": 4.37,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 139,
    "favorite": 37700,
-   "pageView": null
+   "pageView": 207
   },
   "304909286": {
    "name": "Los Ojos Kadın Pembe Askılı Hafif Destekli Kaplı Sp",
    "price": 459.5,
    "ratingCount": 316,
    "rating": 4.09,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 26,
+   "orderL3D_raw": "26",
+   "basket": 234,
    "favorite": 19200,
-   "pageView": null
+   "pageView": 180
   },
   "304912405": {
    "name": "Los Ojos Kadın Siyah Askılı Hafif Destekli Kaplı Sp",
    "price": 459.5,
    "ratingCount": 650,
    "rating": 4.11,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 21,
+   "orderL3D_raw": "21",
+   "basket": 149,
    "favorite": 28600,
-   "pageView": null
+   "pageView": 116
   },
   "304912565": {
    "name": "Los Ojos Kadın Beyaz Askılı Hafif Destekli Kaplı Sp",
    "price": 459.5,
    "ratingCount": 1297,
    "rating": 3.99,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 60,
+   "orderL3D_raw": "60",
+   "basket": 208,
    "favorite": 82200,
-   "pageView": null
+   "pageView": 246
   },
   "304916239": {
    "name": "Los Ojos Kadın Antrasit Yeşil Batik Desenli Pijama ",
@@ -679,19 +679,19 @@
    "price": 464.5,
    "ratingCount": 439,
    "rating": 3.96,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 24,
+   "orderL3D_raw": "24",
+   "basket": 128,
    "favorite": 10800,
-   "pageView": null
+   "pageView": 113
   },
   "344201097": {
    "name": "Los Ojos Siyah Hafif Destekli Sırt Detaylı Kaplı Sp",
    "price": 464.5,
    "ratingCount": 1379,
    "rating": 4.14,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 60,
+   "orderL3D_raw": "60",
    "basket": 490,
    "favorite": 92100,
    "pageView": 572
@@ -734,11 +734,11 @@
    "price": 424.5,
    "ratingCount": 1595,
    "rating": 4.16,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 41,
+   "orderL3D_raw": "41",
    "basket": 320,
    "favorite": 61700,
-   "pageView": null
+   "pageView": 211
   },
   "659054744": {
    "name": "Los Ojos Kadın Lacivert Kargo Cepli Beli ve Paçası ",
@@ -747,7 +747,7 @@
    "rating": 4.57,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 45,
    "favorite": 6800,
    "pageView": null
   },
@@ -769,9 +769,9 @@
    "rating": 4.24,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 29,
    "favorite": 30700,
-   "pageView": null
+   "pageView": 120
   },
   "664943802": {
    "name": "Los Ojos Lacivert Hafif Destekli Büzgülü Askı Detay",
@@ -791,20 +791,20 @@
    "rating": 4.45,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 88,
    "favorite": 9200,
-   "pageView": null
+   "pageView": 172
   },
   "692791737": {
    "name": "Los Ojos Kadın Gri Yüksek Bel Toparlayıcı Çift Cepl",
    "price": 589.5,
    "ratingCount": 964,
    "rating": 4.14,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 25,
+   "orderL3D_raw": "25",
+   "basket": 149,
    "favorite": 76000,
-   "pageView": null
+   "pageView": 278
   },
   "699273115": {
    "name": "Los Ojos Haki Halter Yaka Içi Sütyenli T-shirt Tank",
@@ -835,7 +835,7 @@
    "rating": 3.9,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 38,
    "favorite": 4500,
    "pageView": null
   },
@@ -847,7 +847,7 @@
    "orderL3D": null,
    "orderL3D_raw": null,
    "basket": null,
-   "favorite": null,
+   "favorite": 46,
    "pageView": null
   },
   "723215662": {
@@ -869,7 +869,7 @@
    "orderL3D": null,
    "orderL3D_raw": null,
    "basket": null,
-   "favorite": null,
+   "favorite": 177,
    "pageView": null
   },
   "723215890": {
@@ -902,7 +902,7 @@
    "orderL3D": null,
    "orderL3D_raw": null,
    "basket": null,
-   "favorite": null,
+   "favorite": 284,
    "pageView": null
   },
   "736230301": {
@@ -913,7 +913,7 @@
    "orderL3D": null,
    "orderL3D_raw": null,
    "basket": null,
-   "favorite": null,
+   "favorite": 295,
    "pageView": null
   },
   "736250093": {
@@ -921,11 +921,11 @@
    "price": 469.5,
    "ratingCount": 1966,
    "rating": 4.5,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 36,
+   "orderL3D_raw": "36",
+   "basket": 295,
    "favorite": 128200,
-   "pageView": null
+   "pageView": 167
   },
   "736250156": {
    "name": "Los Ojos Kahverengi Seamless Klasik Külot Classic",
@@ -1022,7 +1022,7 @@
    "rating": 4.47,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 24,
    "favorite": 4700,
    "pageView": null
   },
@@ -1042,9 +1042,9 @@
    "price": 769.5,
    "ratingCount": 69,
    "rating": 4.12,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 24,
+   "orderL3D_raw": "24",
+   "basket": 177,
    "favorite": 13700,
    "pageView": 364
   },
@@ -1053,9 +1053,9 @@
    "price": 769.5,
    "ratingCount": 208,
    "rating": 4.06,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 41,
+   "orderL3D_raw": "41",
+   "basket": 288,
    "favorite": 42400,
    "pageView": 448
   },
@@ -1078,7 +1078,7 @@
    "orderL3D": null,
    "orderL3D_raw": null,
    "basket": null,
-   "favorite": null,
+   "favorite": 162,
    "pageView": null
   },
   "772297445": {
@@ -1143,7 +1143,7 @@
    "rating": 4.6,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 31,
    "favorite": 2400,
    "pageView": null
   },
@@ -1231,7 +1231,7 @@
    "rating": 4.11,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 29,
    "favorite": 1600,
    "pageView": null
   },
@@ -1240,8 +1240,8 @@
    "price": 614.5,
    "ratingCount": 4101,
    "rating": 4.28,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 79,
+   "orderL3D_raw": "79",
    "basket": 905,
    "favorite": 277900,
    "pageView": 1200
@@ -1253,7 +1253,7 @@
    "rating": 4.64,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 86,
    "favorite": 6200,
    "pageView": null
   },
@@ -1262,8 +1262,8 @@
    "price": 614.5,
    "ratingCount": 2825,
    "rating": 4.16,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 100,
+   "orderL3D_raw": "100+",
    "basket": 1000,
    "favorite": 145400,
    "pageView": 776
@@ -1275,7 +1275,7 @@
    "rating": 4.42,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 94,
    "favorite": 14100,
    "pageView": null
   },
@@ -1295,11 +1295,11 @@
    "price": 494.5,
    "ratingCount": 321,
    "rating": 4.55,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 42,
+   "orderL3D_raw": "42",
+   "basket": 240,
    "favorite": 11500,
-   "pageView": null
+   "pageView": 163
   },
   "834013696": {
    "name": "Los Ojos x Melodi Krem-Siyah Brezilya Modeli Bikini",
@@ -1319,7 +1319,7 @@
    "rating": 4.31,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 97,
    "favorite": 3900,
    "pageView": null
   },
@@ -1330,20 +1330,20 @@
    "rating": 4.54,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 131,
    "favorite": 133700,
-   "pageView": null
+   "pageView": 115
   },
   "834014535": {
    "name": "Los Ojos x Melodi Gri Melanj Bedene Oturan Tişört S",
    "price": 389.5,
    "ratingCount": 1143,
    "rating": 4.46,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 29,
+   "orderL3D_raw": "29",
+   "basket": 245,
    "favorite": 65400,
-   "pageView": null
+   "pageView": 105
   },
   "834014564": {
    "name": "Los Ojos x Melodi Gri Melanj Uzun Kollu Kısa Bluz L",
@@ -1352,7 +1352,7 @@
    "rating": 4.32,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 55,
    "favorite": 161500,
    "pageView": null
   },
@@ -1363,7 +1363,7 @@
    "rating": 4.4,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 28,
    "favorite": 64100,
    "pageView": null
   },
@@ -1372,11 +1372,11 @@
    "price": 494.5,
    "ratingCount": 369,
    "rating": 4.58,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 39,
+   "orderL3D_raw": "39",
    "basket": 323,
    "favorite": 16500,
-   "pageView": null
+   "pageView": 147
   },
   "834017738": {
    "name": "Los Ojos x Melodi Gri Melanj Fitilli Uzun Kollu Kıs",
@@ -1385,7 +1385,7 @@
    "rating": 4.44,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 54,
    "favorite": 76500,
    "pageView": null
   },
@@ -1504,8 +1504,8 @@
    "price": 614.5,
    "ratingCount": 716,
    "rating": 3.96,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 28,
+   "orderL3D_raw": "28",
    "basket": 383,
    "favorite": 87200,
    "pageView": 318
@@ -1515,9 +1515,9 @@
    "price": 389.5,
    "ratingCount": 425,
    "rating": 4.12,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 24,
+   "orderL3D_raw": "24",
+   "basket": 181,
    "favorite": 20600,
    "pageView": null
   },
@@ -1528,7 +1528,7 @@
    "rating": 4.19,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 25,
    "favorite": 12900,
    "pageView": null
   },
@@ -1539,9 +1539,9 @@
    "rating": 3.64,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 45,
    "favorite": 13300,
-   "pageView": null
+   "pageView": 124
   },
   "901437826": {
    "name": "Los Ojos Lacivert Geniş Kalıp Beli Büzgülü Crop Swe",
@@ -1583,9 +1583,9 @@
    "rating": 4.43,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 122,
    "favorite": 31000,
-   "pageView": null
+   "pageView": 167
   },
   "901442999": {
    "name": "Los Ojos Lacivert Fitilli Kısa Kollu Kısa Tulum Sho",
@@ -1594,7 +1594,7 @@
    "rating": 4.59,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 27,
    "favorite": 25300,
    "pageView": null
   },
@@ -1605,9 +1605,9 @@
    "rating": 4.43,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 250,
    "favorite": 27900,
-   "pageView": null
+   "pageView": 128
   },
   "901443585": {
    "name": "Los Ojos Gri Melanj Geniş Kalıp Kapüşonlu Sweatshir",
@@ -1649,9 +1649,9 @@
    "rating": 4.39,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 42,
    "favorite": 15200,
-   "pageView": null
+   "pageView": 213
   },
   "901444108": {
    "name": "Los Ojos Ekru Geniş Kalıp Bisiklet Yaka Sweatshirt ",
@@ -1693,17 +1693,17 @@
    "rating": 4.14,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 104,
    "favorite": 25400,
-   "pageView": null
+   "pageView": 152
   },
   "901446700": {
    "name": "Los Ojos Siyah Fitilli Kısa Kollu Kısa Tulum Short ",
    "price": 614.5,
    "ratingCount": 602,
    "rating": 4.54,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 87,
+   "orderL3D_raw": "87",
    "basket": 984,
    "favorite": 76100,
    "pageView": 506
@@ -1715,7 +1715,7 @@
    "rating": 3.93,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 31,
    "favorite": 18200,
    "pageView": null
   },
@@ -1748,7 +1748,7 @@
    "rating": 4,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 28,
    "favorite": 2200,
    "pageView": null
   },
@@ -1757,11 +1757,11 @@
    "price": 419.5,
    "ratingCount": 189,
    "rating": 4.04,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 32,
+   "orderL3D_raw": "32",
+   "basket": 231,
    "favorite": 18800,
-   "pageView": null
+   "pageView": 174
   },
   "945651489": {
    "name": "Los Ojos Beyaz Düz Kesim Tişört Regular T-Shirt",
@@ -1770,7 +1770,7 @@
    "rating": 3.63,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 55,
    "favorite": 6500,
    "pageView": null
   },
@@ -1792,7 +1792,7 @@
    "rating": 4.38,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 24,
    "favorite": 1600,
    "pageView": null
   },
@@ -1801,11 +1801,11 @@
    "price": 494.5,
    "ratingCount": 153,
    "rating": 4.59,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 49,
+   "orderL3D_raw": "49",
    "basket": 320,
    "favorite": 17200,
-   "pageView": null
+   "pageView": 187
   },
   "946947837": {
    "name": "Los Ojos Bordo Yüksek Bel Bikini Altı Sporty Bottom",
@@ -1847,9 +1847,9 @@
    "rating": 3.94,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 60,
    "favorite": 3400,
-   "pageView": null
+   "pageView": 104
   },
   "947445614": {
    "name": "Los Ojos Bordo-Beyaz Çizgili Kare Yaka Spor Bikini ",
@@ -1869,7 +1869,7 @@
    "rating": 3.7,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 30,
    "favorite": 4200,
    "pageView": null
   },
@@ -1880,7 +1880,7 @@
    "rating": 4.36,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 81,
    "favorite": 5500,
    "pageView": null
   },
@@ -1902,7 +1902,7 @@
    "rating": 4.5,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 33,
    "favorite": 37800,
    "pageView": null
   },
@@ -1913,7 +1913,7 @@
    "rating": 4.42,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 28,
    "favorite": 11600,
    "pageView": null
   },
@@ -1924,7 +1924,7 @@
    "rating": 4.32,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 70,
    "favorite": 28000,
    "pageView": null
   },
@@ -1933,19 +1933,19 @@
    "price": 449.5,
    "ratingCount": 96,
    "rating": 4.47,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 32,
+   "orderL3D_raw": "32",
    "basket": 305,
    "favorite": 11200,
-   "pageView": null
+   "pageView": 235
   },
   "1045500357": {
    "name": "Los Ojos x Ece Vizon Halter Yaka Top Halter Tank",
    "price": 449.5,
    "ratingCount": 194,
    "rating": 4.12,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 42,
+   "orderL3D_raw": "42",
    "basket": 468,
    "favorite": 45800,
    "pageView": 689
@@ -1955,8 +1955,8 @@
    "price": 449.5,
    "ratingCount": 283,
    "rating": 4.13,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 87,
+   "orderL3D_raw": "87",
    "basket": 915,
    "favorite": 49200,
    "pageView": 806
@@ -1966,11 +1966,11 @@
    "price": 594.5,
    "ratingCount": 266,
    "rating": 3.83,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 26,
+   "orderL3D_raw": "26",
+   "basket": 239,
    "favorite": 21200,
-   "pageView": null
+   "pageView": 165
   },
   "1045500913": {
    "name": "Los Ojos x Ece Vizon Yüksek Bel Spor Tayt Mono Legg",
@@ -1979,7 +1979,7 @@
    "rating": 4.04,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 100,
    "favorite": 12000,
    "pageView": null
   },
@@ -1990,7 +1990,7 @@
    "rating": 3.87,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 118,
    "favorite": 7800,
    "pageView": null
   },
@@ -2001,7 +2001,7 @@
    "rating": 4.02,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 186,
    "favorite": 12100,
    "pageView": null
   },
@@ -2034,7 +2034,7 @@
    "rating": 4.71,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 34,
    "favorite": 4100,
    "pageView": null
   },
@@ -2045,7 +2045,7 @@
    "rating": 4.52,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 68,
    "favorite": 28200,
    "pageView": null
   },
@@ -2056,7 +2056,7 @@
    "rating": 4.16,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 52,
    "favorite": 17000,
    "pageView": null
   },
@@ -2067,9 +2067,9 @@
    "rating": 4.26,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 151,
    "favorite": 87600,
-   "pageView": null
+   "pageView": 185
   },
   "1045513767": {
    "name": "Los Ojos x Ece Gri Melanj Petek Dokulu Düğmeli Pija",
@@ -2109,8 +2109,8 @@
    "price": 424.5,
    "ratingCount": 26,
    "rating": 4.31,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 43,
+   "orderL3D_raw": "43",
    "basket": 373,
    "favorite": 5900,
    "pageView": 452
@@ -2120,22 +2120,22 @@
    "price": 469.5,
    "ratingCount": 31,
    "rating": 3.68,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 28,
+   "orderL3D_raw": "28",
+   "basket": 288,
    "favorite": 4300,
-   "pageView": null
+   "pageView": 265
   },
   "1140323664": {
    "name": "Los Ojos x Ece Siyah Spor Sütyeni Super Crop Top",
    "price": 424.5,
    "ratingCount": 16,
    "rating": 4.69,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 38,
+   "orderL3D_raw": "38",
+   "basket": 236,
    "favorite": 1300,
-   "pageView": null
+   "pageView": 215
   },
   "1140323672": {
    "name": "Los Ojos x Ece Bej Spor Sütyeni Super Crop Top",
@@ -2144,8 +2144,8 @@
    "rating": null,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
-   "favorite": null,
+   "basket": 59,
+   "favorite": 186,
    "pageView": null
   },
   "1140323675": {
@@ -2155,9 +2155,9 @@
    "rating": 4.44,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 184,
    "favorite": 3900,
-   "pageView": null
+   "pageView": 196
   },
   "1140323676": {
    "name": "Los Ojos x Ece Mocha Spor Sütyeni Super Crop Top",
@@ -2166,9 +2166,9 @@
    "rating": 5,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 105,
    "favorite": 912,
-   "pageView": null
+   "pageView": 108
   },
   "1140323682": {
    "name": "Los Ojos x Ece Bordo Kalp Yaka Spor Sütyeni Sweethe",
@@ -2177,9 +2177,9 @@
    "rating": 3.25,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 124,
    "favorite": 870,
-   "pageView": null
+   "pageView": 113
   },
   "1140323706": {
    "name": "Los Ojos x Ece Mocha Melanj Kalp Yaka Spor Sütyeni ",
@@ -2188,8 +2188,8 @@
    "rating": null,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
-   "favorite": null,
+   "basket": 38,
+   "favorite": 147,
    "pageView": null
   },
   "1140323715": {
@@ -2199,8 +2199,8 @@
    "rating": 5,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
-   "favorite": null,
+   "basket": 41,
+   "favorite": 151,
    "pageView": null
   },
   "1140323739": {
@@ -2208,11 +2208,11 @@
    "price": 469.5,
    "ratingCount": 15,
    "rating": 4.73,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 25,
+   "orderL3D_raw": "25",
+   "basket": 233,
    "favorite": 1400,
-   "pageView": null
+   "pageView": 190
   },
   "1140323801": {
    "name": "Los Ojos x Ece Antrasit Modal Kumaşlı Askılı Şortlu",
@@ -2221,7 +2221,7 @@
    "rating": 4.56,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 137,
    "favorite": 1600,
    "pageView": null
   },
@@ -2230,8 +2230,8 @@
    "price": 574.5,
    "ratingCount": 28,
    "rating": 4.79,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 65,
+   "orderL3D_raw": "65",
    "basket": 662,
    "favorite": 8000,
    "pageView": 736
@@ -2241,9 +2241,9 @@
    "price": 679.5,
    "ratingCount": 6,
    "rating": 4.17,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 21,
+   "orderL3D_raw": "21",
+   "basket": 206,
    "favorite": 6400,
    "pageView": 393
   },
@@ -2254,20 +2254,20 @@
    "rating": 4.24,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 220,
    "favorite": 4900,
-   "pageView": null
+   "pageView": 155
   },
   "1140323876": {
    "name": "Los Ojos x Ece Kahverengi Modal Kumaşlı Askılı Şort",
    "price": 539.5,
    "ratingCount": 16,
    "rating": 4.5,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 23,
+   "orderL3D_raw": "23",
+   "basket": 210,
    "favorite": 2200,
-   "pageView": null
+   "pageView": 153
   },
   "1140323899": {
    "name": "Los Ojos x Ece Vizon Modal Kumaşlı Askılı Şortlu Pi",
@@ -2276,9 +2276,9 @@
    "rating": 4.5,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 161,
    "favorite": 1600,
-   "pageView": null
+   "pageView": 105
   },
   "1140402155": {
    "name": "Los Ojos x Ece Vizon Kare Yaka Askılı Kısa Spor Tul",
@@ -2287,7 +2287,7 @@
    "rating": 4.91,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 37,
    "favorite": 1000,
    "pageView": null
   },
@@ -2296,8 +2296,8 @@
    "price": 599.5,
    "ratingCount": 28,
    "rating": 4.11,
-   "orderL3D": null,
-   "orderL3D_raw": null,
+   "orderL3D": 59,
+   "orderL3D_raw": "59",
    "basket": 509,
    "favorite": 10400,
    "pageView": 561
@@ -2309,9 +2309,9 @@
    "rating": 4.71,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 153,
    "favorite": 2900,
-   "pageView": null
+   "pageView": 175
   },
   "1140486909": {
    "name": "Los Ojos x Ece Pembe Yüksek Bel Spor Tayt Mono Legg",
@@ -2320,9 +2320,9 @@
    "rating": 3,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 208,
    "favorite": 5800,
-   "pageView": null
+   "pageView": 128
   },
   "1140487306": {
    "name": "Los Ojos x Ece Pembe Bel Detaylı İspanyol Paça Pant",
@@ -2331,9 +2331,9 @@
    "rating": 3.58,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 229,
    "favorite": 8100,
-   "pageView": null
+   "pageView": 180
   },
   "1142355609": {
    "name": "Los Ojos x Ece Bej Melanj Bel Detaylı Kısa Tayt Ruc",
@@ -2342,8 +2342,8 @@
    "rating": null,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
-   "favorite": null,
+   "basket": 27,
+   "favorite": 175,
    "pageView": null
   },
   "1142355784": {
@@ -2351,11 +2351,11 @@
    "price": 499.5,
    "ratingCount": 13,
    "rating": 4.92,
-   "orderL3D": null,
-   "orderL3D_raw": null,
-   "basket": null,
+   "orderL3D": 23,
+   "orderL3D_raw": "23",
+   "basket": 236,
    "favorite": 2000,
-   "pageView": null
+   "pageView": 111
   },
   "1142355991": {
    "name": "Los Ojos x Ece Mocha Melanj Bel Detaylı Kısa Tayt R",
@@ -2364,7 +2364,7 @@
    "rating": 4.78,
    "orderL3D": null,
    "orderL3D_raw": null,
-   "basket": null,
+   "basket": 150,
    "favorite": 1800,
    "pageView": null
   }
