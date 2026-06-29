@@ -105,20 +105,20 @@ a:hover .pname{color:#6c8fff}
     <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px">
       <div style="flex:1;min-width:280px">
         <div class="chartbox" style="margin:0">
-          <b>En az yorumlu yeni ürünler (az yorum = yeni)</b>
-          <div class="table-wrap" style="margin-top:10px">
-            <table><thead><tr>
-              <th class="l">Ürün</th><th>İlk Görülme</th><th>Yorum</th><th>Fiyat</th>
+          <b>Az yorumlu ürünler (az yorum = yeni ürün)</b>
+          <div class="table-wrap" style="margin-top:10px;max-height:500px;overflow-y:auto">
+            <table><thead style="position:static"><tr>
+              <th class="l" style="position:static">Ürün</th><th style="position:static">İlk Görülme</th><th style="position:static">Yorum</th><th style="position:static">Fiyat</th>
             </tr></thead><tbody id="tbody-yeni-rc"></tbody></table>
           </div>
         </div>
       </div>
       <div style="flex:1;min-width:280px">
         <div class="chartbox" style="margin:0">
-          <b>En yeni eklenen ürünler (listelenme tarihine göre)</b>
-          <div class="table-wrap" style="margin-top:10px">
-            <table><thead><tr>
-              <th class="l">Ürün</th><th>İlk Görülme</th><th>Gün önce</th><th>Yorum</th>
+          <b>En yeni eklenen ürünler (tarihe göre)</b>
+          <div class="table-wrap" style="margin-top:10px;max-height:500px;overflow-y:auto">
+            <table><thead style="position:static"><tr>
+              <th class="l" style="position:static">Ürün</th><th style="position:static">İlk Görülme</th><th style="position:static">Gün önce</th><th style="position:static">Yorum</th>
             </tr></thead><tbody id="tbody-yeni-date"></tbody></table>
           </div>
         </div>
