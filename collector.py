@@ -181,6 +181,10 @@ def fetch_catalog():
                          or pr.get("originalPrice"))
             rating = p.get("ratingScore") or {}
             avg = rating.get("averageRating") if isinstance(rating, dict) else None
+            imgs = p.get("images") or []
+            img = imgs[0] if imgs else None
+            if img and not img.startswith("http"):
+                img = "https://cdn.dsmcdn.com/mnresize/400/-/" + img.lstrip("/")
             products[pid] = {
                 "id": pid,
                 "name": (p.get("name") or "").strip(),
@@ -188,6 +192,7 @@ def fetch_catalog():
                 "ratingCount": rating.get("totalCount") if isinstance(rating, dict) else None,
                 "rating": round(avg, 2) if avg else None,
                 "merchantId": p.get("merchantId"),
+                "image": img,
             }
         print(f"  sayfa {pi}: toplam {len(products)} urun")
         time.sleep(REQUEST_PAUSE)
@@ -265,6 +270,7 @@ def main():
             "orderL3D": s.get("orderCountL3D"), "orderL3D_raw": s.get("orderCountL3D_raw"),
             "basket": s.get("basketCount"), "favorite": s.get("favoriteCount"),
             "pageView": s.get("pageViewCount"),
+            "image": info.get("image"),
         }
 
     save_json(os.path.join(DATA_DIR, "latest.json"),

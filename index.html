@@ -38,7 +38,11 @@
   th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none;background:#171a21;position:sticky;top:73px}
   th.l,td.l{text-align:left;white-space:normal}
   td.l a{color:var(--text);text-decoration:none}
-  td.l a:hover{color:var(--accent2);text-decoration:underline}
+  td.l a:hover .pname{color:var(--accent2);text-decoration:underline}
+  .pcell{display:flex;align-items:center;gap:11px}
+  .thumb{width:48px;height:48px;border-radius:9px;object-fit:cover;flex:0 0 48px;background:var(--card2);border:1px solid var(--line)}
+  .thumb.noimg{display:inline-block}
+  .pname{display:block;font-weight:600}
   tr:hover td{background:#20242e}
   .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:700}
   .pill.sale{background:rgba(255,107,53,.16);color:var(--accent)}
@@ -323,7 +327,9 @@ function renderTable(){
     const url=`https://www.trendyol.com/los-ojos/${slug(r.name)}-p-${r.id}`;
     const sale=r.o3?`<span class="pill sale">${r.o3raw||r.o3}</span>`:`<span class="pill none">–</span>`;
     const wk=r.weekly!=null?fmt(r.weekly):'<span class="muted">veri birikiyor</span>';
-    return `<tr data-pid="${r.id}"><td class="l"><a href="${url}" target="_blank">${r.name}</a></td><td>${fmtTL(r.p)}</td><td>${r.ra!=null?r.ra:'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
+    const img=IMG[r.id]||(LATEST.products[r.id]&&LATEST.products[r.id].image)||'';
+    const thumb=img?`<img class="thumb" loading="lazy" src="${img}" onerror="this.style.visibility='hidden'">`:`<span class="thumb noimg"></span>`;
+    return `<tr data-pid="${r.id}"><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td><td>${fmtTL(r.p)}</td><td>${r.ra!=null?r.ra:'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
   }).join('');
 }
 const tip=document.getElementById('img-tip');
