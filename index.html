@@ -2,135 +2,113 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MrChris · Satış Takip</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-  :root{
-    --bg:#0f1115; --card:#1a1d24; --card2:#222630; --line:#2c313c;
-    --text:#e8eaed; --muted:#9aa0ab; --accent:#ff6b35; --accent2:#4f9dff;
-    --good:#3ecf8e; --warn:#ffb547;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    background:var(--bg);color:var(--text);font-size:15px}
-  header{padding:20px 22px;border-bottom:1px solid var(--line);
-    display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#13161c;position:sticky;top:0;z-index:5}
-  header .logo{font-weight:800;font-size:20px;letter-spacing:.3px}
-  header .logo span{color:var(--accent)}
-  header .meta{color:var(--muted);font-size:13px;margin-left:auto;text-align:right;line-height:1.5}
-  .wrap{max-width:1180px;margin:0 auto;padding:18px}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px;margin-bottom:18px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
-  .card .k{color:var(--muted);font-size:12.5px;margin-bottom:7px}
-  .card .v{font-size:23px;font-weight:700}
-  .card .s{color:var(--muted);font-size:11.5px;margin-top:3px}
-  .tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-  .tab{padding:9px 16px;border-radius:10px;background:var(--card);border:1px solid var(--line);
-    cursor:pointer;color:var(--muted);font-weight:600;font-size:14px}
-  .tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-  input[type=text]{background:var(--card2);border:1px solid var(--line);color:var(--text);
-    padding:10px 13px;border-radius:10px;min-width:230px;font-size:14px}
-  select{background:var(--card2);border:1px solid var(--line);color:var(--text);padding:10px 12px;border-radius:10px;font-size:14px}
-  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden}
-  th,td{padding:11px 12px;text-align:right;border-bottom:1px solid var(--line);font-size:13.5px;white-space:nowrap}
-  th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none;background:#171a21;position:sticky;top:73px}
-  th.l,td.l{text-align:left;white-space:normal}
-  td.l a{color:var(--text);text-decoration:none}
-  td.l a:hover .pname{color:var(--accent2);text-decoration:underline}
-  .pcell{display:flex;align-items:center;gap:11px}
-  .thumb{width:48px;height:48px;border-radius:9px;object-fit:cover;flex:0 0 48px;background:var(--card2);border:1px solid var(--line)}
-  .thumb.noimg{display:inline-block}
-  .pname{display:block;font-weight:600}
-  tr:hover td{background:#20242e}
-  .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:700}
-  .pill.sale{background:rgba(255,107,53,.16);color:var(--accent)}
-  .pill.none{color:var(--muted)}
-  .muted{color:var(--muted)}
-  .note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent2);
-    border-radius:10px;padding:13px 15px;color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:16px}
-  .panel{display:none}.panel.active{display:block}
-  .chartbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:16px}
-  .row2{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
-  .err{background:#3a1d1d;border:1px solid #5a2a2a;color:#ffb4b4;padding:14px;border-radius:12px}
-  a.tylink{color:var(--accent2);text-decoration:none}
-  #img-tip{
-    display:none;position:fixed;z-index:999;pointer-events:none;
-    background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:8px;box-shadow:0 8px 32px rgba(0,0,0,.6);max-width:220px;
-  }
-  #img-tip img{width:200px;height:200px;object-fit:cover;border-radius:8px;display:block}
-  #img-tip .tip-name{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.4;max-width:200px;word-break:break-word}
-  #img-tip .tip-nopic{width:200px;height:120px;display:flex;align-items:center;justify-content:center;
-    color:var(--muted);font-size:12px;border-radius:8px;background:var(--card2)}
-  @media(max-width:640px){.hidem{display:none}th{top:0}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f5f7;color:#1a1a2e;font-size:14px}
+header{background:#fff;border-bottom:1px solid #e2e5ea;padding:14px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.logo{font-size:20px;font-weight:800;color:#1a1a2e}.logo span{color:#e84c4c}
+.meta{margin-left:auto;font-size:12px;color:#888;text-align:right;line-height:1.5}
+.wrap{max-width:1200px;margin:0 auto;padding:16px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.stat{background:#fff;border:1px solid #e2e5ea;border-radius:10px;padding:12px 16px;flex:1;min-width:130px}
+.stat .k{font-size:11px;color:#888;margin-bottom:4px}
+.stat .v{font-size:20px;font-weight:700;color:#1a1a2e}
+.stat .s{font-size:11px;color:#aaa;margin-top:2px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+input[type=text]{border:1px solid #dde1e7;border-radius:8px;padding:8px 12px;font-size:13px;background:#fff;outline:none;min-width:200px}
+input[type=text]:focus{border-color:#6c8fff}
+select{border:1px solid #dde1e7;border-radius:8px;padding:8px 10px;font-size:13px;background:#fff;outline:none}
+.rate-row{display:flex;align-items:center;gap:6px;font-size:12px;color:#888}
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid #e2e5ea;background:#fff}
+table{width:100%;border-collapse:collapse}
+thead{position:sticky;top:57px}
+th{background:#f8f9fb;color:#888;font-size:12px;font-weight:600;padding:10px 12px;text-align:right;border-bottom:1px solid #e2e5ea;cursor:pointer;user-select:none;white-space:nowrap}
+th.l{text-align:left}
+td{padding:9px 12px;text-align:right;border-bottom:1px solid #f0f2f5;font-size:13px;white-space:nowrap}
+td.l{text-align:left}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#f9fafc}
+.pcell{display:flex;align-items:center;gap:10px}
+.thumb{width:44px;height:44px;border-radius:8px;object-fit:cover;flex:0 0 44px;background:#f0f2f5;border:1px solid #e2e5ea}
+.pname{font-weight:500;color:#1a1a2e;font-size:13px;line-height:1.3;max-width:240px;word-break:break-word;white-space:normal}
+a{text-decoration:none}
+a:hover .pname{color:#6c8fff}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700}
+.badge.sale{background:#fff0ee;color:#e84c4c}
+.badge.none{color:#bbb}
+.tabs{display:flex;gap:6px;margin-bottom:14px}
+.tab{padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;border:1px solid #e2e5ea;background:#fff;color:#888}
+.tab.active{background:#1a1a2e;color:#fff;border-color:#1a1a2e}
+.panel{display:none}.panel.active{display:block}
+.chartbox{background:#fff;border:1px solid #e2e5ea;border-radius:12px;padding:16px;margin-bottom:14px}
+.chartbox b{font-size:13px;color:#444;display:block;margin-bottom:10px}
+.note{background:#fff;border:1px solid #e2e5ea;border-left:3px solid #6c8fff;border-radius:10px;padding:12px 14px;color:#666;font-size:12.5px;line-height:1.6;margin-bottom:14px}
+.err{background:#fff5f5;border:1px solid #fdd;color:#c00;padding:12px;border-radius:10px;margin-bottom:12px}
+#img-tip{display:none;position:fixed;z-index:999;pointer-events:none;background:#fff;border:1px solid #e2e5ea;border-radius:12px;padding:8px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+#img-tip img{width:180px;height:180px;object-fit:cover;border-radius:8px;display:block}
+#img-tip .tip-name{font-size:11px;color:#888;margin-top:6px;max-width:180px;word-break:break-word;line-height:1.4}
+@media(max-width:640px){.hidem{display:none}thead{top:0}.stat{min-width:calc(50% - 5px)}}
 </style>
 </head>
 <body>
-<div id="img-tip"><img id="tip-img" src="" onerror="this.style.display='none';document.getElementById('tip-nopic').style.display='flex'">
-  <div id="tip-nopic" class="tip-nopic" style="display:none">Resim yok</div>
+<div id="img-tip">
+  <img id="tip-img" src="" onerror="this.style.display='none'">
   <div class="tip-name" id="tip-name"></div>
 </div>
-
 <header>
   <div class="logo">Mr<span>Chris</span></div>
   <div class="meta" id="meta">Yükleniyor…</div>
 </header>
-
 <div class="wrap">
   <div id="err"></div>
-  <div class="cards" id="cards"></div>
-
+  <div class="stats" id="stats"></div>
   <div class="tabs">
-    <div class="tab active" data-p="ozet">Özet</div>
-    <div class="tab" data-p="urunler">Ürün Listesi</div>
+    <div class="tab active" data-p="urunler">Ürün Listesi</div>
+    <div class="tab" data-p="ozet">Özet & Grafikler</div>
     <div class="tab" data-p="trend">Trend</div>
   </div>
 
-  <div class="panel active" id="p-ozet">
-    <div class="note">
-      <b>Satış rakamları nasıl okunur?</b><br>
-      <b>3 günlük satış</b> = Trendyol’un ürün sayfasında gösterdiği "son 3 günde X+ sattı" bilgisidir
-      (yalnızca yeterince satan ürünlerde görünür, "+" işareti "en az" demektir).
-      <b>Yorum sayısı</b> her gün arttıkça satış hızını gösterir — bu yüzden program her gün veri biriktirir,
-      birkaç gün sonra <b>haftalık / aylık ortalama satış tahmini</b> burada otomatik çıkar.
+  <div class="panel active" id="p-urunler">
+    <div class="controls">
+      <input type="text" id="q" placeholder="🔍 Ürün ara…">
+      <select id="sortsel">
+        <option value="o3">3 Günlük Satış ↓</option>
+        <option value="weekly">Haftalık Tahmin ↓</option>
+        <option value="f">Favori ↓</option>
+        <option value="b">Sepet ↓</option>
+        <option value="rc">Yorum ↓</option>
+        <option value="p">Fiyat ↓</option>
+        <option value="ra">Puan ↓</option>
+      </select>
+      <div class="rate-row">Yorum→satış oranı:<input type="range" id="rate" min="3" max="25" value="8" step="1" style="width:90px"><span id="ratev">%8</span></div>
     </div>
-    <div class="chartbox"><b>En çok 3 günlük satış (Trendyol)</b><canvas id="chTop" height="120"></canvas></div>
-    <div class="chartbox"><b>En çok favorilenen 10 ürün</b><canvas id="chFav" height="120"></canvas></div>
+    <div class="table-wrap">
+    <table><thead><tr>
+      <th class="l" data-s="name">Ürün</th>
+      <th data-s="p">Fiyat</th>
+      <th data-s="ra">Puan</th>
+      <th data-s="rc">Yorum</th>
+      <th data-s="o3">3 Gün Satış</th>
+      <th data-s="weekly" class="hidem">Haftalık (tahmin)</th>
+      <th data-s="b" class="hidem">Sepet</th>
+      <th data-s="f">Favori</th>
+    </tr></thead><tbody id="tbody"></tbody></table>
+    </div>
   </div>
 
-  <div class="panel" id="p-urunler">
-    <div class="controls">
-      <input type="text" id="q" placeholder="Ürün ara…">
-      <select id="sortsel">
-        <option value="o3">Sırala: 3 günlük satış</option>
-        <option value="weekly">Sırala: haftalık satış tahmini</option>
-        <option value="f">Sırala: favori</option>
-        <option value="b">Sırala: sepette</option>
-        <option value="rc">Sırala: yorum sayısı</option>
-        <option value="p">Sırala: fiyat</option>
-        <option value="ra">Sırala: puan</option>
-      </select>
-      <div class="row2">Yorum→satış oranı:<input type="range" id="rate" min="3" max="25" value="8" step="1" style="width:110px"><span id="ratev">%8</span></div>
-    </div>
-    <div style="overflow:auto">
-    <table id="tbl"><thead><tr>
-      <th class="l" data-s="name">Ürün</th><th data-s="p">Fiyat</th><th data-s="ra">Puan</th>
-      <th data-s="rc">Yorum</th><th data-s="o3">3 Gün Satış</th>
-      <th data-s="weekly" class="hidem">Haftalık (tahmin)</th>
-      <th data-s="b" class="hidem">Sepette</th><th data-s="f">Favori</th>
-    </tr></thead><tbody id="tbody"></tbody></table></div>
+  <div class="panel" id="p-ozet">
+    <div class="note"><b>Satış rakamları:</b> 3 günlük satış = Trendyol'un "son 3 günde X+ sattı" bilgisi (alt sınır). Haftalık tahmin yorum artışından hesaplanır — birkaç günlük veri birikince isabetli olur.</div>
+    <div class="chartbox"><b>En çok 3 günlük satış (Top 10)</b><canvas id="chTop" height="120"></canvas></div>
+    <div class="chartbox"><b>En çok favorilenen 10 ürün</b><canvas id="chFav" height="120"></canvas></div>
   </div>
 
   <div class="panel" id="p-trend">
     <div class="note" id="trendnote"></div>
-    <div class="chartbox"><b>Marka geneli toplam yorum sayısı (gün gün)</b>
-      <div class="muted" style="font-size:12px;margin:4px 0 8px">Çizgi yükseldikçe = o gün satış oldu.</div>
-      <canvas id="chTrend" height="110"></canvas></div>
-    <div class="chartbox"><b>Tahmini günlük satış (tüm marka)</b>
-      <div class="muted" style="font-size:12px;margin:4px 0 8px">Yorum artışından hesaplanır. En az 2 günlük veri gerekir.</div>
-      <canvas id="chDaily" height="110"></canvas></div>
+    <div class="chartbox"><b>Toplam yorum sayısı (gün gün)</b><canvas id="chTrend" height="110"></canvas></div>
+    <div class="chartbox"><b>Tahmini günlük satış (tüm marka)</b><canvas id="chDaily" height="110"></canvas></div>
   </div>
 </div>
 
@@ -159,7 +137,7 @@ const IMG={
 "154466841":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/15/fd2c4e72-40c0-3ba3-beec-78d00a4d4aca/1_org_zoom.jpg",
 "154468172":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/15/c3f03890-248c-3f40-ad9c-09139cfe4da6/1_org_zoom.jpg",
 "154925393":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/fc0d5e12-6fbc-3565-a258-1e58645c0193/1_org_zoom.jpg",
-"155570909":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/15/b814860d-e8da-3872-bae6-fbe041eade78/1_org_zoom.jpg",
+"155570909":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/15/b814308d-e8da-3872-bae6-fbe041eade78/1_org_zoom.jpg",
 "155813505":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/90231e3e-d52b-383d-a714-740113a3ef9b/1_org_zoom.jpg",
 "302230814":"https://cdn.dsmcdn.com/mnresize/400/-/ty432/product/media/images/20220517/17/112723882/481341270/1/1_org_zoom.jpg",
 "302230830":"https://cdn.dsmcdn.com/mnresize/400/-/ty433/product/media/images/20220517/17/112723907/481341287/1/1_org_zoom.jpg",
@@ -258,123 +236,106 @@ const IMG={
 "1142355827":"https://cdn.dsmcdn.com/mnresize/400/-/ty1911/prod/QC_PREP/20260505/16/a5038037-bb8b-3287-81c1-4fc9d86845d6/1_org_zoom.jpg",
 "1142355991":"https://cdn.dsmcdn.com/mnresize/400/-/ty1918/prod/QC_PREP/20260505/16/2eb76c17-231f-3b34-9d27-09a37272d285/1_org_zoom.jpg"
 };
-const fmt=n=>(n==null?'–':Number(n).toLocaleString('tr-TR'));
-const fmtTL=n=>(n==null?'–':Number(n).toLocaleString('tr-TR',{maximumFractionDigits:0})+' TL');
+const fmt=n=>n==null?'–':Number(n).toLocaleString('tr-TR');
+const fmtTL=n=>n==null?'–':Number(n).toLocaleString('tr-TR',{maximumFractionDigits:0})+' ₺';
+let LATEST=null,HIST=null,rate=0.08,sortKey='o3',sortDir=-1;
 async function load(){
   try{
-    LATEST=await (await fetch('latest.json?t='+Date.now())).json();
-    HIST=await (await fetch('history.json?t='+Date.now())).json();
+    LATEST=await(await fetch('latest.json?t='+Date.now())).json();
+    HIST=await(await fetch('history.json?t='+Date.now())).json();
   }catch(e){
-    document.getElementById('err').innerHTML='<div class="err">Veri yücklenemedi. GitHub linki üzerinden açman gerekir.</div>';
+    document.getElementById('err').innerHTML='<div class="err">Veri yüklenemedi. GitHub linki üzerinden açın.</div>';
     return;
   }
   rate=document.getElementById('rate').value/100;
   render();
 }
 function weeklyEstimate(pid){
-  if(!HIST||!HIST.snapshots||HIST.snapshots.length<2) return null;
-  const snaps=HIST.snapshots;
-  const last=snaps[snaps.length-1];
-  const lastDate=new Date(last.date);
+  if(!HIST?.snapshots||HIST.snapshots.length<2)return null;
+  const snaps=HIST.snapshots,last=snaps[snaps.length-1],lastDate=new Date(last.date);
   let base=null;
-  for(let i=snaps.length-2;i>=0;i--){
-    base=snaps[i];
-    const days=(lastDate-new Date(snaps[i].date))/86400000;
-    if(days>=7) break;
-  }
-  if(!base) return null;
+  for(let i=snaps.length-2;i>=0;i--){base=snaps[i];if((lastDate-new Date(snaps[i].date))/86400000>=7)break;}
+  if(!base)return null;
   const a=base.products[pid],b=last.products[pid];
-  if(!a||!b||a.rc==null||b.rc==null) return null;
+  if(!a||!b||a.rc==null||b.rc==null)return null;
   const days=Math.max(1,(lastDate-new Date(base.date))/86400000);
   return Math.round(Math.max(0,b.rc-a.rc)/days*7/rate);
 }
 function render(){
-  const P=LATEST.products;
-  const ids=Object.keys(P);
-  let totalOrder=0,nOrder=0,totalFav=0,ratingSum=0,ratingN=0,totalRC=0;
+  const P=LATEST.products,ids=Object.keys(P);
+  let totalOrder=0,nOrder=0,totalFav=0,rSum=0,rN=0,totalRC=0;
   ids.forEach(id=>{const p=P[id];
     if(p.orderL3D){totalOrder+=p.orderL3D;nOrder++;}
     if(p.favorite)totalFav+=p.favorite;
-    if(p.rating){ratingSum+=p.rating;ratingN++;}
+    if(p.rating){rSum+=p.rating;rN++;}
     if(p.ratingCount)totalRC+=p.ratingCount;
   });
-  const monthly=Math.round(totalOrder/3*30);
-  const estTotal=Math.round(totalRC/rate);
   const cards=[
     ['Toplam ürün',fmt(ids.length),'takip ediliyor'],
-    ['3 günde satışı görünen',fmt(nOrder)+' ürün','Trendyol rozeti olan'],
-    ['Toplam 3 günlük satış',fmt(totalOrder)+'+','görünen ürünlerin toplamı (alt sınır)'],
-    ['Tahmini aylık satış',fmt(monthly)+'+','3 günlükten uzatıldı'],
-    ['Toplam yorum sayısı',fmt(totalRC)+'+','kümülatif satış göstergesi'],
-    ['Tahmini toplam satış',fmt(estTotal)+'+','yorum sayısından hesaplandı'],
+    ['Satışı görünen',fmt(nOrder)+' ürün','Trendyol rozetli'],
+    ['3 günlük satış',fmt(totalOrder)+'+','görünen ürünler toplamı'],
+    ['Tahmini aylık',fmt(Math.round(totalOrder/3*30))+'+','3 günden uzatıldı'],
+    ['Toplam yorum',fmt(totalRC)+'+','kümülatif satış göst.'],
     ['Toplam favori',fmt(totalFav),'tüm ürünler'],
-    ['Ortalama puan',(ratingN?(ratingSum/ratingN).toFixed(2):'–'),'5 üzerinden'],
+    ['Ort. puan',(rN?(rSum/rN).toFixed(2):'–'),'5 üzerinden'],
   ];
-  document.getElementById('cards').innerHTML=cards.map(c=>
-    `<div class="card"><div class="k">${c[0]}</div><div class="v">${c[1]}</div><div class="s">${c[2]}</div></div>`).join('');
-  document.getElementById('meta').innerHTML='Son güncelleme: <b>'+(LATEST.collectedAt||'–')+'</b><br>'+(HIST.snapshots?HIST.snapshots.length:1)+' günlük veri';
+  document.getElementById('stats').innerHTML=cards.map(c=>`<div class="stat"><div class="k">${c[0]}</div><div class="v">${c[1]}</div><div class="s">${c[2]}</div></div>`).join('');
+  document.getElementById('meta').innerHTML='Güncelleme: <b>'+(LATEST.collectedAt||'–')+'</b><br>'+(HIST.snapshots?HIST.snapshots.length:1)+' günlük veri';
   renderTable();renderCharts();renderTrend();
 }
-let sortKey='o3',sortDir=-1;
 function renderTable(){
-  const P=LATEST.products;
-  const q=(document.getElementById('q').value||'').toLowerCase().trim();
+  const P=LATEST.products,q=(document.getElementById('q').value||'').toLowerCase();
   let rows=Object.keys(P).map(id=>{const p=P[id];return{id,name:p.name||id,p:p.price,ra:p.rating,rc:p.ratingCount,o3:p.orderL3D,o3raw:p.orderL3D_raw,b:p.basket,f:p.favorite,weekly:weeklyEstimate(id)};});
   if(q)rows=rows.filter(r=>r.name.toLowerCase().includes(q));
-  rows.sort((a,b)=>{let x=a[sortKey],y=b[sortKey];if(sortKey==='name')return sortDir*String(x).localeCompare(String(y),'tr');x=(x==null?-1:x);y=(y==null?-1:y);return sortDir*(x-y);});
-  const slug=n=>String(n).toLowerCase().replace(/ı/g,'i').replace(/ş/g,'s').replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ö/g,'o').replace(/ç/g,'c').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  rows.sort((a,b)=>{let x=a[sortKey],y=b[sortKey];if(sortKey==='name')return sortDir*String(x).localeCompare(String(y),'tr');return sortDir*((x??-1)-(y??-1));});
+  const slug=n=>String(n).toLowerCase().replace(/[ışğüöç]/g,c=>({ı:'i',ş:'s',ğ:'g',ü:'u',ö:'o',ç:'c'}[c]||c)).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   document.getElementById('tbody').innerHTML=rows.map(r=>{
     const url=`https://www.trendyol.com/los-ojos/${slug(r.name)}-p-${r.id}`;
-    const sale=r.o3?`<span class="pill sale">${r.o3raw||r.o3}</span>`:`<span class="pill none">–</span>`;
-    const wk=r.weekly!=null?fmt(r.weekly):'<span class="muted">veri birikiyor</span>';
-    const img=IMG[r.id]||(LATEST.products[r.id]&&LATEST.products[r.id].image)||'';
-    const thumb=img?`<img class="thumb" loading="lazy" src="${img}" onerror="this.style.visibility='hidden'">`:`<span class="thumb noimg"></span>`;
-    return `<tr data-pid="${r.id}"><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td><td>${fmtTL(r.p)}</td><td>${r.ra!=null?r.ra:'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
+    const img=IMG[r.id]||LATEST.products[r.id]?.image||'';
+    const thumb=img?`<img class="thumb" loading="lazy" src="${img}" onerror="this.style.visibility='hidden'">`:`<span class="thumb"></span>`;
+    const sale=r.o3?`<span class="badge sale">${r.o3raw||r.o3}</span>`:`<span class="badge none">–</span>`;
+    const wk=r.weekly!=null?fmt(r.weekly):`<span style="color:#bbb">birikiyor</span>`;
+    return `<tr data-pid="${r.id}"><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td><td>${fmtTL(r.p)}</td><td>${r.ra??'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
   }).join('');
 }
 const tip=document.getElementById('img-tip');
-const tipImg=document.getElementById('tip-img');
-const tipNoPic=document.getElementById('tip-nopic');
-const tipName=document.getElementById('tip-name');
 document.getElementById('tbody').addEventListener('mouseover',e=>{
   const tr=e.target.closest('tr[data-pid]');
   if(!tr){tip.style.display='none';return;}
   const pid=tr.dataset.pid;
-  const imgUrl=IMG[pid]||(LATEST&&LATEST.products[pid]&&LATEST.products[pid].image)||null;
-  tipName.textContent=(LATEST&&LATEST.products[pid]&&LATEST.products[pid].name)||'';
-  if(imgUrl){tipImg.src=imgUrl;tipImg.style.display='block';tipNoPic.style.display='none';}
-  else{tipImg.style.display='none';tipNoPic.style.display='flex';}
+  const imgUrl=IMG[pid]||LATEST?.products[pid]?.image||null;
+  document.getElementById('tip-name').textContent=LATEST?.products[pid]?.name||'';
+  const ti=document.getElementById('tip-img');
+  if(imgUrl){ti.src=imgUrl;ti.style.display='block';}else ti.style.display='none';
   tip.style.display='block';
 });
 document.getElementById('tbody').addEventListener('mousemove',e=>{
   if(tip.style.display!=='block')return;
-  const x=e.clientX+16,y=e.clientY-20;
-  tip.style.left=(x+220>window.innerWidth?e.clientX-236:x)+'px';
-  tip.style.top=Math.max(8,y)+'px';
+  tip.style.left=(e.clientX+16+200>window.innerWidth?e.clientX-216:e.clientX+16)+'px';
+  tip.style.top=Math.max(8,e.clientY-20)+'px';
 });
-document.getElementById('tbody').addEventListener('mouseleave',()=>{tip.style.display='none';});
+document.getElementById('tbody').addEventListener('mouseleave',()=>tip.style.display='none');
 let charts={};
-function makeBar(cid,labels,data,label,color){
+function bar(cid,labels,data,color){
   if(charts[cid])charts[cid].destroy();
-  charts[cid]=new Chart(document.getElementById(cid),{type:'bar',data:{labels,datasets:[{label,data,backgroundColor:color}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#9aa0ab'},grid:{color:'#2c313c'}},y:{ticks:{color:'#cfd3da',font:{size:11}},grid:{display:false}}}}});
+  const opt={indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#888'},grid:{color:'#eee'}},y:{ticks:{color:'#444',font:{size:11}},grid:{display:false}}}};
+  charts[cid]=new Chart(document.getElementById(cid),{type:'bar',data:{labels,datasets:[{data,backgroundColor:color}]},options:opt});
 }
 function renderCharts(){
   const P=LATEST.products;
-  let arr=Object.keys(P).map(id=>({n:(P[id].name||id).replace('Los Ojos ','').replace('Los Ojos x ','x '),o3:P[id].orderL3D||0,f:P[id].favorite||0}));
+  const arr=Object.keys(P).map(id=>({n:(P[id].name||id).replace(/^Los Ojos x? ?/i,''),o3:P[id].orderL3D||0,f:P[id].favorite||0}));
   const top=arr.filter(x=>x.o3>0).sort((a,b)=>b.o3-a.o3).slice(0,10);
-  makeBar('chTop',top.map(x=>x.n.slice(0,32)),top.map(x=>x.o3),'3 günlük satış','#ff6b35');
-  const fav=arr.sort((a,b)=>b.f-a.f).slice(0,10);
-  makeBar('chFav',fav.map(x=>x.n.slice(0,32)),fav.map(x=>x.f),'Favori','#4f9dff');
+  bar('chTop',top.map(x=>x.n.slice(0,30)),top.map(x=>x.o3),'#e84c4c');
+  const fav=[...arr].sort((a,b)=>b.f-a.f).slice(0,10);
+  bar('chFav',fav.map(x=>x.n.slice(0,30)),fav.map(x=>x.f),'#6c8fff');
 }
 function renderTrend(){
-  const snaps=(HIST&&HIST.snapshots)||[];
-  const note=document.getElementById('trendnote');
-  if(snaps.length<2){note.innerHTML='📈 Şu an <b>'+snaps.length+' günlük</b> veri var. Yarın ilk karşılaştırma oluşur.';}
-  else{note.innerHTML='Aşağıdaki grafikler '+snaps.length+' günlük veriden hesaplanıyor.';}
+  const snaps=HIST?.snapshots||[];
+  document.getElementById('trendnote').innerHTML=snaps.length<2?'Yarın ilk karşılaştırma oluşur (şu an '+snaps.length+' günlük veri).':''+snaps.length+' günlük veriden hesaplanıyor.';
   const labels=snaps.map(s=>s.date);
   const totalRC=snaps.map(s=>Object.values(s.products).reduce((a,p)=>a+(p.rc||0),0));
   if(charts.chTrend)charts.chTrend.destroy();
-  charts.chTrend=new Chart(document.getElementById('chTrend'),{type:'line',data:{labels,datasets:[{label:'Toplam yorum',data:totalRC,borderColor:'#3ecf8e',backgroundColor:'rgba(62,207,142,.1)',fill:true,tension:.25}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#9aa0ab'},grid:{color:'#2c313c'}},y:{ticks:{color:'#9aa0ab'},grid:{color:'#2c313c'}}}}});
+  charts.chTrend=new Chart(document.getElementById('chTrend'),{type:'line',data:{labels,datasets:[{label:'Toplam yorum',data:totalRC,borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.08)',fill:true,tension:.3}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#888'},grid:{color:'#eee'}},y:{ticks:{color:'#888'},grid:{color:'#eee'}}}}});
   const daily=[],dlab=[];
   for(let i=1;i<snaps.length;i++){
     const days=Math.max(1,(new Date(snaps[i].date)-new Date(snaps[i-1].date))/86400000);
@@ -383,12 +344,20 @@ function renderTrend(){
     daily.push(Math.round(drc/days/rate));dlab.push(snaps[i].date);
   }
   if(charts.chDaily)charts.chDaily.destroy();
-  charts.chDaily=new Chart(document.getElementById('chDaily'),{type:'bar',data:{labels:dlab,datasets:[{label:'Tahmini günlük satış',data:daily,backgroundColor:'#ff6b35'}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#9aa0ab'},grid:{display:false}},y:{ticks:{color:'#9aa0ab'},grid:{color:'#2c313c'}}}}});
+  charts.chDaily=new Chart(document.getElementById('chDaily'),{type:'bar',data:{labels:dlab,datasets:[{data:daily,backgroundColor:'#e84c4c'}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#888'},grid:{display:false}},y:{ticks:{color:'#888'},grid:{color:'#eee'}}}}});
 }
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.getElementById('p-'+t.dataset.p).classList.add('active');});
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab,.panel').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById('p-'+t.dataset.p).classList.add('active');
+});
 document.getElementById('q').oninput=renderTable;
-document.getElementById('sortsel').onchange=e=>{sortKey=e.target.value;sortDir=(sortKey==='name'?1:-1);renderTable();};
-document.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.s;if(!k)return;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=(k==='name'?1:-1);}renderTable();});
+document.getElementById('sortsel').onchange=e=>{sortKey=e.target.value;sortDir=-1;renderTable();};
+document.querySelectorAll('th').forEach(th=>th.onclick=()=>{
+  const k=th.dataset.s;if(!k)return;
+  if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=k==='name'?1:-1;}
+  renderTable();
+});
 document.getElementById('rate').oninput=e=>{rate=e.target.value/100;document.getElementById('ratev').textContent='%'+e.target.value;renderTable();renderTrend();};
 load();
 </script>
