@@ -332,7 +332,7 @@ function renderYeni(){
   const daysSince=d=>{const diff=today-new Date(d);return Math.round(diff/86400000);};
   // Son 30 günde görülen veya yorumu az olan ürünler
   let rows=Object.keys(P).map(id=>{const p=P[id];return{id,name:p.name||id,rc:p.ratingCount,price:p.price,firstSeen:p.firstSeen||'–',days:p.firstSeen?daysSince(p.firstSeen):999};});
-  rows=rows.filter(r=>r.days<=30||r.rc<=30);
+  rows=rows.filter(r=>r.days<=30||(r.rc??9999)<=40);
   const rowHtml=(r,showDays)=>{
     const url=`https://www.trendyol.com/los-ojos/${slug(r.name)}-p-${r.id}`;
     const img=IMG[r.id]||P[r.id]?.image||'';
