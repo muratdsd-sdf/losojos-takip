@@ -101,28 +101,30 @@ a:hover .pname{color:#6c8fff}
   </div>
 
   <div class="panel" id="p-yeni">
-    <div class="note">Son 30 günde sisteme giren yeni ürünler. <b>Yorum sayısına göre</b> sıralama = en az yorumdan en fazlaya (yeni = az yorum). <b>Listelenme gününe göre</b> = sisteme ilk girdiği tarihe göre.</div>
-    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px">
-      <div style="flex:1;min-width:280px">
-        <div class="chartbox" style="margin:0">
-          <b>Az yorumlu ürünler (az yorum = yeni ürün)</b>
-          <div class="table-wrap" style="margin-top:10px;max-height:500px;overflow-y:auto">
-            <table><thead style="position:static"><tr>
-              <th class="l" style="position:static">Ürün</th><th style="position:static">İlk Görülme</th><th style="position:static">Yorum</th><th style="position:static">Fiyat</th>
-            </tr></thead><tbody id="tbody-yeni-rc"></tbody></table>
-          </div>
-        </div>
-      </div>
-      <div style="flex:1;min-width:280px">
-        <div class="chartbox" style="margin:0">
-          <b>En yeni eklenen ürünler (tarihe göre)</b>
-          <div class="table-wrap" style="margin-top:10px;max-height:500px;overflow-y:auto">
-            <table><thead style="position:static"><tr>
-              <th class="l" style="position:static">Ürün</th><th style="position:static">İlk Görülme</th><th style="position:static">Gün önce</th><th style="position:static">Yorum</th>
-            </tr></thead><tbody id="tbody-yeni-date"></tbody></table>
-          </div>
-        </div>
-      </div>
+    <div class="note">40 ve altı yorumu olan ürünler. Sütun başlıklarına tıklayarak sıralayabilirsiniz.</div>
+    <div style="margin-bottom:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <b style="font-size:13px">Sırala:</b>
+      <select id="yeni-sort" style="border:1px solid #dde1e7;border-radius:8px;padding:7px 10px;font-size:13px;background:#fff;outline:none">
+        <option value="rc">Yorum (az→çok)</option>
+        <option value="date">İlk Görülme (yeni→eski)</option>
+        <option value="ra">Puan (yüksek→düşük)</option>
+        <option value="f">Favori (çok→az)</option>
+        <option value="b">Sepet (çok→az)</option>
+        <option value="o3">3 Gün Satış (çok→az)</option>
+        <option value="p">Fiyat (düşük→yüksek)</option>
+      </select>
+    </div>
+    <div class="table-wrap">
+      <table><thead style="position:static"><tr>
+        <th class="l" style="position:static">Ürün</th>
+        <th style="position:static">İlk Görülme</th>
+        <th style="position:static">Yorum</th>
+        <th style="position:static">Puan</th>
+        <th style="position:static">Fiyat</th>
+        <th style="position:static">3 Gün Satış</th>
+        <th style="position:static">Sepet</th>
+        <th style="position:static">Favori</th>
+      </tr></thead><tbody id="tbody-yeni"></tbody></table>
     </div>
   </div>
 
@@ -325,29 +327,36 @@ function renderTable(){
     return `<tr data-pid="${r.id}"><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td><td>${fmtTL(r.p)}</td><td>${r.ra??'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
   }).join('');
 }
+let yeniSort='rc';
 function renderYeni(){
   const P=LATEST.products;
   const today=new Date();
   const slug=n=>String(n).toLowerCase().replace(/[ışğüöç]/g,c=>({ı:'i',ş:'s',ğ:'g',ü:'u',ö:'o',ç:'c'}[c]||c)).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  const daysSince=d=>{const diff=today-new Date(d);return Math.round(diff/86400000);};
-  // Son 30 günde görülen veya yorumu az olan ürünler
-  let rows=Object.keys(P).map(id=>{const p=P[id];return{id,name:p.name||id,rc:p.ratingCount,price:p.price,firstSeen:p.firstSeen||'–',days:p.firstSeen?daysSince(p.firstSeen):999};});
-  rows=rows.filter(r=>r.days<=30||(r.rc??9999)<=40);
-  const rowHtml=(r,showDays)=>{
+  const daysSince=d=>{const diff=today-new Date(d);return Math.max(0,Math.round(diff/86400000));};
+  let rows=Object.keys(P).map(id=>{
+    const p=P[id];
+    const days=p.firstSeen?daysSince(p.firstSeen):0;
+    return{id,name:p.name||id,rc:p.ratingCount,ra:p.rating,price:p.price,
+      o3:p.orderL3D,o3raw:p.orderL3D_raw,b:p.basket,f:p.favorite,
+      firstSeen:p.firstSeen||'–',days};
+  });
+  rows=rows.filter(r=>(r.rc??9999)<=40);
+  if(yeniSort==='rc') rows.sort((a,b)=>(a.rc??9999)-(b.rc??9999));
+  else if(yeniSort==='date') rows.sort((a,b)=>b.days-a.days);
+  else if(yeniSort==='ra') rows.sort((a,b)=>(b.ra??0)-(a.ra??0));
+  else if(yeniSort==='f') rows.sort((a,b)=>(b.f??0)-(a.f??0));
+  else if(yeniSort==='b') rows.sort((a,b)=>(b.b??0)-(a.b??0));
+  else if(yeniSort==='o3') rows.sort((a,b)=>(b.o3??0)-(a.o3??0));
+  else if(yeniSort==='p') rows.sort((a,b)=>(a.price??0)-(b.price??0));
+  document.getElementById('tbody-yeni').innerHTML=rows.map(r=>{
     const url=`https://www.trendyol.com/los-ojos/${slug(r.name)}-p-${r.id}`;
     const img=IMG[r.id]||P[r.id]?.image||'';
-    const thumb=img?`<img class="thumb" loading="lazy" src="${img}" onerror="this.style.display='none'" style="width:32px;height:32px;border-radius:6px;object-fit:cover;flex:0 0 32px">`:`<span style="width:32px;flex:0 0 32px"></span>`;
-    const days=r.firstSeen&&r.firstSeen!=='–'?daysSince(r.firstSeen)+'g':'–';
-    if(showDays)
-      return `<tr><td class="l"><a class="pcell" href="${url}" target="_blank" style="display:flex;align-items:center;gap:8px">${thumb}<span class="pname" style="font-size:12px">${r.name}</span></a></td><td>${r.firstSeen}</td><td><b>${days}</b></td><td>${fmtTL(r.price)}</td></tr>`;
-    return `<tr><td class="l"><a class="pcell" href="${url}" target="_blank" style="display:flex;align-items:center;gap:8px">${thumb}<span class="pname" style="font-size:12px">${r.name}</span></a></td><td>${r.firstSeen}</td><td>${fmt(r.rc)}</td><td>${fmtTL(r.price)}</td></tr>`;
-  };
-  // Az yorumlu sıralama
-  const byRc=[...rows].sort((a,b)=>(a.rc??9999)-(b.rc??9999)).slice(0,30);
-  document.getElementById('tbody-yeni-rc').innerHTML=byRc.map(r=>rowHtml(r,false)).join('');
-  // En yeni tarih sıralama
-  const byDate=[...rows].sort((a,b)=>a.days-b.days).slice(0,30);
-  document.getElementById('tbody-yeni-date').innerHTML=byDate.map(r=>rowHtml(r,true)).join('');
+    const thumb=img?`<img loading="lazy" src="${img}" onerror="this.style.display='none'" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex:0 0 36px;border:1px solid #e2e5ea">`:`<span style="width:36px;flex:0 0 36px"></span>`;
+    const sale=r.o3?`<span class="badge sale">${r.o3raw||r.o3}</span>`:`<span class="badge none">–</span>`;
+    return `<tr><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td>
+      <td>${r.firstSeen}</td><td>${fmt(r.rc)}</td><td>${r.ra??'–'}</td>
+      <td>${fmtTL(r.price)}</td><td>${sale}</td><td>${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
+  }).join('');
 }
 const tip=document.getElementById('img-tip');
 document.getElementById('tbody').addEventListener('mouseover',e=>{
@@ -410,6 +419,7 @@ document.querySelectorAll('th').forEach(th=>th.onclick=()=>{
   renderTable();
 });
 document.getElementById('rate').oninput=e=>{rate=e.target.value/100;document.getElementById('ratev').textContent='%'+e.target.value;renderTable();renderTrend();};
+document.getElementById('yeni-sort').onchange=e=>{yeniSort=e.target.value;renderYeni();};
 load();
 </script>
 </body>
