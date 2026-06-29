@@ -261,16 +261,24 @@ def main():
     social = fetch_social(ids)
     print(f"   {len(social)} urun icin sosyal kanit alindi.")
 
+    # Mevcut latest.json'dan firstSeen tarihlerini al
+    old_latest = load_json(os.path.join(DATA_DIR, "latest.json"), {})
+    old_products = old_latest.get("products", {})
+
     snapshot = {}
     for pid, info in catalog.items():
         s = social.get(pid, {})
-        snapshot[str(pid)] = {
+        pid_str = str(pid)
+        # firstSeen: eski kayıtta varsa koru, yoksa bugün
+        first_seen = old_products.get(pid_str, {}).get("firstSeen") or today
+        snapshot[pid_str] = {
             "name": info["name"], "price": info["price"],
             "ratingCount": info["ratingCount"], "rating": info["rating"],
             "orderL3D": s.get("orderCountL3D"), "orderL3D_raw": s.get("orderCountL3D_raw"),
             "basket": s.get("basketCount"), "favorite": s.get("favoriteCount"),
             "pageView": s.get("pageViewCount"),
             "image": info.get("image"),
+            "firstSeen": first_seen,
         }
 
     save_json(os.path.join(DATA_DIR, "latest.json"),

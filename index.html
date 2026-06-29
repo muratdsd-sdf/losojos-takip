@@ -67,6 +67,7 @@ a:hover .pname{color:#6c8fff}
   <div class="stats" id="stats"></div>
   <div class="tabs">
     <div class="tab active" data-p="urunler">Ürün Listesi</div>
+    <div class="tab" data-p="yeni">🆕 Yeni Ürünler</div>
     <div class="tab" data-p="ozet">Özet & Grafikler</div>
     <div class="tab" data-p="trend">Trend</div>
   </div>
@@ -96,6 +97,32 @@ a:hover .pname{color:#6c8fff}
       <th data-s="b" class="hidem">Sepet</th>
       <th data-s="f">Favori</th>
     </tr></thead><tbody id="tbody"></tbody></table>
+    </div>
+  </div>
+
+  <div class="panel" id="p-yeni">
+    <div class="note">Son 30 günde sisteme giren yeni ürünler. <b>Yorum sayısına göre</b> sıralama = en az yorumdan en fazlaya (yeni = az yorum). <b>Listelenme gününe göre</b> = sisteme ilk girdiği tarihe göre.</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px">
+      <div style="flex:1;min-width:280px">
+        <div class="chartbox" style="margin:0">
+          <b>En az yorumlu yeni ürünler (az yorum = yeni)</b>
+          <div class="table-wrap" style="margin-top:10px">
+            <table><thead><tr>
+              <th class="l">Ürün</th><th>İlk Görülme</th><th>Yorum</th><th>Fiyat</th>
+            </tr></thead><tbody id="tbody-yeni-rc"></tbody></table>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:280px">
+        <div class="chartbox" style="margin:0">
+          <b>En yeni eklenen ürünler (listelenme tarihine göre)</b>
+          <div class="table-wrap" style="margin-top:10px">
+            <table><thead><tr>
+              <th class="l">Ürün</th><th>İlk Görülme</th><th>Gün önce</th><th>Yorum</th>
+            </tr></thead><tbody id="tbody-yeni-date"></tbody></table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -281,7 +308,7 @@ function render(){
   ];
   document.getElementById('stats').innerHTML=cards.map(c=>`<div class="stat"><div class="k">${c[0]}</div><div class="v">${c[1]}</div><div class="s">${c[2]}</div></div>`).join('');
   document.getElementById('meta').innerHTML='Güncelleme: <b>'+(LATEST.collectedAt||'–')+'</b><br>'+(HIST.snapshots?HIST.snapshots.length:1)+' günlük veri';
-  renderTable();renderCharts();renderTrend();
+  renderTable();renderCharts();renderTrend();renderYeni();
 }
 function renderTable(){
   const P=LATEST.products,q=(document.getElementById('q').value||'').toLowerCase();
@@ -297,6 +324,30 @@ function renderTable(){
     const wk=r.weekly!=null?fmt(r.weekly):`<span style="color:#bbb">birikiyor</span>`;
     return `<tr data-pid="${r.id}"><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td><td>${fmtTL(r.p)}</td><td>${r.ra??'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
   }).join('');
+}
+function renderYeni(){
+  const P=LATEST.products;
+  const today=new Date();
+  const slug=n=>String(n).toLowerCase().replace(/[ışğüöç]/g,c=>({ı:'i',ş:'s',ğ:'g',ü:'u',ö:'o',ç:'c'}[c]||c)).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const daysSince=d=>{const diff=today-new Date(d);return Math.round(diff/86400000);};
+  // Son 30 günde görülen veya yorumu az olan ürünler
+  let rows=Object.keys(P).map(id=>{const p=P[id];return{id,name:p.name||id,rc:p.ratingCount,price:p.price,firstSeen:p.firstSeen||'–',days:p.firstSeen?daysSince(p.firstSeen):999};});
+  rows=rows.filter(r=>r.days<=30||r.rc<=30);
+  const rowHtml=(r,showDays)=>{
+    const url=`https://www.trendyol.com/los-ojos/${slug(r.name)}-p-${r.id}`;
+    const img=IMG[r.id]||P[r.id]?.image||'';
+    const thumb=img?`<img class="thumb" loading="lazy" src="${img}" onerror="this.style.display='none'" style="width:32px;height:32px;border-radius:6px;object-fit:cover;flex:0 0 32px">`:`<span style="width:32px;flex:0 0 32px"></span>`;
+    const days=r.firstSeen&&r.firstSeen!=='–'?daysSince(r.firstSeen)+'g':'–';
+    if(showDays)
+      return `<tr><td class="l"><a class="pcell" href="${url}" target="_blank" style="display:flex;align-items:center;gap:8px">${thumb}<span class="pname" style="font-size:12px">${r.name}</span></a></td><td>${r.firstSeen}</td><td><b>${days}</b></td><td>${fmtTL(r.price)}</td></tr>`;
+    return `<tr><td class="l"><a class="pcell" href="${url}" target="_blank" style="display:flex;align-items:center;gap:8px">${thumb}<span class="pname" style="font-size:12px">${r.name}</span></a></td><td>${r.firstSeen}</td><td>${fmt(r.rc)}</td><td>${fmtTL(r.price)}</td></tr>`;
+  };
+  // Az yorumlu sıralama
+  const byRc=[...rows].sort((a,b)=>(a.rc??9999)-(b.rc??9999)).slice(0,30);
+  document.getElementById('tbody-yeni-rc').innerHTML=byRc.map(r=>rowHtml(r,false)).join('');
+  // En yeni tarih sıralama
+  const byDate=[...rows].sort((a,b)=>a.days-b.days).slice(0,30);
+  document.getElementById('tbody-yeni-date').innerHTML=byDate.map(r=>rowHtml(r,true)).join('');
 }
 const tip=document.getElementById('img-tip');
 document.getElementById('tbody').addEventListener('mouseover',e=>{
