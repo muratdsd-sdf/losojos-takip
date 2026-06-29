@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Los Ojos · Trendyol Satış Takip</title>
+<title>MrChris · Satış Takip</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   :root{
@@ -51,18 +51,31 @@
   .row2{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
   .err{background:#3a1d1d;border:1px solid #5a2a2a;color:#ffb4b4;padding:14px;border-radius:12px}
   a.tylink{color:var(--accent2);text-decoration:none}
+  #img-tip{
+    display:none;position:fixed;z-index:999;pointer-events:none;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:8px;box-shadow:0 8px 32px rgba(0,0,0,.6);max-width:220px;
+  }
+  #img-tip img{width:200px;height:200px;object-fit:cover;border-radius:8px;display:block}
+  #img-tip .tip-name{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.4;max-width:200px;word-break:break-word}
+  #img-tip .tip-nopic{width:200px;height:120px;display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-size:12px;border-radius:8px;background:var(--card2)}
   @media(max-width:640px){.hidem{display:none}th{top:0}}
 </style>
 </head>
 <body>
+<div id="img-tip"><img id="tip-img" src="" onerror="this.style.display='none';document.getElementById('tip-nopic').style.display='flex'">
+  <div id="tip-nopic" class="tip-nopic" style="display:none">Resim yok</div>
+  <div class="tip-name" id="tip-name"></div>
+</div>
+
 <header>
-  <div class="logo">Los <span>Ojos</span> · Satış Takip</div>
+  <div class="logo">Mr<span>Chris</span></div>
   <div class="meta" id="meta">Yükleniyor…</div>
 </header>
 
 <div class="wrap">
   <div id="err"></div>
-
   <div class="cards" id="cards"></div>
 
   <div class="tabs">
@@ -71,26 +84,18 @@
     <div class="tab" data-p="trend">Trend</div>
   </div>
 
-  <!-- OZET -->
   <div class="panel active" id="p-ozet">
     <div class="note">
       <b>Satış rakamları nasıl okunur?</b><br>
-      <b>3 günlük satış</b> = Trendyol'un ürün sayfasında gösterdiği "son 3 günde X+ sattı" bilgisidir
+      <b>3 günlük satış</b> = Trendyol’un ürün sayfasında gösterdiği "son 3 günde X+ sattı" bilgisidir
       (yalnızca yeterince satan ürünlerde görünür, "+" işareti "en az" demektir).
       <b>Yorum sayısı</b> her gün arttıkça satış hızını gösterir — bu yüzden program her gün veri biriktirir,
       birkaç gün sonra <b>haftalık / aylık ortalama satış tahmini</b> burada otomatik çıkar.
     </div>
-    <div class="chartbox">
-      <b>En çok 3 günlük satış (Trendyol)</b>
-      <canvas id="chTop" height="120"></canvas>
-    </div>
-    <div class="chartbox">
-      <b>En çok favorilenen 10 ürün</b>
-      <canvas id="chFav" height="120"></canvas>
-    </div>
+    <div class="chartbox"><b>En çok 3 günlük satış (Trendyol)</b><canvas id="chTop" height="120"></canvas></div>
+    <div class="chartbox"><b>En çok favorilenen 10 ürün</b><canvas id="chFav" height="120"></canvas></div>
   </div>
 
-  <!-- URUNLER -->
   <div class="panel" id="p-urunler">
     <div class="controls">
       <input type="text" id="q" placeholder="Ürün ara…">
@@ -103,73 +108,170 @@
         <option value="p">Sırala: fiyat</option>
         <option value="ra">Sırala: puan</option>
       </select>
-      <div class="row2">
-        Yorum→satış oranı:
-        <input type="range" id="rate" min="3" max="25" value="8" step="1" style="width:110px">
-        <span id="ratev">%8</span>
-      </div>
+      <div class="row2">Yorum→satış oranı:<input type="range" id="rate" min="3" max="25" value="8" step="1" style="width:110px"><span id="ratev">%8</span></div>
     </div>
     <div style="overflow:auto">
-    <table id="tbl">
-      <thead><tr>
-        <th class="l" data-s="name">Ürün</th>
-        <th data-s="p">Fiyat</th>
-        <th data-s="ra">Puan</th>
-        <th data-s="rc">Yorum</th>
-        <th data-s="o3">3 Gün Satış</th>
-        <th data-s="weekly" class="hidem">Haftalık (tahmin)</th>
-        <th data-s="b" class="hidem">Sepette</th>
-        <th data-s="f">Favori</th>
-      </tr></thead>
-      <tbody id="tbody"></tbody>
-    </table>
-    </div>
+    <table id="tbl"><thead><tr>
+      <th class="l" data-s="name">Ürün</th><th data-s="p">Fiyat</th><th data-s="ra">Puan</th>
+      <th data-s="rc">Yorum</th><th data-s="o3">3 Gün Satış</th>
+      <th data-s="weekly" class="hidem">Haftalık (tahmin)</th>
+      <th data-s="b" class="hidem">Sepette</th><th data-s="f">Favori</th>
+    </tr></thead><tbody id="tbody"></tbody></table></div>
   </div>
 
-  <!-- TREND -->
   <div class="panel" id="p-trend">
     <div class="note" id="trendnote"></div>
-    <div class="chartbox">
-      <b>Marka geneli toplam yorum sayısı (gün gün)</b>
-      <div class="muted" style="font-size:12px;margin:4px 0 8px">Çizgi yükseldikçe = o gün satış oldu. Eğim ne kadar dik ise satış o kadar hızlı.</div>
-      <canvas id="chTrend" height="110"></canvas>
-    </div>
-    <div class="chartbox">
-      <b>Tahmini günlük satış (tüm marka)</b>
+    <div class="chartbox"><b>Marka geneli toplam yorum sayısı (gün gün)</b>
+      <div class="muted" style="font-size:12px;margin:4px 0 8px">Çizgi yükseldikçe = o gün satış oldu.</div>
+      <canvas id="chTrend" height="110"></canvas></div>
+    <div class="chartbox"><b>Tahmini günlük satış (tüm marka)</b>
       <div class="muted" style="font-size:12px;margin:4px 0 8px">Yorum artışından hesaplanır. En az 2 günlük veri gerekir.</div>
-      <canvas id="chDaily" height="110"></canvas>
-    </div>
+      <canvas id="chDaily" height="110"></canvas></div>
   </div>
 </div>
 
 <script>
 const TY="https://www.trendyol.com";
-let LATEST=null, HIST=null, rate=0.08;
-
-const fmt=n=>(n==null?"–":Number(n).toLocaleString("tr-TR"));
-const fmtTL=n=>(n==null?"–":Number(n).toLocaleString("tr-TR",{maximumFractionDigits:0})+" TL");
-
+let LATEST=null,HIST=null,rate=0.08;
+const IMG={
+"86406024":"https://cdn.dsmcdn.com/mnresize/400/-/ty1808/prod/QC_ENRICHMENT/20260106/18/f59a0cd4-c77a-346b-bbf4-a8778fa217ed/1_org_zoom.jpg",
+"97827284":"https://cdn.dsmcdn.com/mnresize/400/-/ty805/product/media/images/20230331/11/316168014/162832846/1/1_org_zoom.jpg",
+"97545674":"https://cdn.dsmcdn.com/mnresize/400/-/ty1808/prod/QC_ENRICHMENT/20260106/18/469ff877-a8c3-3a32-9d5e-d85f663d509c/1_org_zoom.jpg",
+"97555654":"https://cdn.dsmcdn.com/mnresize/400/-/ty1806/prod/QC_ENRICHMENT/20260106/18/47f76091-a0d6-3f39-a35f-ca2a6680b531/1_org_zoom.jpg",
+"97555629":"https://cdn.dsmcdn.com/mnresize/400/-/ty1806/prod/QC_ENRICHMENT/20260106/18/a8384afe-cb61-33c5-ba13-7bcaa609b52b/1_org_zoom.jpg",
+"97606298":"https://cdn.dsmcdn.com/mnresize/400/-/ty796/product/media/images/20230324/15/311070069/162520529/1/1_org_zoom.jpg",
+"86701991":"https://cdn.dsmcdn.com/mnresize/400/-/ty1808/prod/QC_ENRICHMENT/20260106/18/10c6250e-ac52-3f77-b5f9-229c316555c9/1_org_zoom.jpg",
+"115481492":"https://cdn.dsmcdn.com/mnresize/400/-/ty439/product/media/images/20220523/16/115209546/186851007/1/1_org_zoom.jpg",
+"117047042":"https://cdn.dsmcdn.com/mnresize/400/-/ty1099/product/media/images/prod/SPM/PIM/20231218/14/fe10e085-fbc1-3d91-a610-290a6582db9e/1_org_zoom.jpg",
+"120101162":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/16/9ae01b36-b496-3075-8b87-199270af58b5/1_org_zoom.jpg",
+"120274055":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/ed99bde8-18fd-3bd8-ae47-b71c97496f51/1_org_zoom.jpg",
+"120593414":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/15/8d4c4a74-db99-3a08-a7f1-86e81e373374/1_org_zoom.jpg",
+"125467332":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/edc32744-8ffc-3765-9a63-c044fcc9f32c/1_org_zoom.jpg",
+"125467238":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/15/b001a95e-3344-3fb5-88a4-d54de83d91a0/1_org_zoom.jpg",
+"129998832":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/16/dd6b52f4-65cd-3543-80b1-993ab3befa5e/1_org_zoom.jpg",
+"129999160":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/16/e1831abc-ca6e-347d-837b-1e269a819be5/1_org_zoom.jpg",
+"154385500":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/15/62a76d55-ccfa-3556-92e5-bb8cb76bc9a0/1_org_zoom.jpg",
+"154459170":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/ff797fce-bd93-3f6c-9ee7-7f4781526fcb/1_org_zoom.jpg",
+"154466841":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/15/fd2c4e72-40c0-3ba3-beec-78d00a4d4aca/1_org_zoom.jpg",
+"154468172":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/15/c3f03890-248c-3f40-ad9c-09139cfe4da6/1_org_zoom.jpg",
+"154925393":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/fc0d5e12-6fbc-3565-a258-1e58645c0193/1_org_zoom.jpg",
+"155570909":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/15/b814860d-e8da-3872-bae6-fbe041eade78/1_org_zoom.jpg",
+"155813505":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/90231e3e-d52b-383d-a714-740113a3ef9b/1_org_zoom.jpg",
+"302230814":"https://cdn.dsmcdn.com/mnresize/400/-/ty432/product/media/images/20220517/17/112723882/481341270/1/1_org_zoom.jpg",
+"302230830":"https://cdn.dsmcdn.com/mnresize/400/-/ty433/product/media/images/20220517/17/112723907/481341287/1/1_org_zoom.jpg",
+"304364402":"https://cdn.dsmcdn.com/mnresize/400/-/ty1415/product/media/images/prod/QC/20240711/15/225bd98e-5c37-3a21-9df5-77558286e756/1_org_zoom.jpg",
+"304364534":"https://cdn.dsmcdn.com/mnresize/400/-/ty1415/product/media/images/prod/QC/20240711/12/afbc1945-1b54-375e-b19d-7c7b195ced41/1_org_zoom.jpg",
+"304364653":"https://cdn.dsmcdn.com/mnresize/400/-/ty1808/prod/QC_ENRICHMENT/20260106/18/c3da79a2-47d6-3500-b577-b50d716c2bb4/1_org_zoom.jpg",
+"304365085":"https://cdn.dsmcdn.com/mnresize/400/-/ty1806/prod/QC_ENRICHMENT/20260106/18/e8191142-20f2-3ed6-9200-78284c012c9e/1_org_zoom.jpg",
+"304366648":"https://cdn.dsmcdn.com/mnresize/400/-/ty1806/prod/QC_ENRICHMENT/20260106/18/aa34665c-33b7-3348-9dd7-c14885d488a4/1_org_zoom.jpg",
+"304909286":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/16/13d7befd-dbe1-3038-9c0f-7caaf58a2b46/1_org_zoom.jpg",
+"304912246":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/16/9bee4766-523c-33dc-b753-9d65c2e37a0b/1_org_zoom.jpg",
+"304912405":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/16/0fc53748-883b-335c-bb67-8e965c95951f/1_org_zoom.jpg",
+"304912565":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/16/f37fc6a8-78fc-39da-a409-9fb99cd1af59/1_org_zoom.jpg",
+"649970162":"https://cdn.dsmcdn.com/mnresize/400/-/ty1095/product/media/images/prod/SPM/PIM/20231218/14/a6bda4be-c1c3-3682-a382-2bd8311b4385/1_org_zoom.jpg",
+"659054744":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/5a0948ea-b8ae-32bf-8d39-257aed3473d2/1_org_zoom.jpg",
+"664940326":"https://cdn.dsmcdn.com/mnresize/400/-/ty766/product/media/images/20230307/12/298394828/879777148/1/1_org_zoom.jpg",
+"664969524":"https://cdn.dsmcdn.com/mnresize/400/-/ty767/product/media/images/20230307/14/298429855/879818798/1/1_org_zoom.jpg",
+"698127332":"https://cdn.dsmcdn.com/mnresize/400/-/ty853/product/media/images/20230430/20/335603533/923150094/1/1_org_zoom.jpg",
+"699273115":"https://cdn.dsmcdn.com/mnresize/400/-/ty881/product/media/images/20230511/23/346181771/924526533/1/1_org_zoom.jpg",
+"707066322":"https://cdn.dsmcdn.com/mnresize/400/-/ty876/product/media/images/20230511/11/345523259/934082715/1/1_org_zoom.jpg",
+"736250093":"https://cdn.dsmcdn.com/mnresize/400/-/ty1653/prod/QC/20250326/16/902a2e8c-3155-34be-93d5-f1e4e4ec4d1f/1_org_zoom.jpg",
+"736364369":"https://cdn.dsmcdn.com/mnresize/400/-/ty948/product/media/images/20230614/14/385495229/968541395/1/1_org_zoom.jpg",
+"739819840":"https://cdn.dsmcdn.com/mnresize/400/-/ty958/product/media/images/20230626/12/389331347/973298927/1/1_org_zoom.jpg",
+"772297580":"https://cdn.dsmcdn.com/mnresize/400/-/ty1019/product/media/images/prod/SPM/PIM/20231018/21/b1d4474d-570a-39b6-ac98-35516b0d687b/1_org_zoom.jpg",
+"772297891":"https://cdn.dsmcdn.com/mnresize/400/-/ty1019/product/media/images/prod/SPM/PIM/20231018/21/1258f3a9-0e39-3acf-89f6-1af3b4f3cee5/1_org_zoom.jpg",
+"772303183":"https://cdn.dsmcdn.com/mnresize/400/-/ty1017/product/media/images/prod/SPM/PIM/20231018/21/2ebd1fc6-968b-3ccf-91e4-6b65955a829e/1_org_zoom.jpg",
+"772308529":"https://cdn.dsmcdn.com/mnresize/400/-/ty1018/product/media/images/prod/SPM/PIM/20231018/21/55f9339f-87d7-35fe-ba52-c37401d92023/1_org_zoom.jpg",
+"772312344":"https://cdn.dsmcdn.com/mnresize/400/-/ty1018/product/media/images/prod/SPM/PIM/20231018/21/5011ce7d-1279-3909-9235-215e3e04988b/1_org_zoom.jpg",
+"812667204":"https://cdn.dsmcdn.com/mnresize/400/-/ty1197/product/media/images/prod/SPM/PIM/20240306/18/2cf15fdb-baaa-3853-9bbf-6c5a394cb478/1_org_zoom.jpg",
+"834004529":"https://cdn.dsmcdn.com/mnresize/400/-/ty1346/product/media/images/prod/QC/20240603/14/24741e25-9c00-3eb9-9cbc-68ab46e664e3/1_org_zoom.jpg",
+"834007684":"https://cdn.dsmcdn.com/mnresize/400/-/ty1345/product/media/images/prod/QC/20240603/14/ed52b11a-0a98-3377-934b-131fe6169a2c/1_org_zoom.jpg",
+"834011598":"https://cdn.dsmcdn.com/mnresize/400/-/ty1346/product/media/images/prod/QC/20240603/14/df347371-740a-3b91-961c-5314f81f9cd1/1_org_zoom.jpg",
+"834013394":"https://cdn.dsmcdn.com/mnresize/400/-/ty1344/product/media/images/prod/QC/20240603/14/df783d3e-0f1b-3a8b-8ee6-22d2b8293d5c/1_org_zoom.jpg",
+"834013914":"https://cdn.dsmcdn.com/mnresize/400/-/ty1346/product/media/images/prod/QC/20240603/14/b2f4daef-da6d-34a4-b408-41e5e372dc4e/1_org_zoom.jpg",
+"834013993":"https://cdn.dsmcdn.com/mnresize/400/-/ty1345/product/media/images/prod/QC/20240603/14/84ce235d-be00-3208-b6ac-fa167e0aa821/1_org_zoom.jpg",
+"834181419":"https://cdn.dsmcdn.com/mnresize/400/-/ty1348/product/media/images/prod/QC/20240603/14/954bcf60-96e1-3af0-8057-37d7e46e8a33/1_org_zoom.jpg",
+"834181440":"https://cdn.dsmcdn.com/mnresize/400/-/ty1349/product/media/images/prod/QC/20240603/14/b72eed55-e0f4-3ef5-bfeb-474374ee06f8/1_org_zoom.jpg",
+"834187765":"https://cdn.dsmcdn.com/mnresize/400/-/ty1348/product/media/images/prod/QC/20240603/14/91e63e1f-7256-367c-be8b-5c2f43bf1cf4/1_org_zoom.jpg",
+"834267382":"https://cdn.dsmcdn.com/mnresize/400/-/ty1347/product/media/images/prod/QC/20240603/15/b9b38b4c-67fc-3a33-a9ca-80941b6665e9/1_org_zoom.jpg",
+"834269789":"https://cdn.dsmcdn.com/mnresize/400/-/ty1347/product/media/images/prod/QC/20240603/14/f1e7e605-12dd-33af-bfaf-6a8981d11c8a/1_org_zoom.jpg",
+"847775091":"https://cdn.dsmcdn.com/mnresize/400/-/ty1463/product/media/images/prod/QC/20240805/11/0e302ddf-7cba-3430-96b6-bf1c9224944d/1_org_zoom.jpg",
+"847775174":"https://cdn.dsmcdn.com/mnresize/400/-/ty1461/product/media/images/prod/QC/20240805/11/d09202de-56aa-3aa1-ba8b-7136b3cda0b0/1_org_zoom.jpg",
+"847775345":"https://cdn.dsmcdn.com/mnresize/400/-/ty1461/product/media/images/prod/QC/20240805/11/53c5af20-019c-3805-bd07-759fb618fdaa/1_org_zoom.jpg",
+"901071773":"https://cdn.dsmcdn.com/mnresize/400/-/ty1641/prod/QC/20250225/11/0a112504-0265-3c32-9d0e-30dd14542631/1_org_zoom.jpg",
+"901077842":"https://cdn.dsmcdn.com/mnresize/400/-/ty1640/prod/QC/20250220/19/1624cab8-71e9-3ded-bd6f-482586b2fb1d/1_org_zoom.jpg",
+"901082243":"https://cdn.dsmcdn.com/mnresize/400/-/ty1638/prod/QC/20250220/19/40355e25-b81e-3c5e-8a31-c7253fc05ff8/1_org_zoom.jpg",
+"901427614":"https://cdn.dsmcdn.com/mnresize/400/-/ty1643/prod/QC/20250221/18/cb8052bb-fdbe-398f-ae28-b8a815572f52/1_org_zoom.jpg",
+"901442645":"https://cdn.dsmcdn.com/mnresize/400/-/ty1643/prod/QC/20250221/18/86753bc0-7b7b-3e05-907f-ed52368254ff/1_org_zoom.jpg",
+"901443021":"https://cdn.dsmcdn.com/mnresize/400/-/ty1643/prod/QC/20250221/18/5b87568e-8fff-3b9c-b4db-e86f2772c204/1_org_zoom.jpg",
+"901446322":"https://cdn.dsmcdn.com/mnresize/400/-/ty1642/prod/QC/20250221/18/204d82a5-eb68-3566-9c48-a48a34dbeedd/1_org_zoom.jpg",
+"901446700":"https://cdn.dsmcdn.com/mnresize/400/-/ty1642/prod/QC/20250221/18/2ded77a5-e14e-3a29-a0e0-ebb8ab57165a/1_org_zoom.jpg",
+"903872945":"https://cdn.dsmcdn.com/mnresize/400/-/ty1646/prod/QC/20250303/21/771a183f-ec34-311e-b3cf-b060936e23a5/1_org_zoom.jpg",
+"903874990":"https://cdn.dsmcdn.com/mnresize/400/-/ty1645/prod/QC/20250303/21/91668006-304c-33fe-8145-d5de6542886e/1_org_zoom.jpg",
+"904602868":"https://cdn.dsmcdn.com/mnresize/400/-/ty1646/prod/QC/20250303/21/26b8e111-4ccf-37b1-bb1d-96749f9624fe/1_org_zoom.jpg",
+"945479930":"https://cdn.dsmcdn.com/mnresize/400/-/ty1693/prod/QC_PREP/20250616/17/aee5d46e-2c9d-3c92-ad6b-d15e71496f94/1_org_zoom.jpg",
+"945480081":"https://cdn.dsmcdn.com/mnresize/400/-/ty1694/prod/QC_PREP/20250616/17/10d41d27-36f5-3929-a93c-aee449a1adab/1_org_zoom.jpg",
+"945651550":"https://cdn.dsmcdn.com/mnresize/400/-/ty1696/prod/QC_PREP/20250617/18/17827064-b56d-3b85-87bc-1c8148558b34/1_org_zoom.jpg",
+"945652333":"https://cdn.dsmcdn.com/mnresize/400/-/ty1695/prod/QC_PREP/20250617/18/6b729c24-50ed-354d-8101-593585bd7dd3/1_org_zoom.jpg",
+"945652341":"https://cdn.dsmcdn.com/mnresize/400/-/ty1695/prod/QC_PREP/20250617/18/17309144-691f-37f3-bd69-54e2b33aedef/1_org_zoom.jpg",
+"947445355":"https://cdn.dsmcdn.com/mnresize/400/-/ty1697/prod/QC_PREP/20250620/18/d905fbcd-e529-3ff1-ac73-199a13c34f98/1_org_zoom.jpg",
+"947445481":"https://cdn.dsmcdn.com/mnresize/400/-/ty1697/prod/QC_PREP/20250620/18/7f9a5ec2-d7b9-3c36-895b-253afe324792/1_org_zoom.jpg",
+"947445615":"https://cdn.dsmcdn.com/mnresize/400/-/ty1695/prod/QC_PREP/20250620/18/cb3c3d6c-960d-32b3-b27d-d47aeddd4586/1_org_zoom.jpg",
+"947445642":"https://cdn.dsmcdn.com/mnresize/400/-/ty1696/prod/QC_PREP/20250620/18/fb85533a-dbef-3bc1-9b4c-3ff333e90669/1_org_zoom.jpg",
+"947445665":"https://cdn.dsmcdn.com/mnresize/400/-/ty1695/prod/QC_PREP/20250620/18/1c44ee53-c8ce-31dd-b22f-1fb2d8b2561f/1_org_zoom.jpg",
+"1045494759":"https://cdn.dsmcdn.com/mnresize/400/-/ty1787/prod/QC_PREP/20251106/12/0a12e27c-10d7-3cd7-bf6b-df30a1b55d78/1_org_zoom.jpg",
+"1045500350":"https://cdn.dsmcdn.com/mnresize/400/-/ty1787/prod/QC_PREP/20251106/12/23a4eaf1-f822-3ad0-9228-45b5f6349105/1_org_zoom.jpg",
+"1045500357":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_ENRICHMENT/20251110/13/206da0e8-8d7b-3c3c-a4c3-d9eda961a9e9/1_org_zoom.jpg",
+"1045500574":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/12/39d2defd-3cb7-30a0-be80-cda22d9b76e7/1_org_zoom.jpg",
+"1045500907":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/12/d8d78a13-746b-3946-baa0-0717a9e29528/1_org_zoom.jpg",
+"1045500913":"https://cdn.dsmcdn.com/mnresize/400/-/ty1786/prod/QC_ENRICHMENT/20251110/13/288cf953-f153-3054-897c-cb867ce14f95/1_org_zoom.jpg",
+"1045500926":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/12/a2d543f3-5448-3468-9ed5-0a0550fc6e40/1_org_zoom.jpg",
+"1045512318":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/12/77b89085-4e28-3fe8-9903-ab1f21bde017/1_org_zoom.jpg",
+"1045513204":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/13/9daa1e6c-1c58-34fa-bec7-40f372736e8f/1_org_zoom.jpg",
+"1045513205":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/13/3f2bcaab-5304-318c-b065-e5a5a9800716/1_org_zoom.jpg",
+"1045513767":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/13/37f531e6-db1f-3c52-bf5f-1d2ee7552544/1_org_zoom.jpg",
+"1047170750":"https://cdn.dsmcdn.com/mnresize/400/-/ty1786/prod/QC_PREP/20251110/16/0892858e-b43f-392a-9317-b959504a2763/1_org_zoom.jpg",
+"1140323566":"https://cdn.dsmcdn.com/mnresize/400/-/ty1937/prod/QC_ENRICHMENT/20260504/17/146e3ab0-43ab-3ce9-aff9-efd4cffe6da4/1_org_zoom.jpg",
+"1140323620":"https://cdn.dsmcdn.com/mnresize/400/-/ty1910/prod/QC_ENRICHMENT/20260504/17/7a0507d2-53ed-343d-bac2-d20918697665/1_org_zoom.jpg",
+"1140323664":"https://cdn.dsmcdn.com/mnresize/400/-/ty1891/prod/QC_ENRICHMENT/20260504/17/5dd5f23c-8fd6-3fac-90ec-34c7347d1055/1_org_zoom.jpg",
+"1140323675":"https://cdn.dsmcdn.com/mnresize/400/-/ty1896/prod/QC_ENRICHMENT/20260504/17/da10ac1e-5548-3098-81b3-153254212c39/1_org_zoom.jpg",
+"1140323739":"https://cdn.dsmcdn.com/mnresize/400/-/ty1934/prod/QC_ENRICHMENT/20260504/17/4d789d2a-96e7-381f-8b00-1d67a578f483/1_org_zoom.jpg",
+"1140323792":"https://cdn.dsmcdn.com/mnresize/400/-/ty1893/prod/QC_ENRICHMENT/20260504/17/05da2ac4-5dcf-3434-b97a-6afbadbe34d8/1_org_zoom.jpg",
+"1140323801":"https://cdn.dsmcdn.com/mnresize/400/-/ty1932/prod/QC_ENRICHMENT/20260504/17/02293f34-ded5-356a-85b0-9afcdcda35c3/1_org_zoom.jpg",
+"1140323837":"https://cdn.dsmcdn.com/mnresize/400/-/ty1910/prod/QC_ENRICHMENT/20260504/17/fb6d74f3-625f-3127-9425-bf52a08cb28c/1_org_zoom.jpg",
+"1140323872":"https://cdn.dsmcdn.com/mnresize/400/-/ty1912/prod/QC_ENRICHMENT/20260504/17/ecf68bda-c5fa-351d-8aae-e782133b25fd/1_org_zoom.jpg",
+"1140323897":"https://cdn.dsmcdn.com/mnresize/400/-/ty1941/prod/QC_ENRICHMENT/20260504/17/79a8214e-ab6c-3730-978d-e726a3efe6f8/1_org_zoom.jpg",
+"1140323921":"https://cdn.dsmcdn.com/mnresize/400/-/ty1903/prod/QC_ENRICHMENT/20260504/17/2b0e3558-21fe-3c96-86e5-b74ac0fbcdda/1_org_zoom.jpg",
+"1140323930":"https://cdn.dsmcdn.com/mnresize/400/-/ty1929/prod/QC_ENRICHMENT/20260504/17/283dd2fe-c5a1-36d0-9ab1-8fdbda9d1d38/1_org_zoom.jpg",
+"1140402155":"https://cdn.dsmcdn.com/mnresize/400/-/ty1916/prod/QC_ENRICHMENT/20260504/17/d6d153fb-d4df-30c1-a2a7-8bccdc14be36/1_org_zoom.jpg",
+"1140402507":"https://cdn.dsmcdn.com/mnresize/400/-/ty1909/prod/QC_ENRICHMENT/20260504/17/5bc33a6b-5f1a-3f79-9a22-01558c660702/1_org_zoom.jpg",
+"1140402581":"https://cdn.dsmcdn.com/mnresize/400/-/ty1906/prod/QC_ENRICHMENT/20260504/17/69fd412c-8722-3302-8967-b6a75a668d22/1_org_zoom.jpg",
+"1140485981":"https://cdn.dsmcdn.com/mnresize/400/-/ty1939/prod/QC_ENRICHMENT/20260504/17/8e276cc3-0be2-37ba-9cb4-ae1e63789201/1_org_zoom.jpg",
+"1140486357":"https://cdn.dsmcdn.com/mnresize/400/-/ty1897/prod/QC_ENRICHMENT/20260504/17/da1064fe-9460-357e-b634-026e7543aa2c/1_org_zoom.jpg",
+"1140487306":"https://cdn.dsmcdn.com/mnresize/400/-/ty1895/prod/QC_ENRICHMENT/20260504/17/8c3addf9-e37d-3d67-a9c8-fec46f3a69b4/1_org_zoom.jpg",
+"1142355609":"https://cdn.dsmcdn.com/mnresize/400/-/ty1931/prod/QC_PREP/20260505/16/86abcd2d-07b3-39fb-91f1-73a948d22e12/1_org_zoom.jpg",
+"1142355784":"https://cdn.dsmcdn.com/mnresize/400/-/ty1909/prod/QC_PREP/20260505/16/524a8f30-2f4c-3982-a7b1-b66535168cd1/1_org_zoom.jpg",
+"1142355827":"https://cdn.dsmcdn.com/mnresize/400/-/ty1911/prod/QC_PREP/20260505/16/a5038037-bb8b-3287-81c1-4fc9d86845d6/1_org_zoom.jpg",
+"1142355991":"https://cdn.dsmcdn.com/mnresize/400/-/ty1918/prod/QC_PREP/20260505/16/2eb76c17-231f-3b34-9d27-09a37272d285/1_org_zoom.jpg"
+};
+const fmt=n=>(n==null?'–':Number(n).toLocaleString('tr-TR'));
+const fmtTL=n=>(n==null?'–':Number(n).toLocaleString('tr-TR',{maximumFractionDigits:0})+' TL');
 async function load(){
   try{
-    LATEST=await (await fetch("latest.json?t="+Date.now())).json();
-    HIST=await (await fetch("history.json?t="+Date.now())).json();
+    LATEST=await (await fetch('latest.json?t='+Date.now())).json();
+    HIST=await (await fetch('history.json?t='+Date.now())).json();
   }catch(e){
-    document.getElementById("err").innerHTML=
-      '<div class="err">Veri yüklenemedi. Bu sayfayı doğrudan bilgisayardan açtıysan, '+
-      'GitHub linki üzerinden açman gerekir (tarayıcı güvenliği yerel dosyada veriyi engelliyor).</div>';
+    document.getElementById('err').innerHTML='<div class="err">Veri yücklenemedi. GitHub linki üzerinden açman gerekir.</div>';
     return;
   }
-  rate=document.getElementById("rate").value/100;
+  rate=document.getElementById('rate').value/100;
   render();
 }
-
-// her ürün için haftalık satış tahmini (yorum artışından)
 function weeklyEstimate(pid){
   if(!HIST||!HIST.snapshots||HIST.snapshots.length<2) return null;
   const snaps=HIST.snapshots;
   const last=snaps[snaps.length-1];
   const lastDate=new Date(last.date);
-  // 7 gün önceye en yakın snapshot
   let base=null;
   for(let i=snaps.length-2;i>=0;i--){
     base=snaps[i];
@@ -177,156 +279,111 @@ function weeklyEstimate(pid){
     if(days>=7) break;
   }
   if(!base) return null;
-  const a=base.products[pid], b=last.products[pid];
+  const a=base.products[pid],b=last.products[pid];
   if(!a||!b||a.rc==null||b.rc==null) return null;
   const days=Math.max(1,(lastDate-new Date(base.date))/86400000);
-  const drc=Math.max(0,b.rc-a.rc);
-  const perDayReviews=drc/days;
-  return Math.round(perDayReviews*7/rate);
+  return Math.round(Math.max(0,b.rc-a.rc)/days*7/rate);
 }
-
 function render(){
   const P=LATEST.products;
   const ids=Object.keys(P);
-  // OZET kartlari
-  let totalOrder=0, nOrder=0, totalFav=0, ratingSum=0, ratingN=0;
+  let totalOrder=0,nOrder=0,totalFav=0,ratingSum=0,ratingN=0,totalRC=0;
   ids.forEach(id=>{const p=P[id];
     if(p.orderL3D){totalOrder+=p.orderL3D;nOrder++;}
     if(p.favorite)totalFav+=p.favorite;
     if(p.rating){ratingSum+=p.rating;ratingN++;}
+    if(p.ratingCount)totalRC+=p.ratingCount;
   });
   const monthly=Math.round(totalOrder/3*30);
+  const estTotal=Math.round(totalRC/rate);
   const cards=[
-    ["Toplam ürün",fmt(ids.length),"takip ediliyor"],
-    ["3 günde satışı görünen",fmt(nOrder)+" ürün","Trendyol rozeti olan"],
-    ["Toplam 3 günlük satış",fmt(totalOrder)+"+","görünen ürünlerin toplamı (alt sınır)"],
-    ["Tahmini aylık satış",fmt(monthly)+"+","3 günlükten uzatıldı"],
-    ["Toplam favori",fmt(totalFav),"tüm ürünler"],
-    ["Ortalama puan",(ratingN?(ratingSum/ratingN).toFixed(2):"–"),"5 üzerinden"],
+    ['Toplam ürün',fmt(ids.length),'takip ediliyor'],
+    ['3 günde satışı görünen',fmt(nOrder)+' ürün','Trendyol rozeti olan'],
+    ['Toplam 3 günlük satış',fmt(totalOrder)+'+','görünen ürünlerin toplamı (alt sınır)'],
+    ['Tahmini aylık satış',fmt(monthly)+'+','3 günlükten uzatıldı'],
+    ['Toplam yorum sayısı',fmt(totalRC)+'+','kümülatif satış göstergesi'],
+    ['Tahmini toplam satış',fmt(estTotal)+'+','yorum sayısından hesaplandı'],
+    ['Toplam favori',fmt(totalFav),'tüm ürünler'],
+    ['Ortalama puan',(ratingN?(ratingSum/ratingN).toFixed(2):'–'),'5 üzerinden'],
   ];
-  document.getElementById("cards").innerHTML=cards.map(c=>
-    `<div class="card"><div class="k">${c[0]}</div><div class="v">${c[1]}</div><div class="s">${c[2]}</div></div>`).join("");
-
-  document.getElementById("meta").innerHTML=
-    "Son güncelleme: <b>"+(LATEST.collectedAt||"–")+"</b><br>"+
-    (HIST.snapshots?HIST.snapshots.length:1)+" günlük veri · kaynak: Trendyol";
-
-  renderTable();
-  renderCharts();
-  renderTrend();
+  document.getElementById('cards').innerHTML=cards.map(c=>
+    `<div class="card"><div class="k">${c[0]}</div><div class="v">${c[1]}</div><div class="s">${c[2]}</div></div>`).join('');
+  document.getElementById('meta').innerHTML='Son güncelleme: <b>'+(LATEST.collectedAt||'–')+'</b><br>'+(HIST.snapshots?HIST.snapshots.length:1)+' günlük veri';
+  renderTable();renderCharts();renderTrend();
 }
-
-let sortKey="o3", sortDir=-1;
+let sortKey='o3',sortDir=-1;
 function renderTable(){
   const P=LATEST.products;
-  const q=(document.getElementById("q").value||"").toLowerCase().trim();
-  let rows=Object.keys(P).map(id=>{
-    const p=P[id];
-    return {id,name:p.name||id,p:p.price,ra:p.rating,rc:p.ratingCount,
-      o3:p.orderL3D,o3raw:p.orderL3D_raw,b:p.basket,f:p.favorite,
-      weekly:weeklyEstimate(id)};
-  });
-  if(q) rows=rows.filter(r=>r.name.toLowerCase().includes(q));
-  rows.sort((a,b)=>{
-    let x=a[sortKey],y=b[sortKey];
-    if(sortKey==="name"){return sortDir*String(x).localeCompare(String(y),"tr");}
-    x=(x==null?-1:x); y=(y==null?-1:y);
-    return sortDir*(x-y);
-  });
-  const slug=n=>String(n).toLowerCase()
-    .replace(/ı/g,"i").replace(/ş/g,"s").replace(/ğ/g,"g").replace(/ü/g,"u")
-    .replace(/ö/g,"o").replace(/ç/g,"c").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-  document.getElementById("tbody").innerHTML=rows.map(r=>{
-    const url=`${TY}/los-ojos/${slug(r.name)}-p-${r.id}`;
+  const q=(document.getElementById('q').value||'').toLowerCase().trim();
+  let rows=Object.keys(P).map(id=>{const p=P[id];return{id,name:p.name||id,p:p.price,ra:p.rating,rc:p.ratingCount,o3:p.orderL3D,o3raw:p.orderL3D_raw,b:p.basket,f:p.favorite,weekly:weeklyEstimate(id)};});
+  if(q)rows=rows.filter(r=>r.name.toLowerCase().includes(q));
+  rows.sort((a,b)=>{let x=a[sortKey],y=b[sortKey];if(sortKey==='name')return sortDir*String(x).localeCompare(String(y),'tr');x=(x==null?-1:x);y=(y==null?-1:y);return sortDir*(x-y);});
+  const slug=n=>String(n).toLowerCase().replace(/ı/g,'i').replace(/ş/g,'s').replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ö/g,'o').replace(/ç/g,'c').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  document.getElementById('tbody').innerHTML=rows.map(r=>{
+    const url=`https://www.trendyol.com/los-ojos/${slug(r.name)}-p-${r.id}`;
     const sale=r.o3?`<span class="pill sale">${r.o3raw||r.o3}</span>`:`<span class="pill none">–</span>`;
     const wk=r.weekly!=null?fmt(r.weekly):'<span class="muted">veri birikiyor</span>';
-    return `<tr>
-      <td class="l"><a href="${url}" target="_blank">${r.name}</a></td>
-      <td>${fmtTL(r.p)}</td>
-      <td>${r.ra!=null?r.ra:"–"}</td>
-      <td>${fmt(r.rc)}</td>
-      <td>${sale}</td>
-      <td class="hidem">${wk}</td>
-      <td class="hidem">${fmt(r.b)}</td>
-      <td>${fmt(r.f)}</td>
-    </tr>`;
-  }).join("");
+    return `<tr data-pid="${r.id}"><td class="l"><a href="${url}" target="_blank">${r.name}</a></td><td>${fmtTL(r.p)}</td><td>${r.ra!=null?r.ra:'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
+  }).join('');
 }
-
+const tip=document.getElementById('img-tip');
+const tipImg=document.getElementById('tip-img');
+const tipNoPic=document.getElementById('tip-nopic');
+const tipName=document.getElementById('tip-name');
+document.getElementById('tbody').addEventListener('mouseover',e=>{
+  const tr=e.target.closest('tr[data-pid]');
+  if(!tr){tip.style.display='none';return;}
+  const pid=tr.dataset.pid;
+  const imgUrl=IMG[pid]||(LATEST&&LATEST.products[pid]&&LATEST.products[pid].image)||null;
+  tipName.textContent=(LATEST&&LATEST.products[pid]&&LATEST.products[pid].name)||'';
+  if(imgUrl){tipImg.src=imgUrl;tipImg.style.display='block';tipNoPic.style.display='none';}
+  else{tipImg.style.display='none';tipNoPic.style.display='flex';}
+  tip.style.display='block';
+});
+document.getElementById('tbody').addEventListener('mousemove',e=>{
+  if(tip.style.display!=='block')return;
+  const x=e.clientX+16,y=e.clientY-20;
+  tip.style.left=(x+220>window.innerWidth?e.clientX-236:x)+'px';
+  tip.style.top=Math.max(8,y)+'px';
+});
+document.getElementById('tbody').addEventListener('mouseleave',()=>{tip.style.display='none';});
 let charts={};
 function makeBar(cid,labels,data,label,color){
   if(charts[cid])charts[cid].destroy();
-  charts[cid]=new Chart(document.getElementById(cid),{type:"bar",
-    data:{labels,datasets:[{label,data,backgroundColor:color}]},
-    options:{indexAxis:"y",plugins:{legend:{display:false}},
-      scales:{x:{ticks:{color:"#9aa0ab"},grid:{color:"#2c313c"}},
-              y:{ticks:{color:"#cfd3da",font:{size:11}},grid:{display:false}}}}});
+  charts[cid]=new Chart(document.getElementById(cid),{type:'bar',data:{labels,datasets:[{label,data,backgroundColor:color}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#9aa0ab'},grid:{color:'#2c313c'}},y:{ticks:{color:'#cfd3da',font:{size:11}},grid:{display:false}}}}});
 }
 function renderCharts(){
   const P=LATEST.products;
-  let arr=Object.keys(P).map(id=>({n:(P[id].name||id).replace("Los Ojos ",""),o3:P[id].orderL3D||0,f:P[id].favorite||0}));
+  let arr=Object.keys(P).map(id=>({n:(P[id].name||id).replace('Los Ojos ','').replace('Los Ojos x ','x '),o3:P[id].orderL3D||0,f:P[id].favorite||0}));
   const top=arr.filter(x=>x.o3>0).sort((a,b)=>b.o3-a.o3).slice(0,10);
-  makeBar("chTop",top.map(x=>x.n.slice(0,32)),top.map(x=>x.o3),"3 günlük satış","#ff6b35");
+  makeBar('chTop',top.map(x=>x.n.slice(0,32)),top.map(x=>x.o3),'3 günlük satış','#ff6b35');
   const fav=arr.sort((a,b)=>b.f-a.f).slice(0,10);
-  makeBar("chFav",fav.map(x=>x.n.slice(0,32)),fav.map(x=>x.f),"Favori","#4f9dff");
+  makeBar('chFav',fav.map(x=>x.n.slice(0,32)),fav.map(x=>x.f),'Favori','#4f9dff');
 }
-
 function renderTrend(){
   const snaps=(HIST&&HIST.snapshots)||[];
-  const note=document.getElementById("trendnote");
-  if(snaps.length<2){
-    note.innerHTML="📈 Şu an <b>"+snaps.length+" günlük</b> veri var. "+
-      "Program her gün çalıştıkça buraya marka geneli satış trendi ve günlük/haftalık tahminler çıkacak. "+
-      "Yarın ilk karşılaştırma oluşur.";
-  } else {
-    note.innerHTML="Aşağıdaki grafikler "+snaps.length+" günlük veriden hesaplanıyor.";
-  }
+  const note=document.getElementById('trendnote');
+  if(snaps.length<2){note.innerHTML='📈 Şu an <b>'+snaps.length+' günlük</b> veri var. Yarın ilk karşılaştırma oluşur.';}
+  else{note.innerHTML='Aşağıdaki grafikler '+snaps.length+' günlük veriden hesaplanıyor.';}
   const labels=snaps.map(s=>s.date);
   const totalRC=snaps.map(s=>Object.values(s.products).reduce((a,p)=>a+(p.rc||0),0));
   if(charts.chTrend)charts.chTrend.destroy();
-  charts.chTrend=new Chart(document.getElementById("chTrend"),{type:"line",
-    data:{labels,datasets:[{label:"Toplam yorum",data:totalRC,borderColor:"#3ecf8e",
-      backgroundColor:"rgba(62,207,142,.1)",fill:true,tension:.25}]},
-    options:{plugins:{legend:{display:false}},
-      scales:{x:{ticks:{color:"#9aa0ab"},grid:{color:"#2c313c"}},
-              y:{ticks:{color:"#9aa0ab"},grid:{color:"#2c313c"}}}}});
-  // gunluk tahmini satis
-  const daily=[], dlab=[];
+  charts.chTrend=new Chart(document.getElementById('chTrend'),{type:'line',data:{labels,datasets:[{label:'Toplam yorum',data:totalRC,borderColor:'#3ecf8e',backgroundColor:'rgba(62,207,142,.1)',fill:true,tension:.25}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#9aa0ab'},grid:{color:'#2c313c'}},y:{ticks:{color:'#9aa0ab'},grid:{color:'#2c313c'}}}}});
+  const daily=[],dlab=[];
   for(let i=1;i<snaps.length;i++){
     const days=Math.max(1,(new Date(snaps[i].date)-new Date(snaps[i-1].date))/86400000);
     let drc=0;
-    for(const id in snaps[i].products){
-      const a=snaps[i-1].products[id], b=snaps[i].products[id];
-      if(a&&b&&a.rc!=null&&b.rc!=null)drc+=Math.max(0,b.rc-a.rc);
-    }
-    daily.push(Math.round(drc/days/rate)); dlab.push(snaps[i].date);
+    for(const id in snaps[i].products){const a=snaps[i-1].products[id],b=snaps[i].products[id];if(a&&b&&a.rc!=null&&b.rc!=null)drc+=Math.max(0,b.rc-a.rc);}
+    daily.push(Math.round(drc/days/rate));dlab.push(snaps[i].date);
   }
   if(charts.chDaily)charts.chDaily.destroy();
-  charts.chDaily=new Chart(document.getElementById("chDaily"),{type:"bar",
-    data:{labels:dlab,datasets:[{label:"Tahmini günlük satış",data:daily,backgroundColor:"#ff6b35"}]},
-    options:{plugins:{legend:{display:false}},
-      scales:{x:{ticks:{color:"#9aa0ab"},grid:{display:false}},
-              y:{ticks:{color:"#9aa0ab"},grid:{color:"#2c313c"}}}}});
+  charts.chDaily=new Chart(document.getElementById('chDaily'),{type:'bar',data:{labels:dlab,datasets:[{label:'Tahmini günlük satış',data:daily,backgroundColor:'#ff6b35'}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#9aa0ab'},grid:{display:false}},y:{ticks:{color:'#9aa0ab'},grid:{color:'#2c313c'}}}}});
 }
-
-// olaylar
-document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
-  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-  document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
-  t.classList.add("active");
-  document.getElementById("p-"+t.dataset.p).classList.add("active");
-});
-document.getElementById("q").oninput=renderTable;
-document.getElementById("sortsel").onchange=e=>{sortKey=e.target.value;sortDir=(sortKey==="name"?1:-1);renderTable();};
-document.querySelectorAll("th").forEach(th=>th.onclick=()=>{
-  const k=th.dataset.s; if(!k)return;
-  if(sortKey===k)sortDir*=-1; else{sortKey=k;sortDir=(k==="name"?1:-1);}
-  renderTable();
-});
-document.getElementById("rate").oninput=e=>{
-  rate=e.target.value/100;document.getElementById("ratev").textContent="%"+e.target.value;
-  renderTable();renderTrend();
-};
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.getElementById('p-'+t.dataset.p).classList.add('active');});
+document.getElementById('q').oninput=renderTable;
+document.getElementById('sortsel').onchange=e=>{sortKey=e.target.value;sortDir=(sortKey==='name'?1:-1);renderTable();};
+document.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.s;if(!k)return;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=(k==='name'?1:-1);}renderTable();});
+document.getElementById('rate').oninput=e=>{rate=e.target.value/100;document.getElementById('ratev').textContent='%'+e.target.value;renderTable();renderTrend();};
 load();
 </script>
 </body>
