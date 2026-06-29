@@ -1,4 +1,4 @@
-# Los Ojos · Trendyol Satış Takip
+# MrChris · Trendyol Satış Takip
 
 Trendyol'daki **Los Ojos** markasının tüm ürünlerini izleyen, satış adetlerini
 (Trendyol'un "son 3 günde X+ sattı" rakamı), favori/sepet/yorum sayılarını toplayan
