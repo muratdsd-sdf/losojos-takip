@@ -238,7 +238,7 @@ const IMG={
 };
 const fmt=n=>n==null?'–':Number(n).toLocaleString('tr-TR');
 const fmtTL=n=>n==null?'–':Number(n).toLocaleString('tr-TR',{maximumFractionDigits:0})+' ₺';
-let LATEST=null,HIST=null,rate=0.08,sortKey='o3',sortDir=-1;
+let sortKey='o3',sortDir=-1;
 async function load(){
   try{
     LATEST=await(await fetch('latest.json?t='+Date.now())).json();
