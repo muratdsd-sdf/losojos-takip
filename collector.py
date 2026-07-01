@@ -29,6 +29,12 @@ BRAND_ID = 147875
 DATA_DIR = os.path.dirname(os.path.abspath(__file__))
 REQUEST_PAUSE = 0.8
 MAX_PAGES = 40
+# Sadece SATAN urunleri takip et: katalogu "cok satanlar" (BEST_SELLER) sirasiyla
+# cek ve yalnizca ilk TOP_SELLER_PAGES sayfayi al (~24 urun/sayfa). Satan urunler
+# basta gelir, olu stok en sonda kalir ve hic cekilmez. Boylece istek sayisi
+# sabit ve dusuk kalir (residential proxy pahali; her istek 10-25 kredi) -> her
+# gun toplama bedava kotalara sigar. Daha fazla/az urun icin bu sayiyi degistir.
+TOP_SELLER_PAGES = 4
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
@@ -211,15 +217,16 @@ def _find_products(o, d=0):
 
 
 def fetch_catalog_html(products):
-    """API ise yaramazsa marka sayfasi HTML'ini gezerek urunleri toplar.
-    Scrape.do render'i bazen gecici hata (404/502) veya ayni sayfayi/bos icerik
-    dondurebiliyor; bu yuzden bir sayfa "basarisiz" gorununce hemen pes etmek
-    yerine birkac kez daha denenir, yoksa katalog erken kesilebiliyor."""
+    """Marka sayfasini "cok satanlar" (BEST_SELLER) sirasiyla gezerek urunleri
+    toplar. Sadece ilk TOP_SELLER_PAGES sayfa alinir; boylece en cok satan urunler
+    toplanir, satmayan olu stok hic cekilmez ve istek/kredi maliyeti dusuk kalir.
+    Proxy bazen gecici hata (404/502) veya bos icerik dondurebiliyor; bu yuzden bir
+    sayfa "basarisiz" gorununce hemen pes etmek yerine birkac kez daha denenir."""
     pi = 1
     retries = 0
     MAX_RETRIES = 3
-    while pi <= MAX_PAGES:
-        url = f"https://www.trendyol.com/los-ojos-x-b147875?pi={pi}"
+    while pi <= TOP_SELLER_PAGES:
+        url = f"https://www.trendyol.com/los-ojos-x-b147875?sst=BEST_SELLER&pi={pi}"
         try:
             html = _get(url, validate=lambda b: "__single-search-result__PROPS" in b)
             ps = _extract_props_json(html)
