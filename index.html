@@ -154,6 +154,7 @@ footer{text-align:center;color:#9aa7bd;font-size:11.5px;padding:24px 12px 36px;l
   <div class="tabs">
     <button class="tab active" data-p="urunler">📋 Ürünler</button>
     <button class="tab" data-p="yeni">🆕 Yeni Ürünler</button>
+    <button class="tab" data-p="radar">🔎 Radar</button>
     <button class="tab" data-p="ozet">📊 Grafikler</button>
     <button class="tab" data-p="trend">📈 Trend</button>
   </div>
@@ -198,6 +199,11 @@ footer{text-align:center;color:#9aa7bd;font-size:11.5px;padding:24px 12px 36px;l
         <th data-s="f">Favori<span class="arrow"></span></th>
       </tr></thead><tbody id="tbody-yeni"></tbody></table>
     </div>
+  </div>
+
+  <div class="panel" id="p-radar">
+    <div class="note">🔎 <b>Radar</b> — rakibin hamlelerini yakalar: satış hızı artan/azalan ürünler, fiyat değişiklikleri (kampanya şüphesi) ve listeden çıkan ürünler. Not: "listeden çıktı" stok bitişi <i>veya</i> satış sıralamasında gerileme olabilir.</div>
+    <div id="radar-content"></div>
   </div>
 
   <div class="panel" id="p-ozet">
@@ -289,7 +295,7 @@ function render(){
   const nd=HIST.snapshots?HIST.snapshots.length:1;
   document.getElementById('meta').innerHTML=
     `<span class="chip live">Güncel: <b>${LATEST.collectedAt||'–'}</b></span><span class="chip"><b>${nd}</b> günlük veri</span>`;
-  renderTable();renderCharts();renderTrend();renderYeni();
+  renderTable();renderCharts();renderTrend();renderYeni();renderRadar();
 }
 function rowHtml(r,cols){
   const url=`https://www.trendyol.com/los-ojos/${slug(r.name)}-p-${r.id}`;
@@ -340,6 +346,63 @@ function renderYeni(){
     rows.map(r=>rowHtml(r,['date','p','rc','ra','o3','weekly','f'])).join('')||
     '<tr><td colspan="8" class="empty">Şu an yeni ürün görünmüyor.</td></tr>';
   updateSortArrows(document.querySelector('#p-yeni thead'),yeniSortKey,yeniSortDir);
+}
+function renderRadar(){
+  const el=document.getElementById('radar-content');
+  const snaps=HIST?.snapshots||[];
+  if(snaps.length<2){el.innerHTML='<div class="chartbox"><div class="empty">Radar için en az 2 günlük veri gerekir — veri biriktikçe burası kendiliğinden dolacak.</div></div>';return;}
+  const nameOf=id=>String((LATEST.products[id]?.name)||(HIST.names?.[id])||id).replace(/^Los Ojos ?x? ?/i,'');
+  const urlOf=id=>`https://www.trendyol.com/los-ojos/${slug(nameOf(id))}-p-${id}`;
+  const dayDiff=(a,b)=>Math.max(1,(new Date(b.date)-new Date(a.date))/86400000);
+  const last=snaps[snaps.length-1],prev=snaps[snaps.length-2],prev2=snaps.length>2?snaps[snaps.length-3]:null;
+  const cur={},old={};
+  for(const id in last.products){const a=prev.products[id],b=last.products[id];
+    if(a&&b&&a.rc!=null&&b.rc!=null)cur[id]=Math.max(0,b.rc-a.rc)/dayDiff(prev,last);}
+  if(prev2)for(const id in prev.products){const a=prev2.products[id],b=prev.products[id];
+    if(a&&b&&a.rc!=null&&b.rc!=null)old[id]=Math.max(0,b.rc-a.rc)/dayDiff(prev2,prev);}
+  const est=v=>fmt(Math.round(v/rate));
+  const nameCell=id=>`<td class="l"><a href="${urlOf(id)}" target="_blank" style="font-weight:600;color:var(--ink)">${nameOf(id)}</a></td>`;
+  const up='color:#047857;background:#d1fae5',dn='color:#b91c1c;background:#fee2e2';
+  let html='';
+
+  /* 1) Satis hizi yukselenler / dusenler */
+  if(prev2){
+    const movers=Object.keys(cur).filter(id=>(cur[id]||0)>0||(old[id]||0)>0)
+      .map(id=>({id,c:cur[id]||0,o:old[id]||0,d:(cur[id]||0)-(old[id]||0)}));
+    const mrow=x=>`<tr>${nameCell(x.id)}<td>~${est(x.o)}/gün</td><td>~${est(x.c)}/gün</td><td><span class="delta" style="${x.d>0?up:dn}">${x.d>0?'▲':'▼'} ${est(Math.abs(x.d))}</span></td></tr>`;
+    const mhead='<tr><th class="l">Ürün</th><th>Önceki Hız</th><th>Şimdiki Hız</th><th>Değişim</th></tr>';
+    const ris=[...movers].sort((a,b)=>b.d-a.d).filter(x=>x.d>0).slice(0,10);
+    const fal=[...movers].sort((a,b)=>a.d-b.d).filter(x=>x.d<0).slice(0,10);
+    html+=`<div class="chartbox"><b>🚀 Satış hızı YÜKSELENLER (tahmini)</b>${ris.length?`<div class="table-wrap" style="box-shadow:none"><table><thead>${mhead}</thead><tbody>${ris.map(mrow).join('')}</tbody></table></div>`:'<div class="empty">Şu an belirgin yükselen yok.</div>'}</div>`;
+    html+=`<div class="chartbox"><b>📉 Satış hızı DÜŞENLER (tahmini)</b>${fal.length?`<div class="table-wrap" style="box-shadow:none"><table><thead>${mhead}</thead><tbody>${fal.map(mrow).join('')}</tbody></table></div>`:'<div class="empty">Şu an belirgin düşen yok.</div>'}</div>`;
+  }else{
+    html+='<div class="chartbox"><b>🚀 Yükselenler / Düşenler</b><div class="empty">Hız kıyaslaması için 3. gün verisi bekleniyor.</div></div>';
+  }
+
+  /* 2) Fiyat hamleleri (kampanya dedektoru) */
+  const events=[];
+  for(let i=snaps.length-1;i>=1&&events.length<20;i--){
+    const A=snaps[i-1],B=snaps[i];
+    for(const id in B.products){
+      const a=A.products[id],b=B.products[id];
+      if(a&&b&&a.p&&b.p&&Math.abs(b.p-a.p)/a.p>=0.05){
+        const salesUp=(cur[id]!=null&&old[id]!=null&&cur[id]>old[id]*1.3);
+        events.push({date:B.date,id,op:a.p,np:b.p,pct:Math.round((b.p-a.p)/a.p*100),fire:(b.p<a.p&&salesUp)});
+      }
+    }
+  }
+  events.sort((a,b)=>b.date.localeCompare(a.date)||Math.abs(b.pct)-Math.abs(a.pct));
+  const shown=events.slice(0,30);
+  const erow=e=>`<tr><td class="datecell">${e.date}</td>${nameCell(e.id)}<td>${fmtTL(e.op)} → <b>${fmtTL(e.np)}</b></td><td><span class="delta" style="${e.pct<0?up:dn}">${e.pct>0?'+':''}${e.pct}%</span></td><td class="l">${e.fire?'🔥 indirim sonrası satış artmış — kampanya şüphesi':''}</td></tr>`;
+  const etitle=events.length>30?`💰 Fiyat hamleleri — toplam ${events.length} değişim, en büyük 30'u`:'💰 Fiyat hamleleri (%5 ve üzeri değişimler)';
+  html+=`<div class="chartbox"><b>${etitle}</b>${events.length?`<div class="table-wrap" style="box-shadow:none"><table><thead><tr><th class="l">Tarih</th><th class="l">Ürün</th><th>Fiyat</th><th>Değişim</th><th class="l">Not</th></tr></thead><tbody>${shown.map(erow).join('')}</tbody></table></div>`:'<div class="empty">Henüz kayda değer fiyat değişikliği yakalanmadı.</div>'}</div>`;
+
+  /* 3) Listeden cikanlar (stok radari) */
+  const dropped=Object.keys(prev.products).filter(id=>!last.products[id]).slice(0,30);
+  const drow=id=>{const q=prev.products[id];return `<tr>${nameCell(id)}<td>${fmtTL(q.p)}</td><td>${fmt(q.rc)}</td><td>${fmt(q.f)}</td></tr>`;};
+  html+=`<div class="chartbox"><b>📦 Listeden çıkanlar (stok bitmiş ya da gerilemiş olabilir)</b>${dropped.length?`<div class="table-wrap" style="box-shadow:none"><table><thead><tr><th class="l">Ürün</th><th>Son Fiyat</th><th>Yorum</th><th>Favori</th></tr></thead><tbody>${dropped.map(drow).join('')}</tbody></table></div>`:'<div class="empty">Bugün listeden çıkan ürün yok. 👍</div>'}</div>`;
+
+  el.innerHTML=html;
 }
 function updateSortArrows(theadEl,key,dir){
   theadEl.querySelectorAll('th[data-s]').forEach(th=>{
@@ -423,7 +486,7 @@ document.querySelectorAll('#p-yeni th[data-s]').forEach(th=>th.onclick=()=>{
   if(yeniSortKey===k)yeniSortDir*=-1;else{yeniSortKey=k;yeniSortDir=k==='name'?1:-1;}
   renderYeni();
 });
-document.getElementById('rate').oninput=e=>{rate=e.target.value/100;document.getElementById('ratev').textContent='%'+e.target.value;renderTable();renderYeni();renderTrend();};
+document.getElementById('rate').oninput=e=>{rate=e.target.value/100;document.getElementById('ratev').textContent='%'+e.target.value;renderTable();renderYeni();renderTrend();renderRadar();};
 load();
 </script>
 </body>
