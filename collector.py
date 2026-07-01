@@ -216,10 +216,49 @@ def _find_products(o, d=0):
     return None
 
 
+def _merge_page(products, page):
+    """Bir listeleme sayfasindaki urunleri products sozlugune ekler (id'ye gore
+    tekillestirir). Eklenen YENI urun sayisini doner."""
+    added = 0
+    for p in page:
+        pid = p.get("id")
+        if pid is None or pid in products:
+            continue
+        pr = p.get("price") or {}
+        price = None
+        if isinstance(pr, dict):
+            price = (pr.get("sellingPrice") or pr.get("discountedPrice") or pr.get("originalPrice"))
+        rating = p.get("ratingScore") or {}
+        avg = rating.get("averageRating") if isinstance(rating, dict) else None
+        imgs = p.get("images") or []
+        img = imgs[0] if imgs else None
+        if img and not img.startswith("http"):
+            img = "https://cdn.dsmcdn.com/mnresize/400/-/" + img.lstrip("/")
+        # Sosyal kanit (favori/siparis) zaten katalog sayfasinda gomulu geliyor
+        # (socialProof); ayri apigw sosyal-proof API'sine gerek yok.
+        fav = order = order_raw = None
+        for sp in (p.get("socialProof") or []):
+            key = sp.get("key"); val = sp.get("value")
+            if key == "favoriteCount":
+                fav, _ = parse_tr_number(val)
+            elif key == "orderCount":
+                order, _ = parse_tr_number(val); order_raw = val
+        products[pid] = {
+            "id": pid, "name": (p.get("name") or "").strip(), "price": price,
+            "ratingCount": rating.get("totalCount") if isinstance(rating, dict) else None,
+            "rating": round(avg, 2) if avg else None, "merchantId": p.get("merchantId"),
+            "image": img, "favorite": fav, "order": order, "order_raw": order_raw,
+        }
+        added += 1
+    return added
+
+
 def fetch_catalog_html(products):
     """Marka sayfasini "cok satanlar" (BEST_SELLER) sirasiyla gezerek urunleri
     toplar. Sadece ilk TOP_SELLER_PAGES sayfa alinir; boylece en cok satan urunler
     toplanir, satmayan olu stok hic cekilmez ve istek/kredi maliyeti dusuk kalir.
+    Ek olarak "en yeniler" siralamasiyla 1 sayfa daha cekilir ki cok-satan
+    listesine girmeyen yepyeni urunler de yakalansin (panel "Yeni Urunler" sekmesi).
     Proxy bazen gecici hata (404/502) veya bos icerik dondurebiliyor; bu yuzden bir
     sayfa "basarisiz" gorununce hemen pes etmek yerine birkac kez daha denenir."""
     pi = 1
@@ -244,38 +283,9 @@ def fetch_catalog_html(products):
                 continue
             print(f"  ! (html) sayfa {pi} alinamadi: {e}")
             break
-        before = len(products)
-        for p in page:
-            pid = p.get("id")
-            if pid is None or pid in products:
-                continue
-            pr = p.get("price") or {}
-            price = None
-            if isinstance(pr, dict):
-                price = (pr.get("sellingPrice") or pr.get("discountedPrice") or pr.get("originalPrice"))
-            rating = p.get("ratingScore") or {}
-            avg = rating.get("averageRating") if isinstance(rating, dict) else None
-            imgs = p.get("images") or []
-            img = imgs[0] if imgs else None
-            if img and not img.startswith("http"):
-                img = "https://cdn.dsmcdn.com/mnresize/400/-/" + img.lstrip("/")
-            # Sosyal kanit (favori/siparis) zaten katalog sayfasinda gomulu geliyor
-            # (socialProof); ayri apigw sosyal-proof API'sine gerek yok.
-            fav = order = order_raw = None
-            for sp in (p.get("socialProof") or []):
-                key = sp.get("key"); val = sp.get("value")
-                if key == "favoriteCount":
-                    fav, _ = parse_tr_number(val)
-                elif key == "orderCount":
-                    order, _ = parse_tr_number(val); order_raw = val
-            products[pid] = {
-                "id": pid, "name": (p.get("name") or "").strip(), "price": price,
-                "ratingCount": rating.get("totalCount") if isinstance(rating, dict) else None,
-                "rating": round(avg, 2) if avg else None, "merchantId": p.get("merchantId"),
-                "image": img, "favorite": fav, "order": order, "order_raw": order_raw,
-            }
+        added = _merge_page(products, page)
         print(f"  (html) sayfa {pi}: toplam {len(products)} urun")
-        if len(products) == before:
+        if added == 0:
             if retries < MAX_RETRIES:
                 retries += 1
                 print(f"  ! sayfa {pi} yeni urun getirmedi, tekrar deneniyor ({retries}/{MAX_RETRIES})...")
@@ -285,6 +295,20 @@ def fetch_catalog_html(products):
         retries = 0
         pi += 1
         time.sleep(REQUEST_PAUSE)
+
+    # YENI URUNLER SAYFASI (best-effort, +1 istek): cok-satan ilk sayfalarina
+    # girmeyen yepyeni urunleri yakalamak icin "en yeniler" (MOST_RECENT)
+    # siralamasiyla 1 sayfa daha cekilir; satis/favori verileri de ayni sayfadan
+    # gelir. Basarisiz olursa toplama BOZULMAZ, sadece not dusulur.
+    try:
+        url = f"https://www.trendyol.com/los-ojos-x-b147875?sst=MOST_RECENT&pi=1"
+        html = _get(url, validate=lambda b: "__single-search-result__PROPS" in b)
+        ps = _extract_props_json(html)
+        page = (_find_products(json.loads(ps)) or []) if ps else []
+        added = _merge_page(products, page)
+        print(f"  (html) en-yeniler sayfasi: +{added} yeni urun (toplam {len(products)})")
+    except Exception as e:
+        print(f"  ! en-yeniler sayfasi alinamadi (toplama devam ediyor): {e}")
     return products
 
 
@@ -372,11 +396,23 @@ def main():
     old_latest = load_json(os.path.join(DATA_DIR, "latest.json"), {})
     old_products = old_latest.get("products", {})
 
+    # firstSeen guvencesi: bir urun bir gun listeden dusup ertesi gun geri
+    # gelirse latest.json'daki kaydi kaybolur ve yanlislikla "bugun ilk kez
+    # gorunmus" sayilirdi (sahte YENI rozeti). Bu yuzden gecmis arsivden (history)
+    # her urunun GERCEK ilk gorulme tarihi cikarilir ve yedek olarak kullanilir.
+    history = load_json(os.path.join(DATA_DIR, "history.json"),
+                        {"brand": "Los Ojos", "snapshots": []})
+    hist_first = {}
+    for s in sorted(history.get("snapshots", []), key=lambda x: x.get("date", "")):
+        for hp in s.get("products", {}):
+            hist_first.setdefault(hp, s.get("date"))
+
     snapshot = {}
     for pid, info in catalog.items():
         pid_str = str(pid)
-        # firstSeen: eski kayıtta varsa koru, yoksa bugün
-        first_seen = old_products.get(pid_str, {}).get("firstSeen") or today
+        # firstSeen: eski kayitta varsa koru, yoksa arsivdeki en eski tarih, o da yoksa bugun
+        first_seen = (old_products.get(pid_str, {}).get("firstSeen")
+                      or hist_first.get(pid_str) or today)
         snapshot[pid_str] = {
             "name": info["name"], "price": info["price"],
             "ratingCount": info["ratingCount"], "rating": info["rating"],
@@ -390,8 +426,6 @@ def main():
               {"collectedAt": today, "brand": "Los Ojos",
                "productCount": len(catalog), "products": snapshot})
 
-    history = load_json(os.path.join(DATA_DIR, "history.json"),
-                        {"brand": "Los Ojos", "snapshots": []})
     history["snapshots"] = [s for s in history["snapshots"] if s.get("date") != today]
     compact = {"date": today, "products": {}}
     for pid, pr in snapshot.items():

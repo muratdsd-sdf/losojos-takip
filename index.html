@@ -3,87 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MrChris · Satış Takip</title>
+<title>MrChris · Satış Takip Paneli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
+:root{
+  --bg:#f4f6fa; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e8ecf3;
+  --accent:#f27a1a; --accent-2:#ff9d4d; --green:#10b981; --red:#ef4444; --blue:#3b82f6;
+  --shadow:0 1px 2px rgba(15,23,42,.04),0 4px 18px rgba(15,23,42,.06);
+  --radius:16px;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f0f2f5;color:#1a1a2e;font-size:14px}
-header{background:linear-gradient(135deg,#1a1a2e,#2d2d52);padding:16px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.15)}
-.logo{font-size:22px;font-weight:800;color:#fff;letter-spacing:.5px}.logo span{color:#ff5b5b}
-.meta{margin-left:auto;font-size:12px;color:#b9bcd0;text-align:right;line-height:1.5}
-.meta b{color:#fff}
-.wrap{max-width:1240px;margin:0 auto;padding:20px 16px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
-.stat{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.05);border-top:3px solid #6c8fff}
-.stat:nth-child(2){border-top-color:#ff8a5b}
-.stat:nth-child(3){border-top-color:#ff5b5b}
-.stat:nth-child(4){border-top-color:#22c55e}
-.stat:nth-child(5){border-top-color:#a855f7}
-.stat:nth-child(6){border-top-color:#ec4899}
-.stat:nth-child(7){border-top-color:#eab308}
-.stat .k{font-size:11px;color:#999;margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px;font-weight:600}
-.stat .v{font-size:22px;font-weight:800;color:#1a1a2e}
-.stat .s{font-size:11px;color:#bbb;margin-top:3px}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased}
+
+/* ---------- header ---------- */
+header{background:linear-gradient(120deg,#0b1220 0%,#152238 55%,#1d2f54 100%);padding:14px 22px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:50;box-shadow:0 4px 24px rgba(2,6,23,.35)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--accent),#ff5b5b);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:15px;letter-spacing:-.5px;box-shadow:0 4px 16px rgba(242,122,26,.45)}
+.logo{font-size:20px;font-weight:800;color:#fff;letter-spacing:.2px;line-height:1.1}
+.logo span{color:var(--accent-2)}
+.brand-sub{font-size:11px;color:#8ea2c6;margin-top:2px}
+.meta{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.chip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);color:#dbe4f5;font-size:11.5px;font-weight:500;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.chip b{color:#fff;font-weight:700}
+.chip.live::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:7px;box-shadow:0 0 0 3px rgba(16,185,129,.22)}
+
+.wrap{max-width:1280px;margin:0 auto;padding:22px 18px}
+
+/* ---------- stat cards ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px;margin-bottom:18px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center;transition:transform .15s ease,box-shadow .15s ease}
+.stat:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(15,23,42,.10)}
+.stat .ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;flex:0 0 42px}
+.stat .v{font-size:20px;font-weight:800;letter-spacing:-.4px;line-height:1.15}
+.stat .k{font-size:11px;color:var(--muted);font-weight:600;margin-top:2px}
+
+/* ---------- tabs ---------- */
+.tabs{display:flex;gap:4px;margin-bottom:16px;background:var(--card);border:1px solid var(--line);padding:5px;border-radius:14px;box-shadow:var(--shadow);width:max-content;max-width:100%;overflow-x:auto}
+.tab{padding:9px 18px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;border:none;background:none;font-family:inherit;transition:.15s}
+.tab:hover{color:var(--ink);background:#f1f4f9}
+.tab.active{background:linear-gradient(135deg,var(--accent),#ff8c38);color:#fff;box-shadow:0 3px 12px rgba(242,122,26,.38)}
+
+.panel{display:none}.panel.active{display:block;animation:fade .22s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+/* ---------- controls ---------- */
 .controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;align-items:center}
-input[type=text]{border:1px solid #dde1e7;border-radius:10px;padding:10px 14px;font-size:13px;background:#fff;outline:none;min-width:220px;transition:.15s}
-input[type=text]:focus{border-color:#6c8fff;box-shadow:0 0 0 3px rgba(108,143,255,.12)}
-select{border:1px solid #dde1e7;border-radius:10px;padding:10px 12px;font-size:13px;background:#fff;outline:none;cursor:pointer}
-.rate-row{display:flex;align-items:center;gap:8px;font-size:12px;color:#888;background:#fff;padding:8px 12px;border-radius:10px;border:1px solid #e2e5ea}
-.table-wrap{overflow-x:auto;border-radius:14px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.search{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 12px;min-width:250px;box-shadow:var(--shadow);transition:.15s}
+.search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(242,122,26,.13)}
+.search span{font-size:14px;opacity:.55}
+.search input{border:none;outline:none;background:none;padding:11px 0;font-size:13px;font-family:inherit;flex:1;color:var(--ink)}
+select{border:1px solid var(--line);border-radius:12px;padding:11px 12px;font-size:13px;font-family:inherit;background:var(--card);outline:none;cursor:pointer;box-shadow:var(--shadow);color:var(--ink)}
+.rate-row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);background:var(--card);padding:9px 13px;border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.rate-row input[type=range]{width:90px;accent-color:var(--accent)}
+.rate-row b{color:var(--ink)}
+
+/* ---------- table ---------- */
+.table-wrap{overflow-x:auto;border-radius:var(--radius);background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
 table{width:100%;border-collapse:collapse}
-th{background:#f8f9fb;color:#888;font-size:11px;font-weight:700;padding:12px;text-align:right;border-bottom:2px solid #eef0f3;cursor:pointer;user-select:none;white-space:nowrap;text-transform:uppercase;letter-spacing:.3px;position:relative}
-th:hover{color:#6c8fff}
+th{background:#f8fafc;color:#7c8aa0;font-size:10.5px;font-weight:700;padding:12px;text-align:right;border-bottom:1px solid var(--line);cursor:pointer;user-select:none;white-space:nowrap;text-transform:uppercase;letter-spacing:.4px}
+th:hover{color:var(--accent)}
 th.l{text-align:left}
-td{padding:10px 12px;text-align:right;border-bottom:1px solid #f3f4f7;font-size:13px;white-space:nowrap;color:#333}
+td{padding:11px 12px;text-align:right;border-bottom:1px solid #f2f5f9;font-size:13px;white-space:nowrap;color:#28344a}
 td.l{text-align:left}
 tr:last-child td{border-bottom:none}
 tbody tr{transition:background .12s}
-tbody tr:hover td{background:#f6f8ff}
+tbody tr:hover td{background:#fff8f1}
 .pcell{display:flex;align-items:center;gap:11px}
-.thumb{width:46px;height:46px;border-radius:9px;object-fit:cover;flex:0 0 46px;background:#f0f2f5;border:1px solid #e8eaee}
-.ph{width:46px;height:46px;border-radius:9px;flex:0 0 46px;background:#f0f2f5;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:18px}
-.pname{font-weight:600;color:#1a1a2e;font-size:13px;line-height:1.35;max-width:260px;word-break:break-word;white-space:normal}
+.thumb{width:52px;height:52px;border-radius:11px;object-fit:cover;flex:0 0 52px;background:#eef1f6;border:1px solid var(--line)}
+.ph{width:52px;height:52px;border-radius:11px;flex:0 0 52px;background:#eef1f6;display:flex;align-items:center;justify-content:center;color:#c3ccd9;font-size:20px}
+.pname{font-weight:600;color:var(--ink);font-size:13px;line-height:1.35;max-width:290px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 a{text-decoration:none}
-a:hover .pname{color:#6c8fff}
-.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
-.badge.sale{background:#ffeae6;color:#e8442e}
-.badge.none{color:#ccc}
-.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-.tab{padding:9px 18px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;border:1px solid #e2e5ea;background:#fff;color:#777;transition:.15s}
-.tab:hover{border-color:#6c8fff;color:#6c8fff}
-.tab.active{background:#1a1a2e;color:#fff;border-color:#1a1a2e}
-.panel{display:none}.panel.active{display:block;animation:fade .2s}
-@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-.chartbox{background:#fff;border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.chartbox b{font-size:13px;color:#444;display:block;margin-bottom:12px}
-.note{background:#eef3ff;border-left:3px solid #6c8fff;border-radius:10px;padding:13px 16px;color:#556;font-size:12.5px;line-height:1.6;margin-bottom:16px}
-.err{background:#fff5f5;border:1px solid #fdd;color:#c00;padding:12px;border-radius:10px;margin-bottom:12px}
-#img-tip{display:none;position:fixed;z-index:999;pointer-events:none;background:#fff;border:1px solid #e2e5ea;border-radius:14px;padding:8px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+a:hover .pname{color:var(--accent)}
+.badge{display:inline-block;padding:4px 11px;border-radius:999px;font-size:11px;font-weight:700}
+.badge.sale{background:linear-gradient(135deg,#fff0e2,#ffe4cc);color:#c2570b;border:1px solid #ffd9b3}
+.badge.none{color:#c3ccd9}
+.badge.new{background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;font-size:9.5px;padding:3px 8px;margin-left:6px;vertical-align:2px;letter-spacing:.3px}
+.delta{font-size:10.5px;font-weight:700;margin-left:6px;padding:2.5px 7px;border-radius:7px;vertical-align:1px}
+.delta.up{color:#b91c1c;background:#fee2e2}
+.delta.down{color:#047857;background:#d1fae5}
+.dim{color:#b6c0cf}
+.datecell{color:var(--muted);font-size:12px}
+
+/* ---------- notes / charts ---------- */
+.note{background:linear-gradient(135deg,#fff7ee,#fff);border:1px solid #ffe1c2;border-radius:13px;padding:13px 16px;color:#5d6577;font-size:12.5px;line-height:1.65;margin-bottom:14px}
+.note b{color:var(--ink)}
+.err{background:#fff5f5;border:1px solid #fdd;color:#c00;padding:12px;border-radius:12px;margin-bottom:12px}
+.chartbox{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px;box-shadow:var(--shadow)}
+.chartbox b{font-size:13px;color:var(--ink);display:block;margin-bottom:12px}
+.empty{padding:44px 16px;text-align:center;color:var(--muted);font-size:13px}
+
+#img-tip{display:none;position:fixed;z-index:999;pointer-events:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:0 12px 36px rgba(15,23,42,.22)}
 #img-tip img{width:190px;height:190px;object-fit:cover;border-radius:10px;display:block}
-#img-tip .tip-name{font-size:11px;color:#888;margin-top:7px;max-width:190px;word-break:break-word;line-height:1.4}
-.arrow{font-size:9px;margin-left:3px;opacity:.65;display:inline-block}
+#img-tip .tip-name{font-size:11px;color:#7c8aa0;margin-top:7px;max-width:190px;word-break:break-word;line-height:1.4}
+.arrow{font-size:9px;margin-left:3px;opacity:.7;display:inline-block}
+footer{text-align:center;color:#9aa7bd;font-size:11.5px;padding:24px 12px 36px;line-height:1.7}
+
+/* ---------- mobile ---------- */
 @media(max-width:640px){
   .hidem{display:none}
   .wrap{padding:14px 10px}
-  .stat .v{font-size:18px}
-  .stat{padding:12px 14px}
-  header{padding:12px 14px;gap:8px}
-  .logo{font-size:19px}
-  .meta{font-size:10.5px}
+  header{padding:11px 13px;gap:9px}
+  .brand-mark{width:36px;height:36px;font-size:13px;border-radius:11px}
+  .logo{font-size:17px}.brand-sub{font-size:10px}
+  .chip{font-size:10px;padding:5px 9px}
+  .stats{grid-template-columns:1fr 1fr;gap:9px}
+  .stat{padding:12px;gap:9px}
+  .stat .ic{width:36px;height:36px;font-size:16px;flex-basis:36px}
+  .stat .v{font-size:16px}
   .controls{flex-direction:column;align-items:stretch}
-  .controls input[type=text],.controls select{width:100%;min-width:0}
-  .rate-row{width:100%;justify-content:space-between}
-  .tabs{gap:6px}
-  .tab{flex:1 1 auto;text-align:center;padding:9px 6px;font-size:12px}
+  .search{min-width:0}
+  .controls select{width:100%}
+  .rate-row{justify-content:space-between}
+  .tabs{width:100%}
+  .tab{flex:1 1 auto;text-align:center;padding:9px 5px;font-size:11.5px}
   th,td{padding:9px 8px;font-size:12px}
-  .pname{max-width:140px;font-size:12px}
-  .thumb,.ph{width:38px;height:38px;flex:0 0 38px}
+  .pname{max-width:150px;font-size:12px}
+  .thumb,.ph{width:40px;height:40px;flex-basis:40px;border-radius:9px}
   .pcell{gap:8px}
   #img-tip{display:none!important}
 }
 @media(max-width:420px){
   .hidem2{display:none}
-  .pname{max-width:110px}
+  .pname{max-width:118px}
 }
 </style>
 </head>
@@ -93,22 +137,30 @@ a:hover .pname{color:#6c8fff}
   <div class="tip-name" id="tip-name"></div>
 </div>
 <header>
-  <div class="logo">Mr<span>Chris</span></div>
-  <div class="meta" id="meta">Yükleniyor…</div>
+  <div class="brand">
+    <div class="brand-mark">MC</div>
+    <div>
+      <div class="logo">Mr<span>Chris</span></div>
+      <div class="brand-sub">Trendyol Mağaza Takip Paneli</div>
+    </div>
+  </div>
+  <div class="meta" id="meta"><span class="chip">Yükleniyor…</span></div>
 </header>
+
 <div class="wrap">
   <div id="err"></div>
   <div class="stats" id="stats"></div>
+
   <div class="tabs">
-    <div class="tab active" data-p="urunler">Ürün Listesi</div>
-    <div class="tab" data-p="yeni">🆕 Yeni Ürünler</div>
-    <div class="tab" data-p="ozet">Özet & Grafikler</div>
-    <div class="tab" data-p="trend">Trend</div>
+    <button class="tab active" data-p="urunler">📋 Ürünler</button>
+    <button class="tab" data-p="yeni">🆕 Yeni Ürünler</button>
+    <button class="tab" data-p="ozet">📊 Grafikler</button>
+    <button class="tab" data-p="trend">📈 Trend</button>
   </div>
 
   <div class="panel active" id="p-urunler">
     <div class="controls">
-      <input type="text" id="q" placeholder="🔍 Ürün ara…">
+      <div class="search"><span>🔍</span><input type="text" id="q" placeholder="Ürün ara…"></div>
       <select id="sortsel">
         <option value="o3">Sipariş ↓</option>
         <option value="weekly">Haftalık Tahmin ↓</option>
@@ -117,7 +169,7 @@ a:hover .pname{color:#6c8fff}
         <option value="p">Fiyat ↓</option>
         <option value="ra">Puan ↓</option>
       </select>
-      <div class="rate-row">Yorum→satış oranı:<input type="range" id="rate" min="3" max="25" value="8" step="1" style="width:90px"><span id="ratev">%8</span></div>
+      <div class="rate-row" title="Haftalık satış tahmini için: her 100 alıcıdan kaçının yorum yazdığı varsayımı">Yorum→satış oranı <input type="range" id="rate" min="3" max="25" value="8" step="1"><b id="ratev">%8</b></div>
     </div>
     <div class="table-wrap">
     <table><thead><tr>
@@ -126,173 +178,56 @@ a:hover .pname{color:#6c8fff}
       <th data-s="ra" class="hidem2">Puan<span class="arrow"></span></th>
       <th data-s="rc">Yorum<span class="arrow"></span></th>
       <th data-s="o3">Sipariş<span class="arrow"></span></th>
-      <th data-s="weekly" class="hidem">Haftalık (tahmin)<span class="arrow"></span></th>
+      <th data-s="weekly" class="hidem">Haftalık Tahmin<span class="arrow"></span></th>
       <th data-s="f">Favori<span class="arrow"></span></th>
     </tr></thead><tbody id="tbody"></tbody></table>
     </div>
   </div>
 
   <div class="panel" id="p-yeni">
-    <div class="note">40 ve altı yorumu olan ürünler. Sütun başlığına tıklayınca o özelliğe göre en yüksekten en düşüğe sıralanır, tekrar tıklayınca tersine döner (fiyat, tarih, yorum vb. hepsi için geçerli).</div>
+    <div class="note">🆕 <b>Yeni ürünler:</b> 40 ve altı yorumu olan ürünler — markanın yeni/az bilinen ürünleri. <b>Sipariş</b> = Trendyol'un "X+ sipariş" rozeti (her üründe görünmez), <b>Haftalık Tahmin</b> = yorum artışından hesaplanan satış tahmini. Sütun başlığına tıklayınca sıralanır.</div>
     <div class="table-wrap">
-      <table><thead style="position:static"><tr>
-        <th class="l" style="position:static" data-s="name">Ürün<span class="arrow"></span></th>
-        <th style="position:static" data-s="date">İlk Görülme<span class="arrow"></span></th>
-        <th style="position:static" data-s="rc">Yorum<span class="arrow"></span></th>
-        <th style="position:static" class="hidem2" data-s="ra">Puan<span class="arrow"></span></th>
-        <th style="position:static" data-s="p">Fiyat<span class="arrow"></span></th>
-        <th style="position:static" data-s="o3">Sipariş<span class="arrow"></span></th>
-        <th style="position:static" data-s="f">Favori<span class="arrow"></span></th>
+      <table><thead><tr>
+        <th class="l" data-s="name">Ürün<span class="arrow"></span></th>
+        <th data-s="date">İlk Görülme<span class="arrow"></span></th>
+        <th data-s="p">Fiyat<span class="arrow"></span></th>
+        <th data-s="rc">Yorum<span class="arrow"></span></th>
+        <th data-s="ra" class="hidem2">Puan<span class="arrow"></span></th>
+        <th data-s="o3">Sipariş<span class="arrow"></span></th>
+        <th data-s="weekly" class="hidem">Haftalık Tahmin<span class="arrow"></span></th>
+        <th data-s="f">Favori<span class="arrow"></span></th>
       </tr></thead><tbody id="tbody-yeni"></tbody></table>
     </div>
   </div>
 
   <div class="panel" id="p-ozet">
-    <div class="note"><b>Satış rakamları:</b> Sipariş = Trendyol'un ürün kartında gösterdiği "X+ sipariş" bilgisi (alt sınır, yalnızca bazı ürünlerde çıkar). Haftalık tahmin yorum artışından hesaplanır — birkaç günlük veri birikince isabetli olur.</div>
-    <div class="chartbox"><b>En çok sipariş alan (Top 10)</b><canvas id="chTop" height="120"></canvas></div>
-    <div class="chartbox"><b>En çok favorilenen 10 ürün</b><canvas id="chFav" height="120"></canvas></div>
+    <div class="note"><b>Satış rakamları nasıl okunur?</b> Sipariş = Trendyol'un ürün kartında gösterdiği "X+ sipariş" bilgisi (alt sınırdır ve yalnızca bazı ürünlerde çıkar). Haftalık tahmin yorum artışından hesaplanır — birkaç günlük veri birikince isabetli olur.</div>
+    <div class="chartbox"><b>🏆 En çok sipariş alan 10 ürün</b><canvas id="chTop" height="120"></canvas></div>
+    <div class="chartbox"><b>❤️ En çok favorilenen 10 ürün</b><canvas id="chFav" height="120"></canvas></div>
   </div>
 
   <div class="panel" id="p-trend">
     <div class="note" id="trendnote"></div>
-    <div class="chartbox"><b>Toplam yorum sayısı (gün gün)</b><canvas id="chTrend" height="110"></canvas></div>
-    <div class="chartbox"><b>Tahmini günlük satış (tüm marka)</b><canvas id="chDaily" height="110"></canvas></div>
+    <div class="chartbox"><b>💬 Toplam yorum sayısı (gün gün)</b><canvas id="chTrend" height="110"></canvas></div>
+    <div class="chartbox"><b>🛒 Tahmini günlük satış (tüm marka)</b><canvas id="chDaily" height="110"></canvas></div>
   </div>
+
+  <footer>Veriler her gün otomatik toplanır · MrChris Paneli</footer>
 </div>
 
 <script>
-const TY="https://www.trendyol.com";
 let LATEST=null,HIST=null,rate=0.08;
-const IMG={
-"86406024":"https://cdn.dsmcdn.com/mnresize/400/-/ty1808/prod/QC_ENRICHMENT/20260106/18/f59a0cd4-c77a-346b-bbf4-a8778fa217ed/1_org_zoom.jpg",
-"97827284":"https://cdn.dsmcdn.com/mnresize/400/-/ty805/product/media/images/20230331/11/316168014/162832846/1/1_org_zoom.jpg",
-"97545674":"https://cdn.dsmcdn.com/mnresize/400/-/ty1808/prod/QC_ENRICHMENT/20260106/18/469ff877-a8c3-3a32-9d5e-d85f663d509c/1_org_zoom.jpg",
-"97555654":"https://cdn.dsmcdn.com/mnresize/400/-/ty1806/prod/QC_ENRICHMENT/20260106/18/47f76091-a0d6-3f39-a35f-ca2a6680b531/1_org_zoom.jpg",
-"97555629":"https://cdn.dsmcdn.com/mnresize/400/-/ty1806/prod/QC_ENRICHMENT/20260106/18/a8384afe-cb61-33c5-ba13-7bcaa609b52b/1_org_zoom.jpg",
-"97606298":"https://cdn.dsmcdn.com/mnresize/400/-/ty796/product/media/images/20230324/15/311070069/162520529/1/1_org_zoom.jpg",
-"86701991":"https://cdn.dsmcdn.com/mnresize/400/-/ty1808/prod/QC_ENRICHMENT/20260106/18/10c6250e-ac52-3f77-b5f9-229c316555c9/1_org_zoom.jpg",
-"115481492":"https://cdn.dsmcdn.com/mnresize/400/-/ty439/product/media/images/20220523/16/115209546/186851007/1/1_org_zoom.jpg",
-"117047042":"https://cdn.dsmcdn.com/mnresize/400/-/ty1099/product/media/images/prod/SPM/PIM/20231218/14/fe10e085-fbc1-3d91-a610-290a6582db9e/1_org_zoom.jpg",
-"120101162":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/16/9ae01b36-b496-3075-8b87-199270af58b5/1_org_zoom.jpg",
-"120274055":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/ed99bde8-18fd-3bd8-ae47-b71c97496f51/1_org_zoom.jpg",
-"120593414":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/15/8d4c4a74-db99-3a08-a7f1-86e81e373374/1_org_zoom.jpg",
-"125467332":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/edc32744-8ffc-3765-9a63-c044fcc9f32c/1_org_zoom.jpg",
-"125467238":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/15/b001a95e-3344-3fb5-88a4-d54de83d91a0/1_org_zoom.jpg",
-"129998832":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/16/dd6b52f4-65cd-3543-80b1-993ab3befa5e/1_org_zoom.jpg",
-"129999160":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/16/e1831abc-ca6e-347d-837b-1e269a819be5/1_org_zoom.jpg",
-"154385500":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/15/62a76d55-ccfa-3556-92e5-bb8cb76bc9a0/1_org_zoom.jpg",
-"154459170":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/ff797fce-bd93-3f6c-9ee7-7f4781526fcb/1_org_zoom.jpg",
-"154466841":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/15/fd2c4e72-40c0-3ba3-beec-78d00a4d4aca/1_org_zoom.jpg",
-"154468172":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/15/c3f03890-248c-3f40-ad9c-09139cfe4da6/1_org_zoom.jpg",
-"154925393":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/fc0d5e12-6fbc-3565-a258-1e58645c0193/1_org_zoom.jpg",
-"155570909":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/15/b814308d-e8da-3872-bae6-fbe041eade78/1_org_zoom.jpg",
-"155813505":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/90231e3e-d52b-383d-a714-740113a3ef9b/1_org_zoom.jpg",
-"302230814":"https://cdn.dsmcdn.com/mnresize/400/-/ty432/product/media/images/20220517/17/112723882/481341270/1/1_org_zoom.jpg",
-"302230830":"https://cdn.dsmcdn.com/mnresize/400/-/ty433/product/media/images/20220517/17/112723907/481341287/1/1_org_zoom.jpg",
-"304364402":"https://cdn.dsmcdn.com/mnresize/400/-/ty1415/product/media/images/prod/QC/20240711/15/225bd98e-5c37-3a21-9df5-77558286e756/1_org_zoom.jpg",
-"304364534":"https://cdn.dsmcdn.com/mnresize/400/-/ty1415/product/media/images/prod/QC/20240711/12/afbc1945-1b54-375e-b19d-7c7b195ced41/1_org_zoom.jpg",
-"304364653":"https://cdn.dsmcdn.com/mnresize/400/-/ty1808/prod/QC_ENRICHMENT/20260106/18/c3da79a2-47d6-3500-b577-b50d716c2bb4/1_org_zoom.jpg",
-"304365085":"https://cdn.dsmcdn.com/mnresize/400/-/ty1806/prod/QC_ENRICHMENT/20260106/18/e8191142-20f2-3ed6-9200-78284c012c9e/1_org_zoom.jpg",
-"304366648":"https://cdn.dsmcdn.com/mnresize/400/-/ty1806/prod/QC_ENRICHMENT/20260106/18/aa34665c-33b7-3348-9dd7-c14885d488a4/1_org_zoom.jpg",
-"304909286":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/16/13d7befd-dbe1-3038-9c0f-7caaf58a2b46/1_org_zoom.jpg",
-"304912246":"https://cdn.dsmcdn.com/mnresize/400/-/ty1721/prod/QC_ENRICHMENT/20250807/16/9bee4766-523c-33dc-b753-9d65c2e37a0b/1_org_zoom.jpg",
-"304912405":"https://cdn.dsmcdn.com/mnresize/400/-/ty1719/prod/QC_ENRICHMENT/20250807/16/0fc53748-883b-335c-bb67-8e965c95951f/1_org_zoom.jpg",
-"304912565":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/16/f37fc6a8-78fc-39da-a409-9fb99cd1af59/1_org_zoom.jpg",
-"649970162":"https://cdn.dsmcdn.com/mnresize/400/-/ty1095/product/media/images/prod/SPM/PIM/20231218/14/a6bda4be-c1c3-3682-a382-2bd8311b4385/1_org_zoom.jpg",
-"659054744":"https://cdn.dsmcdn.com/mnresize/400/-/ty1720/prod/QC_ENRICHMENT/20250807/15/5a0948ea-b8ae-32bf-8d39-257aed3473d2/1_org_zoom.jpg",
-"664940326":"https://cdn.dsmcdn.com/mnresize/400/-/ty766/product/media/images/20230307/12/298394828/879777148/1/1_org_zoom.jpg",
-"664969524":"https://cdn.dsmcdn.com/mnresize/400/-/ty767/product/media/images/20230307/14/298429855/879818798/1/1_org_zoom.jpg",
-"698127332":"https://cdn.dsmcdn.com/mnresize/400/-/ty853/product/media/images/20230430/20/335603533/923150094/1/1_org_zoom.jpg",
-"699273115":"https://cdn.dsmcdn.com/mnresize/400/-/ty881/product/media/images/20230511/23/346181771/924526533/1/1_org_zoom.jpg",
-"707066322":"https://cdn.dsmcdn.com/mnresize/400/-/ty876/product/media/images/20230511/11/345523259/934082715/1/1_org_zoom.jpg",
-"736250093":"https://cdn.dsmcdn.com/mnresize/400/-/ty1653/prod/QC/20250326/16/902a2e8c-3155-34be-93d5-f1e4e4ec4d1f/1_org_zoom.jpg",
-"736364369":"https://cdn.dsmcdn.com/mnresize/400/-/ty948/product/media/images/20230614/14/385495229/968541395/1/1_org_zoom.jpg",
-"739819840":"https://cdn.dsmcdn.com/mnresize/400/-/ty958/product/media/images/20230626/12/389331347/973298927/1/1_org_zoom.jpg",
-"772297580":"https://cdn.dsmcdn.com/mnresize/400/-/ty1019/product/media/images/prod/SPM/PIM/20231018/21/b1d4474d-570a-39b6-ac98-35516b0d687b/1_org_zoom.jpg",
-"772297891":"https://cdn.dsmcdn.com/mnresize/400/-/ty1019/product/media/images/prod/SPM/PIM/20231018/21/1258f3a9-0e39-3acf-89f6-1af3b4f3cee5/1_org_zoom.jpg",
-"772303183":"https://cdn.dsmcdn.com/mnresize/400/-/ty1017/product/media/images/prod/SPM/PIM/20231018/21/2ebd1fc6-968b-3ccf-91e4-6b65955a829e/1_org_zoom.jpg",
-"772308529":"https://cdn.dsmcdn.com/mnresize/400/-/ty1018/product/media/images/prod/SPM/PIM/20231018/21/55f9339f-87d7-35fe-ba52-c37401d92023/1_org_zoom.jpg",
-"772312344":"https://cdn.dsmcdn.com/mnresize/400/-/ty1018/product/media/images/prod/SPM/PIM/20231018/21/5011ce7d-1279-3909-9235-215e3e04988b/1_org_zoom.jpg",
-"812667204":"https://cdn.dsmcdn.com/mnresize/400/-/ty1197/product/media/images/prod/SPM/PIM/20240306/18/2cf15fdb-baaa-3853-9bbf-6c5a394cb478/1_org_zoom.jpg",
-"834004529":"https://cdn.dsmcdn.com/mnresize/400/-/ty1346/product/media/images/prod/QC/20240603/14/24741e25-9c00-3eb9-9cbc-68ab46e664e3/1_org_zoom.jpg",
-"834007684":"https://cdn.dsmcdn.com/mnresize/400/-/ty1345/product/media/images/prod/QC/20240603/14/ed52b11a-0a98-3377-934b-131fe6169a2c/1_org_zoom.jpg",
-"834011598":"https://cdn.dsmcdn.com/mnresize/400/-/ty1346/product/media/images/prod/QC/20240603/14/df347371-740a-3b91-961c-5314f81f9cd1/1_org_zoom.jpg",
-"834013394":"https://cdn.dsmcdn.com/mnresize/400/-/ty1344/product/media/images/prod/QC/20240603/14/df783d3e-0f1b-3a8b-8ee6-22d2b8293d5c/1_org_zoom.jpg",
-"834013914":"https://cdn.dsmcdn.com/mnresize/400/-/ty1346/product/media/images/prod/QC/20240603/14/b2f4daef-da6d-34a4-b408-41e5e372dc4e/1_org_zoom.jpg",
-"834013993":"https://cdn.dsmcdn.com/mnresize/400/-/ty1345/product/media/images/prod/QC/20240603/14/84ce235d-be00-3208-b6ac-fa167e0aa821/1_org_zoom.jpg",
-"834181419":"https://cdn.dsmcdn.com/mnresize/400/-/ty1348/product/media/images/prod/QC/20240603/14/954bcf60-96e1-3af0-8057-37d7e46e8a33/1_org_zoom.jpg",
-"834181440":"https://cdn.dsmcdn.com/mnresize/400/-/ty1349/product/media/images/prod/QC/20240603/14/b72eed55-e0f4-3ef5-bfeb-474374ee06f8/1_org_zoom.jpg",
-"834187765":"https://cdn.dsmcdn.com/mnresize/400/-/ty1348/product/media/images/prod/QC/20240603/14/91e63e1f-7256-367c-be8b-5c2f43bf1cf4/1_org_zoom.jpg",
-"834267382":"https://cdn.dsmcdn.com/mnresize/400/-/ty1347/product/media/images/prod/QC/20240603/15/b9b38b4c-67fc-3a33-a9ca-80941b6665e9/1_org_zoom.jpg",
-"834269789":"https://cdn.dsmcdn.com/mnresize/400/-/ty1347/product/media/images/prod/QC/20240603/14/f1e7e605-12dd-33af-bfaf-6a8981d11c8a/1_org_zoom.jpg",
-"847775091":"https://cdn.dsmcdn.com/mnresize/400/-/ty1463/product/media/images/prod/QC/20240805/11/0e302ddf-7cba-3430-96b6-bf1c9224944d/1_org_zoom.jpg",
-"847775174":"https://cdn.dsmcdn.com/mnresize/400/-/ty1461/product/media/images/prod/QC/20240805/11/d09202de-56aa-3aa1-ba8b-7136b3cda0b0/1_org_zoom.jpg",
-"847775345":"https://cdn.dsmcdn.com/mnresize/400/-/ty1461/product/media/images/prod/QC/20240805/11/53c5af20-019c-3805-bd07-759fb618fdaa/1_org_zoom.jpg",
-"901071773":"https://cdn.dsmcdn.com/mnresize/400/-/ty1641/prod/QC/20250225/11/0a112504-0265-3c32-9d0e-30dd14542631/1_org_zoom.jpg",
-"901077842":"https://cdn.dsmcdn.com/mnresize/400/-/ty1640/prod/QC/20250220/19/1624cab8-71e9-3ded-bd6f-482586b2fb1d/1_org_zoom.jpg",
-"901082243":"https://cdn.dsmcdn.com/mnresize/400/-/ty1638/prod/QC/20250220/19/40355e25-b81e-3c5e-8a31-c7253fc05ff8/1_org_zoom.jpg",
-"901427614":"https://cdn.dsmcdn.com/mnresize/400/-/ty1643/prod/QC/20250221/18/cb8052bb-fdbe-398f-ae28-b8a815572f52/1_org_zoom.jpg",
-"901442645":"https://cdn.dsmcdn.com/mnresize/400/-/ty1643/prod/QC/20250221/18/86753bc0-7b7b-3e05-907f-ed52368254ff/1_org_zoom.jpg",
-"901443021":"https://cdn.dsmcdn.com/mnresize/400/-/ty1643/prod/QC/20250221/18/5b87568e-8fff-3b9c-b4db-e86f2772c204/1_org_zoom.jpg",
-"901446322":"https://cdn.dsmcdn.com/mnresize/400/-/ty1642/prod/QC/20250221/18/204d82a5-eb68-3566-9c48-a48a34dbeedd/1_org_zoom.jpg",
-"901446700":"https://cdn.dsmcdn.com/mnresize/400/-/ty1642/prod/QC/20250221/18/2ded77a5-e14e-3a29-a0e0-ebb8ab57165a/1_org_zoom.jpg",
-"903872945":"https://cdn.dsmcdn.com/mnresize/400/-/ty1646/prod/QC/20250303/21/771a183f-ec34-311e-b3cf-b060936e23a5/1_org_zoom.jpg",
-"903874990":"https://cdn.dsmcdn.com/mnresize/400/-/ty1645/prod/QC/20250303/21/91668006-304c-33fe-8145-d5de6542886e/1_org_zoom.jpg",
-"904602868":"https://cdn.dsmcdn.com/mnresize/400/-/ty1646/prod/QC/20250303/21/26b8e111-4ccf-37b1-bb1d-96749f9624fe/1_org_zoom.jpg",
-"945479930":"https://cdn.dsmcdn.com/mnresize/400/-/ty1693/prod/QC_PREP/20250616/17/aee5d46e-2c9d-3c92-ad6b-d15e71496f94/1_org_zoom.jpg",
-"945480081":"https://cdn.dsmcdn.com/mnresize/400/-/ty1694/prod/QC_PREP/20250616/17/10d41d27-36f5-3929-a93c-aee449a1adab/1_org_zoom.jpg",
-"945651550":"https://cdn.dsmcdn.com/mnresize/400/-/ty1696/prod/QC_PREP/20250617/18/17827064-b56d-3b85-87bc-1c8148558b34/1_org_zoom.jpg",
-"945652333":"https://cdn.dsmcdn.com/mnresize/400/-/ty1695/prod/QC_PREP/20250617/18/6b729c24-50ed-354d-8101-593585bd7dd3/1_org_zoom.jpg",
-"945652341":"https://cdn.dsmcdn.com/mnresize/400/-/ty1695/prod/QC_PREP/20250617/18/17309144-691f-37f3-bd69-54e2b33aedef/1_org_zoom.jpg",
-"947445355":"https://cdn.dsmcdn.com/mnresize/400/-/ty1697/prod/QC_PREP/20250620/18/d905fbcd-e529-3ff1-ac73-199a13c34f98/1_org_zoom.jpg",
-"947445481":"https://cdn.dsmcdn.com/mnresize/400/-/ty1697/prod/QC_PREP/20250620/18/7f9a5ec2-d7b9-3c36-895b-253afe324792/1_org_zoom.jpg",
-"947445615":"https://cdn.dsmcdn.com/mnresize/400/-/ty1695/prod/QC_PREP/20250620/18/cb3c3d6c-960d-32b3-b27d-d47aeddd4586/1_org_zoom.jpg",
-"947445642":"https://cdn.dsmcdn.com/mnresize/400/-/ty1696/prod/QC_PREP/20250620/18/fb85533a-dbef-3bc1-9b4c-3ff333e90669/1_org_zoom.jpg",
-"947445665":"https://cdn.dsmcdn.com/mnresize/400/-/ty1695/prod/QC_PREP/20250620/18/1c44ee53-c8ce-31dd-b22f-1fb2d8b2561f/1_org_zoom.jpg",
-"1045494759":"https://cdn.dsmcdn.com/mnresize/400/-/ty1787/prod/QC_PREP/20251106/12/0a12e27c-10d7-3cd7-bf6b-df30a1b55d78/1_org_zoom.jpg",
-"1045500350":"https://cdn.dsmcdn.com/mnresize/400/-/ty1787/prod/QC_PREP/20251106/12/23a4eaf1-f822-3ad0-9228-45b5f6349105/1_org_zoom.jpg",
-"1045500357":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_ENRICHMENT/20251110/13/206da0e8-8d7b-3c3c-a4c3-d9eda961a9e9/1_org_zoom.jpg",
-"1045500574":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/12/39d2defd-3cb7-30a0-be80-cda22d9b76e7/1_org_zoom.jpg",
-"1045500907":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/12/d8d78a13-746b-3946-baa0-0717a9e29528/1_org_zoom.jpg",
-"1045500913":"https://cdn.dsmcdn.com/mnresize/400/-/ty1786/prod/QC_ENRICHMENT/20251110/13/288cf953-f153-3054-897c-cb867ce14f95/1_org_zoom.jpg",
-"1045500926":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/12/a2d543f3-5448-3468-9ed5-0a0550fc6e40/1_org_zoom.jpg",
-"1045512318":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/12/77b89085-4e28-3fe8-9903-ab1f21bde017/1_org_zoom.jpg",
-"1045513204":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/13/9daa1e6c-1c58-34fa-bec7-40f372736e8f/1_org_zoom.jpg",
-"1045513205":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/13/3f2bcaab-5304-318c-b065-e5a5a9800716/1_org_zoom.jpg",
-"1045513767":"https://cdn.dsmcdn.com/mnresize/400/-/ty1785/prod/QC_PREP/20251106/13/37f531e6-db1f-3c52-bf5f-1d2ee7552544/1_org_zoom.jpg",
-"1047170750":"https://cdn.dsmcdn.com/mnresize/400/-/ty1786/prod/QC_PREP/20251110/16/0892858e-b43f-392a-9317-b959504a2763/1_org_zoom.jpg",
-"1140323566":"https://cdn.dsmcdn.com/mnresize/400/-/ty1937/prod/QC_ENRICHMENT/20260504/17/146e3ab0-43ab-3ce9-aff9-efd4cffe6da4/1_org_zoom.jpg",
-"1140323620":"https://cdn.dsmcdn.com/mnresize/400/-/ty1910/prod/QC_ENRICHMENT/20260504/17/7a0507d2-53ed-343d-bac2-d20918697665/1_org_zoom.jpg",
-"1140323664":"https://cdn.dsmcdn.com/mnresize/400/-/ty1891/prod/QC_ENRICHMENT/20260504/17/5dd5f23c-8fd6-3fac-90ec-34c7347d1055/1_org_zoom.jpg",
-"1140323675":"https://cdn.dsmcdn.com/mnresize/400/-/ty1896/prod/QC_ENRICHMENT/20260504/17/da10ac1e-5548-3098-81b3-153254212c39/1_org_zoom.jpg",
-"1140323739":"https://cdn.dsmcdn.com/mnresize/400/-/ty1934/prod/QC_ENRICHMENT/20260504/17/4d789d2a-96e7-381f-8b00-1d67a578f483/1_org_zoom.jpg",
-"1140323792":"https://cdn.dsmcdn.com/mnresize/400/-/ty1893/prod/QC_ENRICHMENT/20260504/17/05da2ac4-5dcf-3434-b97a-6afbadbe34d8/1_org_zoom.jpg",
-"1140323801":"https://cdn.dsmcdn.com/mnresize/400/-/ty1932/prod/QC_ENRICHMENT/20260504/17/02293f34-ded5-356a-85b0-9afcdcda35c3/1_org_zoom.jpg",
-"1140323837":"https://cdn.dsmcdn.com/mnresize/400/-/ty1910/prod/QC_ENRICHMENT/20260504/17/fb6d74f3-625f-3127-9425-bf52a08cb28c/1_org_zoom.jpg",
-"1140323872":"https://cdn.dsmcdn.com/mnresize/400/-/ty1912/prod/QC_ENRICHMENT/20260504/17/ecf68bda-c5fa-351d-8aae-e782133b25fd/1_org_zoom.jpg",
-"1140323897":"https://cdn.dsmcdn.com/mnresize/400/-/ty1941/prod/QC_ENRICHMENT/20260504/17/79a8214e-ab6c-3730-978d-e726a3efe6f8/1_org_zoom.jpg",
-"1140323921":"https://cdn.dsmcdn.com/mnresize/400/-/ty1903/prod/QC_ENRICHMENT/20260504/17/2b0e3558-21fe-3c96-86e5-b74ac0fbcdda/1_org_zoom.jpg",
-"1140323930":"https://cdn.dsmcdn.com/mnresize/400/-/ty1929/prod/QC_ENRICHMENT/20260504/17/283dd2fe-c5a1-36d0-9ab1-8fdbda9d1d38/1_org_zoom.jpg",
-"1140402155":"https://cdn.dsmcdn.com/mnresize/400/-/ty1916/prod/QC_ENRICHMENT/20260504/17/d6d153fb-d4df-30c1-a2a7-8bccdc14be36/1_org_zoom.jpg",
-"1140402507":"https://cdn.dsmcdn.com/mnresize/400/-/ty1909/prod/QC_ENRICHMENT/20260504/17/5bc33a6b-5f1a-3f79-9a22-01558c660702/1_org_zoom.jpg",
-"1140402581":"https://cdn.dsmcdn.com/mnresize/400/-/ty1906/prod/QC_ENRICHMENT/20260504/17/69fd412c-8722-3302-8967-b6a75a668d22/1_org_zoom.jpg",
-"1140485981":"https://cdn.dsmcdn.com/mnresize/400/-/ty1939/prod/QC_ENRICHMENT/20260504/17/8e276cc3-0be2-37ba-9cb4-ae1e63789201/1_org_zoom.jpg",
-"1140486357":"https://cdn.dsmcdn.com/mnresize/400/-/ty1897/prod/QC_ENRICHMENT/20260504/17/da1064fe-9460-357e-b634-026e7543aa2c/1_org_zoom.jpg",
-"1140487306":"https://cdn.dsmcdn.com/mnresize/400/-/ty1895/prod/QC_ENRICHMENT/20260504/17/8c3addf9-e37d-3d67-a9c8-fec46f3a69b4/1_org_zoom.jpg",
-"1142355609":"https://cdn.dsmcdn.com/mnresize/400/-/ty1931/prod/QC_PREP/20260505/16/86abcd2d-07b3-39fb-91f1-73a948d22e12/1_org_zoom.jpg",
-"1142355784":"https://cdn.dsmcdn.com/mnresize/400/-/ty1909/prod/QC_PREP/20260505/16/524a8f30-2f4c-3982-a7b1-b66535168cd1/1_org_zoom.jpg",
-"1142355827":"https://cdn.dsmcdn.com/mnresize/400/-/ty1911/prod/QC_PREP/20260505/16/a5038037-bb8b-3287-81c1-4fc9d86845d6/1_org_zoom.jpg",
-"1142355991":"https://cdn.dsmcdn.com/mnresize/400/-/ty1918/prod/QC_PREP/20260505/16/2eb76c17-231f-3b34-9d27-09a37272d285/1_org_zoom.jpg"
-};
 const fmt=n=>n==null?'–':Number(n).toLocaleString('tr-TR');
 const fmtTL=n=>n==null?'–':Number(n).toLocaleString('tr-TR',{maximumFractionDigits:0})+' ₺';
-let sortKey='o3',sortDir=-1;
+const slug=n=>String(n).toLowerCase().replace(/[ışğüöç]/g,c=>({ı:'i',ş:'s',ğ:'g',ü:'u',ö:'o',ç:'c'}[c]||c)).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+let sortKey='o3',sortDir=-1,yeniSortKey='date',yeniSortDir=-1;
+
 async function load(){
   try{
     LATEST=await(await fetch('latest.json?t='+Date.now())).json();
     HIST=await(await fetch('history.json?t='+Date.now())).json();
   }catch(e){
-    document.getElementById('err').innerHTML='<div class="err">Veri yüklenemedi. GitHub linki üzerinden açın.</div>';
+    document.getElementById('err').innerHTML='<div class="err">Veri yüklenemedi. Sayfayı GitHub linki üzerinden açın.</div>';
     return;
   }
   rate=document.getElementById('rate').value/100;
@@ -309,44 +244,103 @@ function weeklyEstimate(pid){
   const days=Math.max(1,(lastDate-new Date(base.date))/86400000);
   return Math.round(Math.max(0,b.rc-a.rc)/days*7/rate);
 }
+function prevSnap(){
+  const s=HIST?.snapshots;
+  return (s&&s.length>1)?s[s.length-2]:null;
+}
+function priceDeltaHtml(pid,cur){
+  const b=prevSnap()?.products?.[pid];
+  if(!b||b.p==null||cur==null)return '';
+  const d=cur-b.p;
+  if(Math.abs(d)<1)return '';
+  const cls=d>0?'up':'down',sym=d>0?'▲':'▼';
+  return `<span class="delta ${cls}" title="Önceki: ${fmtTL(b.p)}">${sym} ${fmt(Math.round(Math.abs(d)))}</span>`;
+}
+function trackStart(){
+  return HIST?.snapshots?.[0]?.date||null;
+}
+function relDate(d){
+  if(!d)return '–';
+  const days=(new Date(LATEST.collectedAt)-new Date(d))/86400000;
+  if(days<=0)return 'bugün';
+  if(days<1.5)return 'dün';
+  return Math.round(days)+' gün önce';
+}
 function render(){
   const P=LATEST.products,ids=Object.keys(P);
-  let totalOrder=0,nOrder=0,totalFav=0,rSum=0,rN=0,totalRC=0;
+  let totalOrder=0,nOrder=0,totalFav=0,rSum=0,rN=0,totalRC=0,nYeni=0;
   ids.forEach(id=>{const p=P[id];
     if(p.order){totalOrder+=p.order;nOrder++;}
     if(p.favorite)totalFav+=p.favorite;
     if(p.rating){rSum+=p.rating;rN++;}
     if(p.ratingCount)totalRC+=p.ratingCount;
+    if((p.ratingCount??9999)<=40)nYeni++;
   });
   const cards=[
-    ['Toplam ürün',fmt(ids.length),'takip ediliyor'],
-    ['Siparişi görünen',fmt(nOrder)+' ürün','Trendyol rozetli'],
-    ['Görünen sipariş',fmt(totalOrder)+'+','rozetli ürünler toplamı'],
-    ['Toplam yorum',fmt(totalRC)+'+','kümülatif satış göst.'],
-    ['Toplam favori',fmt(totalFav),'tüm ürünler'],
-    ['Ort. puan',(rN?(rSum/rN).toFixed(2):'–'),'5 üzerinden'],
+    ['📦','#eef4ff','Toplam ürün',fmt(ids.length)],
+    ['🛒','#fff0e2','Görünen sipariş',fmt(totalOrder)+'+'],
+    ['🏷️','#ffeaea','Sipariş rozetli',fmt(nOrder)+' ürün'],
+    ['💬','#e9fbf1','Toplam yorum',fmt(totalRC)],
+    ['❤️','#ffeef5','Toplam favori',fmt(totalFav)],
+    ['🆕','#eef0ff','Yeni ürün',fmt(nYeni)],
   ];
-  document.getElementById('stats').innerHTML=cards.map(c=>`<div class="stat"><div class="k">${c[0]}</div><div class="v">${c[1]}</div><div class="s">${c[2]}</div></div>`).join('');
-  document.getElementById('meta').innerHTML='Güncelleme: <b>'+(LATEST.collectedAt||'–')+'</b><br>'+(HIST.snapshots?HIST.snapshots.length:1)+' günlük veri';
+  document.getElementById('stats').innerHTML=cards.map(c=>
+    `<div class="stat"><div class="ic" style="background:${c[1]}">${c[0]}</div><div><div class="v">${c[3]}</div><div class="k">${c[2]}</div></div></div>`).join('');
+  const nd=HIST.snapshots?HIST.snapshots.length:1;
+  document.getElementById('meta').innerHTML=
+    `<span class="chip live">Güncel: <b>${LATEST.collectedAt||'–'}</b></span><span class="chip"><b>${nd}</b> günlük veri</span>`;
   renderTable();renderCharts();renderTrend();renderYeni();
 }
+function rowHtml(r,cols){
+  const url=`https://www.trendyol.com/los-ojos/${slug(r.name)}-p-${r.id}`;
+  const img=LATEST.products[r.id]?.image||'';
+  const thumb=img?`<img class="thumb" loading="lazy" src="${img}" onerror="this.outerHTML='<span class=ph>👕</span>'">`:`<span class="ph">👕</span>`;
+  const isNew=r.firstSeen&&trackStart()&&r.firstSeen>trackStart()&&(r.rc??0)<=40;
+  const newBadge=isNew?'<span class="badge new">YENİ</span>':'';
+  const sale=r.o3?`<span class="badge sale">${r.o3raw||r.o3}</span>`:`<span class="badge none">–</span>`;
+  const wk=r.weekly!=null?(r.weekly>0?'~'+fmt(r.weekly):'<span class="dim">0</span>'):`<span class="dim">birikiyor</span>`;
+  const name=`<td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}${newBadge}</span></a></td>`;
+  const cells={
+    p:`<td>${fmtTL(r.p)}${priceDeltaHtml(r.id,r.p)}</td>`,
+    ra:`<td class="hidem2">${r.ra??'–'}</td>`,
+    rc:`<td>${fmt(r.rc)}</td>`,
+    o3:`<td>${sale}</td>`,
+    weekly:`<td class="hidem">${wk}</td>`,
+    f:`<td>${fmt(r.f)}</td>`,
+    date:`<td class="datecell" title="${r.firstSeen||''}">${relDate(r.firstSeen)}</td>`,
+  };
+  return `<tr data-pid="${r.id}">${name}${cols.map(c=>cells[c]).join('')}</tr>`;
+}
+function makeRows(){
+  const P=LATEST.products;
+  return Object.keys(P).map(id=>{const p=P[id];return{
+    id,name:String(p.name||id).replace(/^Los Ojos ?x? ?/i,''),p:p.price,ra:p.rating,rc:p.ratingCount,
+    o3:p.order,o3raw:p.order_raw,f:p.favorite,weekly:weeklyEstimate(id),
+    firstSeen:p.firstSeen||null,date:p.firstSeen?new Date(p.firstSeen).getTime():0};});
+}
+function sortRows(rows,key,dir){
+  rows.sort((a,b)=>{let x=a[key],y=b[key];
+    if(key==='name')return dir*String(x).localeCompare(String(y),'tr');
+    return dir*((x??-1)-(y??-1));});
+}
 function renderTable(){
-  const P=LATEST.products,q=(document.getElementById('q').value||'').toLowerCase();
-  let rows=Object.keys(P).map(id=>{const p=P[id];return{id,name:p.name||id,p:p.price,ra:p.rating,rc:p.ratingCount,o3:p.order,o3raw:p.order_raw,f:p.favorite,weekly:weeklyEstimate(id)};});
+  const q=(document.getElementById('q').value||'').toLowerCase();
+  let rows=makeRows();
   if(q)rows=rows.filter(r=>r.name.toLowerCase().includes(q));
-  rows.sort((a,b)=>{let x=a[sortKey],y=b[sortKey];if(sortKey==='name')return sortDir*String(x).localeCompare(String(y),'tr');return sortDir*((x??-1)-(y??-1));});
-  const slug=n=>String(n).toLowerCase().replace(/[ışğüöç]/g,c=>({ı:'i',ş:'s',ğ:'g',ü:'u',ö:'o',ç:'c'}[c]||c)).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  document.getElementById('tbody').innerHTML=rows.map(r=>{
-    const url=`https://www.trendyol.com/los-ojos/${slug(r.name)}-p-${r.id}`;
-    const img=IMG[r.id]||LATEST.products[r.id]?.image||'';
-    const thumb=img?`<img class="thumb" loading="lazy" src="${img}" onerror="this.outerHTML='<span class=ph>👕</span>'">`:`<span class="ph">👕</span>`;
-    const sale=r.o3?`<span class="badge sale">${r.o3raw||r.o3}</span>`:`<span class="badge none">–</span>`;
-    const wk=r.weekly!=null?fmt(r.weekly):`<span style="color:#bbb">birikiyor</span>`;
-    return `<tr data-pid="${r.id}"><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td><td>${fmtTL(r.p)}</td><td class="hidem2">${r.ra??'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td>${fmt(r.f)}</td></tr>`;
-  }).join('');
+  sortRows(rows,sortKey,sortDir);
+  document.getElementById('tbody').innerHTML=
+    rows.map(r=>rowHtml(r,['p','ra','rc','o3','weekly','f'])).join('')||
+    '<tr><td colspan="7" class="empty">Aramana uyan ürün bulunamadı.</td></tr>';
   updateSortArrows(document.querySelector('#p-urunler thead'),sortKey,sortDir);
 }
-let yeniSortKey='rc',yeniSortDir=1;
+function renderYeni(){
+  let rows=makeRows().filter(r=>(r.rc??9999)<=40);
+  sortRows(rows,yeniSortKey,yeniSortDir);
+  document.getElementById('tbody-yeni').innerHTML=
+    rows.map(r=>rowHtml(r,['date','p','rc','ra','o3','weekly','f'])).join('')||
+    '<tr><td colspan="8" class="empty">Şu an yeni ürün görünmüyor.</td></tr>';
+  updateSortArrows(document.querySelector('#p-yeni thead'),yeniSortKey,yeniSortDir);
+}
 function updateSortArrows(theadEl,key,dir){
   theadEl.querySelectorAll('th[data-s]').forEach(th=>{
     const a=th.querySelector('.arrow');
@@ -354,66 +348,52 @@ function updateSortArrows(theadEl,key,dir){
     a.textContent=th.dataset.s===key?(dir>0?'▲':'▼'):'';
   });
 }
-function renderYeni(){
-  const P=LATEST.products;
-  const slug=n=>String(n).toLowerCase().replace(/[ışğüöç]/g,c=>({ı:'i',ş:'s',ğ:'g',ü:'u',ö:'o',ç:'c'}[c]||c)).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  let rows=Object.keys(P).map(id=>{
-    const p=P[id];
-    return{id,name:p.name||id,rc:p.ratingCount,ra:p.rating,p:p.price,
-      o3:p.order,o3raw:p.order_raw,f:p.favorite,
-      firstSeen:p.firstSeen||'–',date:p.firstSeen?new Date(p.firstSeen).getTime():0};
-  });
-  rows=rows.filter(r=>(r.rc??9999)<=40);
-  rows.sort((a,b)=>{let x=a[yeniSortKey],y=b[yeniSortKey];if(yeniSortKey==='name')return yeniSortDir*String(x).localeCompare(String(y),'tr');return yeniSortDir*((x??-1)-(y??-1));});
-  document.getElementById('tbody-yeni').innerHTML=rows.map(r=>{
-    const url=`https://www.trendyol.com/los-ojos/${slug(r.name)}-p-${r.id}`;
-    const img=IMG[r.id]||P[r.id]?.image||'';
-    const thumb=img?`<img class="thumb" loading="lazy" src="${img}" onerror="this.outerHTML='<span class=ph>👕</span>'">`:`<span class="ph">👕</span>`;
-    const sale=r.o3?`<span class="badge sale">${r.o3raw||r.o3}</span>`:`<span class="badge none">–</span>`;
-    return `<tr><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td>
-      <td>${r.firstSeen}</td><td>${fmt(r.rc)}</td><td class="hidem2">${r.ra??'–'}</td>
-      <td>${fmtTL(r.p)}</td><td>${sale}</td><td>${fmt(r.f)}</td></tr>`;
-  }).join('');
-  updateSortArrows(document.querySelector('#p-yeni thead'),yeniSortKey,yeniSortDir);
-}
+
+/* ---------- image tooltip ---------- */
 const tip=document.getElementById('img-tip');
-document.getElementById('tbody').addEventListener('mouseover',e=>{
-  const tr=e.target.closest('tr[data-pid]');
-  if(!tr){tip.style.display='none';return;}
-  const pid=tr.dataset.pid;
-  const imgUrl=IMG[pid]||LATEST?.products[pid]?.image||null;
-  document.getElementById('tip-name').textContent=LATEST?.products[pid]?.name||'';
-  const ti=document.getElementById('tip-img');
-  if(imgUrl){ti.src=imgUrl;ti.style.display='block';}else ti.style.display='none';
-  tip.style.display='block';
-});
-document.getElementById('tbody').addEventListener('mousemove',e=>{
-  if(tip.style.display!=='block')return;
-  tip.style.left=(e.clientX+16+200>window.innerWidth?e.clientX-216:e.clientX+16)+'px';
-  tip.style.top=Math.max(8,e.clientY-20)+'px';
-});
-document.getElementById('tbody').addEventListener('mouseleave',()=>tip.style.display='none');
+function bindTip(tbodyId){
+  const el=document.getElementById(tbodyId);
+  el.addEventListener('mouseover',e=>{
+    const tr=e.target.closest('tr[data-pid]');
+    if(!tr){tip.style.display='none';return;}
+    const pid=tr.dataset.pid;
+    const imgUrl=LATEST?.products[pid]?.image||null;
+    document.getElementById('tip-name').textContent=LATEST?.products[pid]?.name||'';
+    const ti=document.getElementById('tip-img');
+    if(imgUrl){ti.src=imgUrl;ti.style.display='block';}else ti.style.display='none';
+    tip.style.display='block';
+  });
+  el.addEventListener('mousemove',e=>{
+    if(tip.style.display!=='block')return;
+    tip.style.left=(e.clientX+16+200>window.innerWidth?e.clientX-216:e.clientX+16)+'px';
+    tip.style.top=Math.max(8,e.clientY-20)+'px';
+  });
+  el.addEventListener('mouseleave',()=>tip.style.display='none');
+}
+bindTip('tbody');bindTip('tbody-yeni');
+
+/* ---------- charts ---------- */
 let charts={};
 function bar(cid,labels,data,color){
   if(charts[cid])charts[cid].destroy();
-  const opt={indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#888'},grid:{color:'#eee'}},y:{ticks:{color:'#444',font:{size:11}},grid:{display:false}}}};
-  charts[cid]=new Chart(document.getElementById(cid),{type:'bar',data:{labels,datasets:[{data,backgroundColor:color}]},options:opt});
+  const opt={indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#8aa'},grid:{color:'#eef1f6'}},y:{ticks:{color:'#334155',font:{size:11}},grid:{display:false}}}};
+  charts[cid]=new Chart(document.getElementById(cid),{type:'bar',data:{labels,datasets:[{data,backgroundColor:color,borderRadius:6}]},options:opt});
 }
 function renderCharts(){
   const P=LATEST.products;
   const arr=Object.keys(P).map(id=>({n:(P[id].name||id).replace(/^Los Ojos x? ?/i,''),o3:P[id].order||0,f:P[id].favorite||0}));
   const top=arr.filter(x=>x.o3>0).sort((a,b)=>b.o3-a.o3).slice(0,10);
-  bar('chTop',top.map(x=>x.n.slice(0,30)),top.map(x=>x.o3),'#e84c4c');
+  bar('chTop',top.map(x=>x.n.slice(0,30)),top.map(x=>x.o3),'#f27a1a');
   const fav=[...arr].sort((a,b)=>b.f-a.f).slice(0,10);
-  bar('chFav',fav.map(x=>x.n.slice(0,30)),fav.map(x=>x.f),'#6c8fff');
+  bar('chFav',fav.map(x=>x.n.slice(0,30)),fav.map(x=>x.f),'#3b82f6');
 }
 function renderTrend(){
   const snaps=HIST?.snapshots||[];
-  document.getElementById('trendnote').innerHTML=snaps.length<2?'Yarın ilk karşılaştırma oluşur (şu an '+snaps.length+' günlük veri).':''+snaps.length+' günlük veriden hesaplanıyor.';
+  document.getElementById('trendnote').innerHTML=snaps.length<2?'Yarın ilk karşılaştırma oluşur (şu an '+snaps.length+' günlük veri).':'<b>'+snaps.length+'</b> günlük veriden hesaplanıyor.';
   const labels=snaps.map(s=>s.date);
   const totalRC=snaps.map(s=>Object.values(s.products).reduce((a,p)=>a+(p.rc||0),0));
   if(charts.chTrend)charts.chTrend.destroy();
-  charts.chTrend=new Chart(document.getElementById('chTrend'),{type:'line',data:{labels,datasets:[{label:'Toplam yorum',data:totalRC,borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.08)',fill:true,tension:.3}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#888'},grid:{color:'#eee'}},y:{ticks:{color:'#888'},grid:{color:'#eee'}}}}});
+  charts.chTrend=new Chart(document.getElementById('chTrend'),{type:'line',data:{labels,datasets:[{label:'Toplam yorum',data:totalRC,borderColor:'#10b981',backgroundColor:'rgba(16,185,129,.08)',fill:true,tension:.3}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#8aa'},grid:{color:'#eef1f6'}},y:{ticks:{color:'#8aa'},grid:{color:'#eef1f6'}}}}});
   const daily=[],dlab=[];
   for(let i=1;i<snaps.length;i++){
     const days=Math.max(1,(new Date(snaps[i].date)-new Date(snaps[i-1].date))/86400000);
@@ -422,8 +402,10 @@ function renderTrend(){
     daily.push(Math.round(drc/days/rate));dlab.push(snaps[i].date);
   }
   if(charts.chDaily)charts.chDaily.destroy();
-  charts.chDaily=new Chart(document.getElementById('chDaily'),{type:'bar',data:{labels:dlab,datasets:[{data:daily,backgroundColor:'#e84c4c'}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#888'},grid:{display:false}},y:{ticks:{color:'#888'},grid:{color:'#eee'}}}}});
+  charts.chDaily=new Chart(document.getElementById('chDaily'),{type:'bar',data:{labels:dlab,datasets:[{data:daily,backgroundColor:'#f27a1a',borderRadius:6}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#8aa'},grid:{display:false}},y:{ticks:{color:'#8aa'},grid:{color:'#eef1f6'}}}}});
 }
+
+/* ---------- events ---------- */
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.tab,.panel').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
@@ -441,7 +423,7 @@ document.querySelectorAll('#p-yeni th[data-s]').forEach(th=>th.onclick=()=>{
   if(yeniSortKey===k)yeniSortDir*=-1;else{yeniSortKey=k;yeniSortDir=k==='name'?1:-1;}
   renderYeni();
 });
-document.getElementById('rate').oninput=e=>{rate=e.target.value/100;document.getElementById('ratev').textContent='%'+e.target.value;renderTable();renderTrend();};
+document.getElementById('rate').oninput=e=>{rate=e.target.value/100;document.getElementById('ratev').textContent='%'+e.target.value;renderTable();renderYeni();renderTrend();};
 load();
 </script>
 </body>
