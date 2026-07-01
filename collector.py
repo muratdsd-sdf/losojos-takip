@@ -147,26 +147,30 @@ def _find_products(o, d=0):
 
 def fetch_catalog_html(products):
     """API ise yaramazsa marka sayfasi HTML'ini gezerek urunleri toplar.
-    Scrape.do render'i bazen ayni sayfayi/gecici bos icerik dondurdugu icin
-    (0 yeni urun gelirse) sayfa bir kez daha denenir, yoksa erken kesilebiliyor."""
+    Scrape.do render'i bazen gecici hata (404/502) veya ayni sayfayi/bos icerik
+    dondurebiliyor; bu yuzden bir sayfa "basarisiz" gorununce hemen pes etmek
+    yerine birkac kez daha denenir, yoksa katalog erken kesilebiliyor."""
     pi = 1
-    retried = False
+    retries = 0
+    MAX_RETRIES = 3
     while pi <= MAX_PAGES:
         url = f"https://www.trendyol.com/los-ojos-x-b147875?pi={pi}"
         try:
             html = _get(url)
-        except Exception as e:
-            print(f"  ! (html) sayfa {pi} alinamadi: {e}")
-            break
-        ps = _extract_props_json(html)
-        if not ps:
-            break
-        try:
+            ps = _extract_props_json(html)
+            if not ps:
+                raise ValueError("PROPS JSON bulunamadi")
             props = json.loads(ps)
-        except Exception:
-            break
-        page = _find_products(props) or []
-        if not page:
+            page = _find_products(props) or []
+            if not page:
+                raise ValueError("urun listesi bos")
+        except Exception as e:
+            if retries < MAX_RETRIES:
+                retries += 1
+                print(f"  ! (html) sayfa {pi} alinamadi ({e}), tekrar deneniyor ({retries}/{MAX_RETRIES})...")
+                time.sleep(REQUEST_PAUSE)
+                continue
+            print(f"  ! (html) sayfa {pi} alinamadi: {e}")
             break
         before = len(products)
         for p in page:
@@ -191,13 +195,13 @@ def fetch_catalog_html(products):
             }
         print(f"  (html) sayfa {pi}: toplam {len(products)} urun")
         if len(products) == before:
-            if not retried:
-                print(f"  ! sayfa {pi} yeni urun getirmedi, bir kez daha deneniyor...")
-                retried = True
+            if retries < MAX_RETRIES:
+                retries += 1
+                print(f"  ! sayfa {pi} yeni urun getirmedi, tekrar deneniyor ({retries}/{MAX_RETRIES})...")
                 time.sleep(REQUEST_PAUSE)
                 continue
             break
-        retried = False
+        retries = 0
         pi += 1
         time.sleep(REQUEST_PAUSE)
     return products

@@ -61,7 +61,30 @@ a:hover .pname{color:#6c8fff}
 #img-tip{display:none;position:fixed;z-index:999;pointer-events:none;background:#fff;border:1px solid #e2e5ea;border-radius:14px;padding:8px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
 #img-tip img{width:190px;height:190px;object-fit:cover;border-radius:10px;display:block}
 #img-tip .tip-name{font-size:11px;color:#888;margin-top:7px;max-width:190px;word-break:break-word;line-height:1.4}
-@media(max-width:640px){.hidem{display:none}.stat .v{font-size:18px}}
+.arrow{font-size:9px;margin-left:3px;opacity:.65;display:inline-block}
+@media(max-width:640px){
+  .hidem{display:none}
+  .wrap{padding:14px 10px}
+  .stat .v{font-size:18px}
+  .stat{padding:12px 14px}
+  header{padding:12px 14px;gap:8px}
+  .logo{font-size:19px}
+  .meta{font-size:10.5px}
+  .controls{flex-direction:column;align-items:stretch}
+  .controls input[type=text],.controls select{width:100%;min-width:0}
+  .rate-row{width:100%;justify-content:space-between}
+  .tabs{gap:6px}
+  .tab{flex:1 1 auto;text-align:center;padding:9px 6px;font-size:12px}
+  th,td{padding:9px 8px;font-size:12px}
+  .pname{max-width:140px;font-size:12px}
+  .thumb,.ph{width:38px;height:38px;flex:0 0 38px}
+  .pcell{gap:8px}
+  #img-tip{display:none!important}
+}
+@media(max-width:420px){
+  .hidem2{display:none}
+  .pname{max-width:110px}
+}
 </style>
 </head>
 <body>
@@ -99,42 +122,30 @@ a:hover .pname{color:#6c8fff}
     </div>
     <div class="table-wrap">
     <table><thead><tr>
-      <th class="l" data-s="name">Ürün</th>
-      <th data-s="p">Fiyat</th>
-      <th data-s="ra">Puan</th>
-      <th data-s="rc">Yorum</th>
-      <th data-s="o3">3 Gün Satış</th>
-      <th data-s="weekly" class="hidem">Haftalık (tahmin)</th>
-      <th data-s="b" class="hidem">Sepet</th>
-      <th data-s="f">Favori</th>
+      <th class="l" data-s="name">Ürün<span class="arrow"></span></th>
+      <th data-s="p">Fiyat<span class="arrow"></span></th>
+      <th data-s="ra" class="hidem2">Puan<span class="arrow"></span></th>
+      <th data-s="rc">Yorum<span class="arrow"></span></th>
+      <th data-s="o3">3 Gün Satış<span class="arrow"></span></th>
+      <th data-s="weekly" class="hidem">Haftalık (tahmin)<span class="arrow"></span></th>
+      <th data-s="b" class="hidem">Sepet<span class="arrow"></span></th>
+      <th data-s="f">Favori<span class="arrow"></span></th>
     </tr></thead><tbody id="tbody"></tbody></table>
     </div>
   </div>
 
   <div class="panel" id="p-yeni">
-    <div class="note">40 ve altı yorumu olan ürünler. Sütun başlıklarına tıklayarak sıralayabilirsiniz.</div>
-    <div style="margin-bottom:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-      <b style="font-size:13px">Sırala:</b>
-      <select id="yeni-sort" style="border:1px solid #dde1e7;border-radius:8px;padding:7px 10px;font-size:13px;background:#fff;outline:none">
-        <option value="rc">Yorum (az→çok)</option>
-        <option value="date">İlk Görülme (yeni→eski)</option>
-        <option value="ra">Puan (yüksek→düşük)</option>
-        <option value="f">Favori (çok→az)</option>
-        <option value="b">Sepet (çok→az)</option>
-        <option value="o3">3 Gün Satış (çok→az)</option>
-        <option value="p">Fiyat (düşük→yüksek)</option>
-      </select>
-    </div>
+    <div class="note">40 ve altı yorumu olan ürünler. Sütun başlığına tıklayınca o özelliğe göre en yüksekten en düşüğe sıralanır, tekrar tıklayınca tersine döner (fiyat, tarih, yorum vb. hepsi için geçerli).</div>
     <div class="table-wrap">
       <table><thead style="position:static"><tr>
-        <th class="l" style="position:static">Ürün</th>
-        <th style="position:static">İlk Görülme</th>
-        <th style="position:static">Yorum</th>
-        <th style="position:static">Puan</th>
-        <th style="position:static">Fiyat</th>
-        <th style="position:static">3 Gün Satış</th>
-        <th style="position:static">Sepet</th>
-        <th style="position:static">Favori</th>
+        <th class="l" style="position:static" data-s="name">Ürün<span class="arrow"></span></th>
+        <th style="position:static" data-s="date">İlk Görülme<span class="arrow"></span></th>
+        <th style="position:static" data-s="rc">Yorum<span class="arrow"></span></th>
+        <th style="position:static" class="hidem2" data-s="ra">Puan<span class="arrow"></span></th>
+        <th style="position:static" data-s="p">Fiyat<span class="arrow"></span></th>
+        <th style="position:static" data-s="o3">3 Gün Satış<span class="arrow"></span></th>
+        <th style="position:static" class="hidem" data-s="b">Sepet<span class="arrow"></span></th>
+        <th style="position:static" data-s="f">Favori<span class="arrow"></span></th>
       </tr></thead><tbody id="tbody-yeni"></tbody></table>
     </div>
   </div>
@@ -335,39 +346,39 @@ function renderTable(){
     const thumb=img?`<img class="thumb" loading="lazy" src="${img}" onerror="this.outerHTML='<span class=ph>👕</span>'">`:`<span class="ph">👕</span>`;
     const sale=r.o3?`<span class="badge sale">${r.o3raw||r.o3}</span>`:`<span class="badge none">–</span>`;
     const wk=r.weekly!=null?fmt(r.weekly):`<span style="color:#bbb">birikiyor</span>`;
-    return `<tr data-pid="${r.id}"><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td><td>${fmtTL(r.p)}</td><td>${r.ra??'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
+    return `<tr data-pid="${r.id}"><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td><td>${fmtTL(r.p)}</td><td class="hidem2">${r.ra??'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
   }).join('');
+  updateSortArrows(document.querySelector('#p-urunler thead'),sortKey,sortDir);
 }
-let yeniSort='rc';
+let yeniSortKey='rc',yeniSortDir=1;
+function updateSortArrows(theadEl,key,dir){
+  theadEl.querySelectorAll('th[data-s]').forEach(th=>{
+    const a=th.querySelector('.arrow');
+    if(!a)return;
+    a.textContent=th.dataset.s===key?(dir>0?'▲':'▼'):'';
+  });
+}
 function renderYeni(){
   const P=LATEST.products;
-  const today=new Date();
   const slug=n=>String(n).toLowerCase().replace(/[ışğüöç]/g,c=>({ı:'i',ş:'s',ğ:'g',ü:'u',ö:'o',ç:'c'}[c]||c)).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  const daysSince=d=>{const diff=today-new Date(d);return Math.max(0,Math.round(diff/86400000));};
   let rows=Object.keys(P).map(id=>{
     const p=P[id];
-    const days=p.firstSeen?daysSince(p.firstSeen):0;
-    return{id,name:p.name||id,rc:p.ratingCount,ra:p.rating,price:p.price,
+    return{id,name:p.name||id,rc:p.ratingCount,ra:p.rating,p:p.price,
       o3:p.orderL3D,o3raw:p.orderL3D_raw,b:p.basket,f:p.favorite,
-      firstSeen:p.firstSeen||'–',days};
+      firstSeen:p.firstSeen||'–',date:p.firstSeen?new Date(p.firstSeen).getTime():0};
   });
   rows=rows.filter(r=>(r.rc??9999)<=40);
-  if(yeniSort==='rc') rows.sort((a,b)=>(a.rc??9999)-(b.rc??9999));
-  else if(yeniSort==='date') rows.sort((a,b)=>b.days-a.days);
-  else if(yeniSort==='ra') rows.sort((a,b)=>(b.ra??0)-(a.ra??0));
-  else if(yeniSort==='f') rows.sort((a,b)=>(b.f??0)-(a.f??0));
-  else if(yeniSort==='b') rows.sort((a,b)=>(b.b??0)-(a.b??0));
-  else if(yeniSort==='o3') rows.sort((a,b)=>(b.o3??0)-(a.o3??0));
-  else if(yeniSort==='p') rows.sort((a,b)=>(a.price??0)-(b.price??0));
+  rows.sort((a,b)=>{let x=a[yeniSortKey],y=b[yeniSortKey];if(yeniSortKey==='name')return yeniSortDir*String(x).localeCompare(String(y),'tr');return yeniSortDir*((x??-1)-(y??-1));});
   document.getElementById('tbody-yeni').innerHTML=rows.map(r=>{
     const url=`https://www.trendyol.com/los-ojos/${slug(r.name)}-p-${r.id}`;
     const img=IMG[r.id]||P[r.id]?.image||'';
     const thumb=img?`<img class="thumb" loading="lazy" src="${img}" onerror="this.outerHTML='<span class=ph>👕</span>'">`:`<span class="ph">👕</span>`;
     const sale=r.o3?`<span class="badge sale">${r.o3raw||r.o3}</span>`:`<span class="badge none">–</span>`;
     return `<tr><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td>
-      <td>${r.firstSeen}</td><td>${fmt(r.rc)}</td><td>${r.ra??'–'}</td>
-      <td>${fmtTL(r.price)}</td><td>${sale}</td><td>${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
+      <td>${r.firstSeen}</td><td>${fmt(r.rc)}</td><td class="hidem2">${r.ra??'–'}</td>
+      <td>${fmtTL(r.p)}</td><td>${sale}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
   }).join('');
+  updateSortArrows(document.querySelector('#p-yeni thead'),yeniSortKey,yeniSortDir);
 }
 const tip=document.getElementById('img-tip');
 document.getElementById('tbody').addEventListener('mouseover',e=>{
@@ -424,13 +435,17 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
 });
 document.getElementById('q').oninput=renderTable;
 document.getElementById('sortsel').onchange=e=>{sortKey=e.target.value;sortDir=-1;renderTable();};
-document.querySelectorAll('th').forEach(th=>th.onclick=()=>{
-  const k=th.dataset.s;if(!k)return;
+document.querySelectorAll('#p-urunler th[data-s]').forEach(th=>th.onclick=()=>{
+  const k=th.dataset.s;
   if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=k==='name'?1:-1;}
   renderTable();
 });
+document.querySelectorAll('#p-yeni th[data-s]').forEach(th=>th.onclick=()=>{
+  const k=th.dataset.s;
+  if(yeniSortKey===k)yeniSortDir*=-1;else{yeniSortKey=k;yeniSortDir=k==='name'?1:-1;}
+  renderYeni();
+});
 document.getElementById('rate').oninput=e=>{rate=e.target.value/100;document.getElementById('ratev').textContent='%'+e.target.value;renderTable();renderTrend();};
-document.getElementById('yeni-sort').onchange=e=>{yeniSort=e.target.value;renderYeni();};
 load();
 </script>
 </body>
