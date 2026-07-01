@@ -34,7 +34,9 @@ MAX_PAGES = 40
 # basta gelir, olu stok en sonda kalir ve hic cekilmez. Boylece istek sayisi
 # sabit ve dusuk kalir (residential proxy pahali; her istek 10-25 kredi) -> her
 # gun toplama bedava kotalara sigar. Daha fazla/az urun icin bu sayiyi degistir.
-TOP_SELLER_PAGES = 4
+# Ortam degiskeniyle asilabilir: Turkiye-PC kurulumunda istekler bedava oldugu
+# icin TOP_SELLER_PAGES=10 verilip tam katalog cekilir (radar daha isabetli).
+TOP_SELLER_PAGES = int(os.environ.get("TOP_SELLER_PAGES", "4"))
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
@@ -313,9 +315,11 @@ def fetch_catalog_html(products):
 
 
 def fetch_catalog():
-    if _using_proxy():
+    if _using_proxy() or os.environ.get("FORCE_HTML") == "1":
         # apigw.trendyol.com proxy uzerinden cogunlukla 502 (ROTATION_FAILED) donuyor,
         # bosuna kota harcamamak icin dogrudan HTML yontemine gidiyoruz.
+        # FORCE_HTML=1: Turkiye-PC kurulumu da HTML yolunu kullanir, cunku
+        # favori/siparis (socialProof) verisi yalnizca HTML sayfasinda geliyor.
         return fetch_catalog_html({})
 
     products = {}
