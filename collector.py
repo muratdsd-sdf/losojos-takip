@@ -23,6 +23,7 @@ import sys
 import time
 import datetime
 import urllib.request
+import urllib.parse
 
 BRAND_ID = 147875
 DATA_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -38,7 +39,38 @@ SOCIAL_API = ("https://apigw.trendyol.com/discovery-sfint-search-service/"
               "api/social-proof/")
 
 
+def _load_env_file():
+    """.env dosyasi varsa (yerel calisirken) icindeki degiskenleri yukler.
+    Repo genel/public oldugu icin token asla koda/commite yazilmaz."""
+    path = os.path.join(DATA_DIR, ".env")
+    if not os.path.exists(path):
+        return
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            k, v = line.split("=", 1)
+            os.environ.setdefault(k.strip(), v.strip())
+
+
+_load_env_file()
+SCRAPEDO_TOKEN = os.environ.get("SCRAPEDO_TOKEN")
+
+
 def _get(url):
+    """Trendyol Turkiye disindan engelledigi icin, SCRAPEDO_TOKEN tanimliysa
+    istekler Scrape.do uzerinden Turkiye cikisli olarak yapilir."""
+    if SCRAPEDO_TOKEN:
+        target = urllib.parse.quote(url, safe="")
+        proxied = (f"https://api.scrape.do/?token={SCRAPEDO_TOKEN}"
+                   f"&url={target}&geoCode=tr&super=true")
+        req = urllib.request.Request(proxied, headers={
+            "Accept": "application/json, text/plain, */*",
+        })
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return r.read().decode("utf-8", "replace")
+
     req = urllib.request.Request(url, headers={
         "User-Agent": UA,
         "Accept": "application/json, text/plain, */*",
@@ -114,8 +146,12 @@ def _find_products(o, d=0):
 
 
 def fetch_catalog_html(products):
-    """API ise yaramazsa marka sayfasi HTML'ini gezerek urunleri toplar."""
-    for pi in range(1, MAX_PAGES + 1):
+    """API ise yaramazsa marka sayfasi HTML'ini gezerek urunleri toplar.
+    Scrape.do render'i bazen ayni sayfayi/gecici bos icerik dondurdugu icin
+    (0 yeni urun gelirse) sayfa bir kez daha denenir, yoksa erken kesilebiliyor."""
+    pi = 1
+    retried = False
+    while pi <= MAX_PAGES:
         url = f"https://www.trendyol.com/los-ojos-x-b147875?pi={pi}"
         try:
             html = _get(url)
@@ -143,19 +179,36 @@ def fetch_catalog_html(products):
                 price = (pr.get("sellingPrice") or pr.get("discountedPrice") or pr.get("originalPrice"))
             rating = p.get("ratingScore") or {}
             avg = rating.get("averageRating") if isinstance(rating, dict) else None
+            imgs = p.get("images") or []
+            img = imgs[0] if imgs else None
+            if img and not img.startswith("http"):
+                img = "https://cdn.dsmcdn.com/mnresize/400/-/" + img.lstrip("/")
             products[pid] = {
                 "id": pid, "name": (p.get("name") or "").strip(), "price": price,
                 "ratingCount": rating.get("totalCount") if isinstance(rating, dict) else None,
                 "rating": round(avg, 2) if avg else None, "merchantId": p.get("merchantId"),
+                "image": img,
             }
         print(f"  (html) sayfa {pi}: toplam {len(products)} urun")
         if len(products) == before:
+            if not retried:
+                print(f"  ! sayfa {pi} yeni urun getirmedi, bir kez daha deneniyor...")
+                retried = True
+                time.sleep(REQUEST_PAUSE)
+                continue
             break
+        retried = False
+        pi += 1
         time.sleep(REQUEST_PAUSE)
     return products
 
 
 def fetch_catalog():
+    if SCRAPEDO_TOKEN:
+        # apigw.trendyol.com Scrape.do uzerinden hep 502 (ROTATION_FAILED) donuyor,
+        # bosuna kota harcamamak icin dogrudan HTML yontemine gidiyoruz.
+        return fetch_catalog_html({})
+
     products = {}
     for pi in range(1, MAX_PAGES + 1):
         url = (f"{SEARCH_API}?wb={BRAND_ID}&pi={pi}&culture=tr-TR"

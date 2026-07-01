@@ -21,6 +21,8 @@ jobs:
           python-version: "3.11"
 
       - name: Veriyi topla
+        env:
+          SCRAPEDO_TOKEN: ${{ secrets.SCRAPEDO_TOKEN }}
         run: python collector.py
 
       - name: Veriyi kaydet (commit)
