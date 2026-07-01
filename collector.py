@@ -70,14 +70,46 @@ def _using_proxy():
     return bool(SCRAPFLY_TOKEN or SCRAPEDO_TOKEN)
 
 
+def _scrapfly_fetch(target):
+    """Scrapfly ile Turkiye cikisli istek; icerigi (result.content) doner.
+
+    Datacenter proxy (1 kredi) denendi ama Trendyol'un Cloudflare'i bu IP'leri
+    engelliyor (test: 0/5, render_js ile 1/3). Bu yuzden dogrudan guvenilir
+    residential proxy (25 kredi) kullaniliyor. Cloudflare ilk istekte cf_clearance
+    cerezi veriyor; sticky session ayni IP+cerezi sonraki sayfalarda koruyarak
+    sayfalamayi calistirir. Sticky IP takilirsa bir kez yeni session ile denenir."""
+    global _SCRAPFLY_SESSION
+
+    def _try(session):
+        u = (f"https://api.scrapfly.io/scrape?key={SCRAPFLY_TOKEN}"
+             f"&url={target}&country=tr&proxy_pool=public_residential_pool&asp=true"
+             f"&session={session}&session_sticky_proxy=true")
+        try:
+            with urllib.request.urlopen(
+                    urllib.request.Request(u, headers={"Accept": "application/json"}),
+                    timeout=150) as r:
+                env = json.loads(r.read().decode("utf-8", "replace"))
+        except Exception:
+            return None
+        res = env.get("result") or {}
+        content = res.get("content", "") or ""
+        return content if (res.get("status_code") == 200 and content) else None
+
+    c = _try(_SCRAPFLY_SESSION)
+    if c is not None:
+        return c
+    _SCRAPFLY_SESSION = "losojos" + str(int(time.time() * 1000))
+    return _try(_SCRAPFLY_SESSION) or ""
+
+
 def _get(url, validate=None):
     """Trendyol Turkiye disindan engelledigi icin istekler Turkiye cikisli bir
     proxy servisi uzerinden yapilir.
 
-    SCRAPFLY (tercih edilen): datacenter proxy + anti-bot bypass (asp) + country=tr.
-    Test edildi: hem marka sayfasi HTML'i hem sosyal-kanit API'si icin istek
-    basina yalnizca 1 kredi. Yanit bir JSON zarfi icinde gelir; asil icerik
-    `result.content` alanindadir, onu don.
+    SCRAPFLY (tercih edilen): residential proxy + anti-bot bypass (asp) +
+    country=tr (istek basina 25 kredi; datacenter 1 kredi denendi ama Cloudflare
+    engelliyor). Yanit JSON zarfi icinde gelir; asil icerik result.content'te.
+    Detay/kademe icin bkz. _scrapfly_fetch.
 
     SCRAPEDO (yedek): geoCode=tr&super=true (residential, istek basina 10 kredi;
     ucretsiz planda datacenter+geoCode Pro plan gerektirdigi icin residential
@@ -93,22 +125,25 @@ def _get(url, validate=None):
             return r.read().decode("utf-8", "replace")
 
     target = urllib.parse.quote(url, safe="")
+    # Once UCUZ Scrape.do (residential 10 kredi) denenir; kredisi bittiyse (401)
+    # veya hata verirse PAHALI Scrapfly'a (residential 25 kredi) dusulur. Boylece
+    # iki bedava motorun aylik kotasi da kullanilir (birlikte ~2 kat toplama).
+    if SCRAPEDO_TOKEN:
+        try:
+            proxied = (f"https://api.scrape.do/?token={SCRAPEDO_TOKEN}"
+                       f"&url={target}&geoCode=tr&super=true")
+            req = urllib.request.Request(proxied, headers={
+                "Accept": "application/json, text/plain, */*",
+            })
+            with urllib.request.urlopen(req, timeout=90) as r:
+                body = r.read().decode("utf-8", "replace")
+            if body:
+                return body
+        except Exception:
+            pass  # Scrape.do kredisi bitmis / hata -> Scrapfly'a dus
     if SCRAPFLY_TOKEN:
-        proxied = (f"https://api.scrapfly.io/scrape?key={SCRAPFLY_TOKEN}"
-                   f"&url={target}&country=tr&proxy_pool=public_datacenter_pool&asp=true"
-                   f"&session={_SCRAPFLY_SESSION}&session_sticky_proxy=true")
-        req = urllib.request.Request(proxied, headers={"Accept": "application/json"})
-        with urllib.request.urlopen(req, timeout=120) as r:
-            envelope = json.loads(r.read().decode("utf-8", "replace"))
-        return (envelope.get("result") or {}).get("content", "") or ""
-
-    proxied = (f"https://api.scrape.do/?token={SCRAPEDO_TOKEN}"
-               f"&url={target}&geoCode=tr&super=true")
-    req = urllib.request.Request(proxied, headers={
-        "Accept": "application/json, text/plain, */*",
-    })
-    with urllib.request.urlopen(req, timeout=90) as r:
-        return r.read().decode("utf-8", "replace")
+        return _scrapfly_fetch(target)
+    return ""
 
 
 def parse_tr_number(val):
@@ -217,11 +252,20 @@ def fetch_catalog_html(products):
             img = imgs[0] if imgs else None
             if img and not img.startswith("http"):
                 img = "https://cdn.dsmcdn.com/mnresize/400/-/" + img.lstrip("/")
+            # Sosyal kanit (favori/siparis) zaten katalog sayfasinda gomulu geliyor
+            # (socialProof); ayri apigw sosyal-proof API'sine gerek yok.
+            fav = order = order_raw = None
+            for sp in (p.get("socialProof") or []):
+                key = sp.get("key"); val = sp.get("value")
+                if key == "favoriteCount":
+                    fav, _ = parse_tr_number(val)
+                elif key == "orderCount":
+                    order, _ = parse_tr_number(val); order_raw = val
             products[pid] = {
                 "id": pid, "name": (p.get("name") or "").strip(), "price": price,
                 "ratingCount": rating.get("totalCount") if isinstance(rating, dict) else None,
                 "rating": round(avg, 2) if avg else None, "merchantId": p.get("merchantId"),
-                "image": img,
+                "image": img, "favorite": fav, "order": order, "order_raw": order_raw,
             }
         print(f"  (html) sayfa {pi}: toplam {len(products)} urun")
         if len(products) == before:
@@ -289,33 +333,6 @@ def fetch_catalog():
     return products
 
 
-def fetch_social(product_ids):
-    out = {}
-    batch = 24
-    for i in range(0, len(product_ids), batch):
-        chunk = product_ids[i:i + batch]
-        ids = ",".join(str(x) for x in chunk)
-        url = (f"{SOCIAL_API}?contentIds={ids}&channelId=1&storefrontId=1"
-               f"&culture=tr-TR&countryCode=TR")
-        try:
-            data = json.loads(_get(url, validate=lambda b: '"data"' in b))
-        except Exception as e:
-            print(f"  ! sosyal kanit grubu alinamadi: {e}")
-            time.sleep(REQUEST_PAUSE)
-            continue
-        for pid, arr in (data.get("data") or {}).items():
-            rec = {}
-            for o in arr:
-                k = o.get("key"); v = o.get("value")
-                if k in ("orderCountL3D", "basketCount", "favoriteCount", "pageViewCount"):
-                    num, _ = parse_tr_number(v)
-                    rec[k] = num
-                    rec[k + "_raw"] = v
-            out[int(pid)] = rec
-        time.sleep(REQUEST_PAUSE)
-    return out
-
-
 def load_json(path, default):
     if os.path.exists(path):
         try:
@@ -342,11 +359,7 @@ def main():
         print("HATA: Hic urun alinamadi. (Trendyol IP'yi engellemis olabilir.)")
         sys.exit(1)
     ids = list(catalog.keys())
-    print(f"   {len(ids)} urun bulundu.")
-
-    print("2) Satis / sepet / favori verileri cekiliyor...")
-    social = fetch_social(ids)
-    print(f"   {len(social)} urun icin sosyal kanit alindi.")
+    print(f"   {len(ids)} urun bulundu (favori/siparis dahil, katalogdan).")
 
     # Mevcut latest.json'dan firstSeen tarihlerini al
     old_latest = load_json(os.path.join(DATA_DIR, "latest.json"), {})
@@ -354,16 +367,14 @@ def main():
 
     snapshot = {}
     for pid, info in catalog.items():
-        s = social.get(pid, {})
         pid_str = str(pid)
         # firstSeen: eski kayıtta varsa koru, yoksa bugün
         first_seen = old_products.get(pid_str, {}).get("firstSeen") or today
         snapshot[pid_str] = {
             "name": info["name"], "price": info["price"],
             "ratingCount": info["ratingCount"], "rating": info["rating"],
-            "orderL3D": s.get("orderCountL3D"), "orderL3D_raw": s.get("orderCountL3D_raw"),
-            "basket": s.get("basketCount"), "favorite": s.get("favoriteCount"),
-            "pageView": s.get("pageViewCount"),
+            "order": info.get("order"), "order_raw": info.get("order_raw"),
+            "favorite": info.get("favorite"),
             "image": info.get("image"),
             "firstSeen": first_seen,
         }
@@ -378,16 +389,16 @@ def main():
     compact = {"date": today, "products": {}}
     for pid, pr in snapshot.items():
         compact["products"][pid] = {
-            "rc": pr["ratingCount"], "o3": pr["orderL3D"],
-            "b": pr["basket"], "f": pr["favorite"], "v": pr["pageView"], "p": pr["price"],
+            "rc": pr["ratingCount"], "o": pr["order"],
+            "f": pr["favorite"], "p": pr["price"],
         }
     history["snapshots"].append(compact)
     history["snapshots"].sort(key=lambda s: s["date"])
     history["names"] = {pid: pr["name"] for pid, pr in snapshot.items()}
     save_json(os.path.join(DATA_DIR, "history.json"), history)
 
-    n_order = sum(1 for p in snapshot.values() if p["orderL3D"])
-    print(f"TAMAM. {len(catalog)} urun kaydedildi, {n_order} urunde '3 gunluk satis' var.")
+    n_order = sum(1 for p in snapshot.values() if p["order"])
+    print(f"TAMAM. {len(catalog)} urun kaydedildi, {n_order} urunde siparis bilgisi var.")
     print(f"Arsivde {len(history['snapshots'])} gunluk veri birikti.")
 
 

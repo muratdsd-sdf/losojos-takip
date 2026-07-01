@@ -110,10 +110,9 @@ a:hover .pname{color:#6c8fff}
     <div class="controls">
       <input type="text" id="q" placeholder="🔍 Ürün ara…">
       <select id="sortsel">
-        <option value="o3">3 Günlük Satış ↓</option>
+        <option value="o3">Sipariş ↓</option>
         <option value="weekly">Haftalık Tahmin ↓</option>
         <option value="f">Favori ↓</option>
-        <option value="b">Sepet ↓</option>
         <option value="rc">Yorum ↓</option>
         <option value="p">Fiyat ↓</option>
         <option value="ra">Puan ↓</option>
@@ -126,9 +125,8 @@ a:hover .pname{color:#6c8fff}
       <th data-s="p">Fiyat<span class="arrow"></span></th>
       <th data-s="ra" class="hidem2">Puan<span class="arrow"></span></th>
       <th data-s="rc">Yorum<span class="arrow"></span></th>
-      <th data-s="o3">3 Gün Satış<span class="arrow"></span></th>
+      <th data-s="o3">Sipariş<span class="arrow"></span></th>
       <th data-s="weekly" class="hidem">Haftalık (tahmin)<span class="arrow"></span></th>
-      <th data-s="b" class="hidem">Sepet<span class="arrow"></span></th>
       <th data-s="f">Favori<span class="arrow"></span></th>
     </tr></thead><tbody id="tbody"></tbody></table>
     </div>
@@ -143,16 +141,15 @@ a:hover .pname{color:#6c8fff}
         <th style="position:static" data-s="rc">Yorum<span class="arrow"></span></th>
         <th style="position:static" class="hidem2" data-s="ra">Puan<span class="arrow"></span></th>
         <th style="position:static" data-s="p">Fiyat<span class="arrow"></span></th>
-        <th style="position:static" data-s="o3">3 Gün Satış<span class="arrow"></span></th>
-        <th style="position:static" class="hidem" data-s="b">Sepet<span class="arrow"></span></th>
+        <th style="position:static" data-s="o3">Sipariş<span class="arrow"></span></th>
         <th style="position:static" data-s="f">Favori<span class="arrow"></span></th>
       </tr></thead><tbody id="tbody-yeni"></tbody></table>
     </div>
   </div>
 
   <div class="panel" id="p-ozet">
-    <div class="note"><b>Satış rakamları:</b> 3 günlük satış = Trendyol'un "son 3 günde X+ sattı" bilgisi (alt sınır). Haftalık tahmin yorum artışından hesaplanır — birkaç günlük veri birikince isabetli olur.</div>
-    <div class="chartbox"><b>En çok 3 günlük satış (Top 10)</b><canvas id="chTop" height="120"></canvas></div>
+    <div class="note"><b>Satış rakamları:</b> Sipariş = Trendyol'un ürün kartında gösterdiği "X+ sipariş" bilgisi (alt sınır, yalnızca bazı ürünlerde çıkar). Haftalık tahmin yorum artışından hesaplanır — birkaç günlük veri birikince isabetli olur.</div>
+    <div class="chartbox"><b>En çok sipariş alan (Top 10)</b><canvas id="chTop" height="120"></canvas></div>
     <div class="chartbox"><b>En çok favorilenen 10 ürün</b><canvas id="chFav" height="120"></canvas></div>
   </div>
 
@@ -316,16 +313,15 @@ function render(){
   const P=LATEST.products,ids=Object.keys(P);
   let totalOrder=0,nOrder=0,totalFav=0,rSum=0,rN=0,totalRC=0;
   ids.forEach(id=>{const p=P[id];
-    if(p.orderL3D){totalOrder+=p.orderL3D;nOrder++;}
+    if(p.order){totalOrder+=p.order;nOrder++;}
     if(p.favorite)totalFav+=p.favorite;
     if(p.rating){rSum+=p.rating;rN++;}
     if(p.ratingCount)totalRC+=p.ratingCount;
   });
   const cards=[
     ['Toplam ürün',fmt(ids.length),'takip ediliyor'],
-    ['Satışı görünen',fmt(nOrder)+' ürün','Trendyol rozetli'],
-    ['3 günlük satış',fmt(totalOrder)+'+','görünen ürünler toplamı'],
-    ['Tahmini aylık',fmt(Math.round(totalOrder/3*30))+'+','3 günden uzatıldı'],
+    ['Siparişi görünen',fmt(nOrder)+' ürün','Trendyol rozetli'],
+    ['Görünen sipariş',fmt(totalOrder)+'+','rozetli ürünler toplamı'],
     ['Toplam yorum',fmt(totalRC)+'+','kümülatif satış göst.'],
     ['Toplam favori',fmt(totalFav),'tüm ürünler'],
     ['Ort. puan',(rN?(rSum/rN).toFixed(2):'–'),'5 üzerinden'],
@@ -336,7 +332,7 @@ function render(){
 }
 function renderTable(){
   const P=LATEST.products,q=(document.getElementById('q').value||'').toLowerCase();
-  let rows=Object.keys(P).map(id=>{const p=P[id];return{id,name:p.name||id,p:p.price,ra:p.rating,rc:p.ratingCount,o3:p.orderL3D,o3raw:p.orderL3D_raw,b:p.basket,f:p.favorite,weekly:weeklyEstimate(id)};});
+  let rows=Object.keys(P).map(id=>{const p=P[id];return{id,name:p.name||id,p:p.price,ra:p.rating,rc:p.ratingCount,o3:p.order,o3raw:p.order_raw,f:p.favorite,weekly:weeklyEstimate(id)};});
   if(q)rows=rows.filter(r=>r.name.toLowerCase().includes(q));
   rows.sort((a,b)=>{let x=a[sortKey],y=b[sortKey];if(sortKey==='name')return sortDir*String(x).localeCompare(String(y),'tr');return sortDir*((x??-1)-(y??-1));});
   const slug=n=>String(n).toLowerCase().replace(/[ışğüöç]/g,c=>({ı:'i',ş:'s',ğ:'g',ü:'u',ö:'o',ç:'c'}[c]||c)).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -346,7 +342,7 @@ function renderTable(){
     const thumb=img?`<img class="thumb" loading="lazy" src="${img}" onerror="this.outerHTML='<span class=ph>👕</span>'">`:`<span class="ph">👕</span>`;
     const sale=r.o3?`<span class="badge sale">${r.o3raw||r.o3}</span>`:`<span class="badge none">–</span>`;
     const wk=r.weekly!=null?fmt(r.weekly):`<span style="color:#bbb">birikiyor</span>`;
-    return `<tr data-pid="${r.id}"><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td><td>${fmtTL(r.p)}</td><td class="hidem2">${r.ra??'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
+    return `<tr data-pid="${r.id}"><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td><td>${fmtTL(r.p)}</td><td class="hidem2">${r.ra??'–'}</td><td>${fmt(r.rc)}</td><td>${sale}</td><td class="hidem">${wk}</td><td>${fmt(r.f)}</td></tr>`;
   }).join('');
   updateSortArrows(document.querySelector('#p-urunler thead'),sortKey,sortDir);
 }
@@ -364,7 +360,7 @@ function renderYeni(){
   let rows=Object.keys(P).map(id=>{
     const p=P[id];
     return{id,name:p.name||id,rc:p.ratingCount,ra:p.rating,p:p.price,
-      o3:p.orderL3D,o3raw:p.orderL3D_raw,b:p.basket,f:p.favorite,
+      o3:p.order,o3raw:p.order_raw,f:p.favorite,
       firstSeen:p.firstSeen||'–',date:p.firstSeen?new Date(p.firstSeen).getTime():0};
   });
   rows=rows.filter(r=>(r.rc??9999)<=40);
@@ -376,7 +372,7 @@ function renderYeni(){
     const sale=r.o3?`<span class="badge sale">${r.o3raw||r.o3}</span>`:`<span class="badge none">–</span>`;
     return `<tr><td class="l"><a class="pcell" href="${url}" target="_blank">${thumb}<span class="pname">${r.name}</span></a></td>
       <td>${r.firstSeen}</td><td>${fmt(r.rc)}</td><td class="hidem2">${r.ra??'–'}</td>
-      <td>${fmtTL(r.p)}</td><td>${sale}</td><td class="hidem">${fmt(r.b)}</td><td>${fmt(r.f)}</td></tr>`;
+      <td>${fmtTL(r.p)}</td><td>${sale}</td><td>${fmt(r.f)}</td></tr>`;
   }).join('');
   updateSortArrows(document.querySelector('#p-yeni thead'),yeniSortKey,yeniSortDir);
 }
@@ -405,7 +401,7 @@ function bar(cid,labels,data,color){
 }
 function renderCharts(){
   const P=LATEST.products;
-  const arr=Object.keys(P).map(id=>({n:(P[id].name||id).replace(/^Los Ojos x? ?/i,''),o3:P[id].orderL3D||0,f:P[id].favorite||0}));
+  const arr=Object.keys(P).map(id=>({n:(P[id].name||id).replace(/^Los Ojos x? ?/i,''),o3:P[id].order||0,f:P[id].favorite||0}));
   const top=arr.filter(x=>x.o3>0).sort((a,b)=>b.o3-a.o3).slice(0,10);
   bar('chTop',top.map(x=>x.n.slice(0,30)),top.map(x=>x.o3),'#e84c4c');
   const fav=[...arr].sort((a,b)=>b.f-a.f).slice(0,10);

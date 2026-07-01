@@ -2,7 +2,12 @@ name: Los Ojos veri topla
 
 on:
   schedule:
-    - cron: "0 6 * * *"        # her gun 06:00 UTC (Turkiye saati ~09:00)
+    # Her 4 gunde bir 06:00 UTC (Turkiye ~09:00). Trendyol'u proxy'siz gormek
+    # imkansiz; guvenilir toplama residential proxy istiyor (Scrape.do 10 kredi/
+    # Scrapfly 25 kredi). Marka ~16 sayfa -> tam toplama Scrape.do'da ~160,
+    # Scrapfly'da ~400 kredi. Iki motorun aylik 1000+1000 bedava kredisi birlikte
+    # ~8-9 toplamaya (her ~4 gun) yeter. Gunluk icin ucretli plan gerekir.
+    - cron: "0 6 */4 * *"
   workflow_dispatch: {}          # elle de calistirilabilsin (Run workflow butonu)
 
 permissions:
