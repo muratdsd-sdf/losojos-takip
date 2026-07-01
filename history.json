@@ -1,93 +1,99 @@
 {
  "brand": "Los Ojos",
  "names": {
-  "903874990": "3 Adet Görünmez Lazer Kesim Boxer Külot Laser Cut Boyshort",
-  "1140323837": "x Ece Vizon Modal Kumaşlı Kısa Kollu Şortlu Pijama Takımı Ribbed PJ4",
-  "129998832": "Kadın Siyah Yüksek Bel Toparlayıcı Çift Cepli Ispanyol Paça Tayt Bootcut",
-  "154459170": "Kadın Siyah Yüksek Bel Jogger Eşofman Altı Joggers",
-  "1045500350": "x Ece Bordo Halter Yaka Top Halter Tank",
-  "904602868": "Lazer Kesim Yüksek Bel Görünmez Boxer High Waisted Boyshort",
-  "834007684": "x Melodi Gri Melanj İspanyol Paça Jarse Pantolon Flared",
-  "834011598": "x Melodi Siyah İspanyol Paça Jarse Pantolon Flared",
-  "1140323897": "x Ece Pembe Modal Kumaşlı Kısa Kollu Şortlu Pijama Takımı Ribbed PJ4",
-  "1140323930": "x Ece Kahverengi Modal Kumaşlı Kısa Kollu Şortlu Pijama Takımı Ribbed PJ4",
-  "1140323876": "x Ece Kahverengi Modal Kumaşlı Askılı Şortlu Pijama Takımı Ribbed PJ3",
-  "1045500574": "x Ece Siyah Halter Yaka Top Halter Tank",
-  "736364167": "3 Adet Seamless Boxer Külot 3xBoyshort",
-  "903872945": "Şekillendirici Şort Shapewear Shorts",
-  "901446700": "Siyah Fitilli Kısa Kollu Kısa Tulum Short Romper",
-  "154385500": "Kadın Lacivert Yüksek Bel Jogger Eşofman Altı",
-  "308170887": "Kadın Pembe 2 Katmanlı Spor Şort - Şortlu Tayt 2in1",
-  "97827284": "Kadın Siyah Yüksek Bel Toparlayıcı Çift Cepli Biker Şort Kısa Spor Tayt",
-  "1140323852": "x Ece Pembe 2 Katmanlı Tenis Eteği Skort",
-  "344201097": "Siyah Hafif Destekli Sırt Detaylı Kaplı Spor Sütyeni",
-  "1140402581": "x Ece Siyah Kare Yaka Askılı Kısa Spor Tulum Unitard",
-  "1140323566": "x Ece Pembe Spor Sütyeni Super Crop Top",
-  "1140323872": "x Ece Pembe Modal Kumaşlı Askılı Şortlu Pijama Takımı Ribbed PJ3",
-  "1140323739": "x Ece Siyah Yüksek Bel Kısa Tayt Mono Biker",
-  "834004529": "x Melodi Siyah Bedene Oturan Tişört Short Fitted",
-  "1140486909": "x Ece Pembe Yüksek Bel Spor Tayt Mono Leggings",
-  "901071773": "x Melodi Bordo İspanyol Paça Jarse Pantolon Flared",
-  "125465778": "Kadın Siyah Yüksek Bel Toparlayıcı Çift Cepli Diz Altı Kapri Tayt Capri",
-  "304364684": "Kadın Antrasit 2 Katmanlı Spor Şort - Şortlu Tayt 2 in1",
-  "115481492": "Kadın Siyah Yüksek Bel Toparlayıcı Bisikletçi Şortu Kısa Spor Tayt Biker Basics",
-  "155813505": "Lacivert V Yaka Hafif Destekli Kaplı Spor Sütyeni Vneck",
-  "945480081": "Siyah Katlanabilir Bel Detaylı Şort Lounge Shorts",
-  "772024314": "x Melodi Siyah Tenis Elbisesi Spor Elbise Tennis Dress",
-  "304909286": "Kadın Pembe Askılı Hafif Destekli Kaplı Spor Sütyeni Straps",
-  "736250093": "3 Adet Seamless Boxer Külot 3xBoyshort",
-  "664969524": "Pembe 2 Katmanlı Tenis Eteği - Spor Etek Tennis Skirt",
-  "655829041": "Lacivert Çapraz Bel Detaylı Tayt Envelope",
-  "120274055": "Siyah Hafif Destekli Sırt Detaylı Kaplı Crop Top Büstiyer Cropped",
-  "1140323675": "x Ece Pembe Yüksek Bel Kısa Tayt Mono Biker",
-  "304371408": "Kadın Haki 2 Katmanlı Spor Şort - Şortlu Tayt 2in1",
-  "1047170750": "x Ece 2’li Spor Saç Bandı 7,5 cm Sports Headband",
-  "1140323878": "x Ece Siyah 2 Katmanlı Tenis Eteği Skort",
-  "901077842": "x Melodi Bordo Bedene Oturan Tişört Short Fitted",
-  "1142355827": "x Ece Pembe Bel Detaylı Kısa Tayt Ruched Biker Shorts",
-  "1140323792": "x Ece Bordo Yüksek Bel Kısa Tayt Mono Biker",
-  "304365085": "Kadın Siyah 2 Katmanlı Spor Şort - Şortlu Tayt 2in1",
-  "707066322": "Gri 2 Katmanlı Pileli Tenis Eteği - Spor Etek Tennis Skirt2",
-  "1045513205": "x Ece Kahverengi Modal Kumaşlı Uzun Kollu Eşofmanlı Pijama Takımı Ribbed PJ2",
-  "945607417": "Bordo Katlanabilir Bel Detaylı Şort Lounge Shorts",
-  "86406024": "Kadın Siyah Yüksek Bel Çift Cepli Toparlayıcı Spor Tayt",
-  "945651489": "Beyaz Düz Kesim Tişört Regular T-Shirt",
-  "120593414": "Lavanta Hafif Destekli Sırt Detaylı Kaplı Crop Top Büstiyer Cropped",
-  "1140323801": "x Ece Antrasit Modal Kumaşlı Askılı Şortlu Pijama Takımı Ribbed PJ3",
-  "1140323682": "x Ece Bordo Kalp Yaka Spor Sütyeni Sweetheart Neck Top",
-  "736364157": "3 Adet Fitilli Seamless Boxer Külot 3xboyshort",
-  "947445481": "Siyah-Beyaz Çizgili Kare Yaka Spor Bikini Üstü Sporty Top",
-  "736364369": "3 Adet Seamless Klasik Külot 3xClassic",
-  "947445642": "Siyah Yüksek Bel Bikini Altı Sporty Bottom",
-  "1140323620": "x Ece Bordo Spor Sütyeni Super Crop Top",
-  "772024287": "x Melodi Pembe Tenis Elbisesi Spor Elbise Tennis Dress",
-  "302230814": "Kadın Ekru Yüksek Bel Fitilli Toparlayıcı Kısa Spor Tayt Ribbed Biker",
-  "1140323664": "x Ece Siyah Spor Sütyeni Super Crop Top",
-  "1142355991": "x Ece Mocha Melanj Bel Detaylı Kısa Tayt Ruched Biker Shorts",
-  "664938067": "Beyaz 2 Katmanlı Tenis Eteği - Şort Etek - Spor Etek Tennis Skirt",
-  "304364112": "Kadın Lacivert 2 Katmanlı Spor Şort - Şortlu Tayt 2in1",
-  "834012875": "x Melodi Lacivert Bedene Oturan Tişört Short Fitted",
-  "901427614": "Ekru Geniş Kalıp Geniş Paça Eşofman Altı Straight Leg",
-  "304364653": "Kadın Gri 2 Katmanlı Spor Şort - Şortlu Tayt 2in1",
-  "154925393": "Lavanta V Yaka Hafif Destekli Kaplı Spor Sütyeni Vneck",
-  "304366648": "Kadın Beyaz 2 Katmanlı Spor Şort - Şortlu Tayt 2in1",
-  "699273269": "Lacivert Halter Yaka Içi Sütyenli T-shirt Tank Top",
-  "834012095": "x Melodi Siyah-Krem Brezilya Modeli Bikini Altı Retro Bottom",
-  "155570909": "Antrasit V Yaka Hafif Destekli Kaplı Spor Sütyeni Vneck",
-  "156043784": "Siyah V Yaka Hafif Destekli Kaplı Spor Sütyeni",
-  "1045513204": "x Ece Vizon Modal Kumaşlı Uzun Kollu Eşofmanlı Pijama Takımı Ribbed PJ2",
-  "129999160": "Kadın Lavanta Yüksek Bel Toparlayıcı Çift Cepli Ispanyol Paça Tayt Bootcut",
-  "1045513767": "x Ece Gri Melanj Petek Dokulu Düğmeli Pijama Takımı Pointelle PJ",
-  "1045498667": "x Ece Bordo Fermuarlı Spor Ceket Collared",
-  "772023039": "x Melodi Gri Pamuklu Fitilli Sütyen Henley Bra",
-  "120101108": "Antrasit Hafif Destekli Sırt Detaylı Kaplı Spor Sütyeni Crisscross",
-  "834013993": "x Melodi Beyaz Bedene Oturan Tişört Short Fitted",
-  "739819840": "Vizon Seamless Yumuşak Dokulu Spor T-Shirt Crop Top",
-  "304912323": "Kadın Vizon Askılı Hafif Destekli Kaplı Spor Sütyeni Straps",
-  "772023688": "x Melodi Gri Pamuklu Fitilli Crop T-Shirt Short Sleeve",
-  "120273863": "Beyaz Hafif Destekli Sırt Detaylı Kaplı Crop Top Büstiyer Cropped",
-  "304364402": "Kadın Siyah Askılı Fitilli Kare Yaka Crop Top Büstiyer Square",
-  "1140323649": "x Ece Vizon Spor Sütyeni Super Crop Top"
+  "115481492": "Women's Black High Waist Loose Cycling Shorts Short Sports Tights Biker Basics",
+  "304912565": "Women's White Strap Lightly Supported Covered Sports Bra Straps",
+  "649970162": "Black High Waist Sports Tights Basics",
+  "120101108": "Anthracite Lightly Supported Covered Sports Bra with Back Detail Crisscross",
+  "304912405": "Women's Black Strap Lightly Supported Covered Sports Bra Straps",
+  "120274055": "Black Lightly Supported Back Detailed Covered Crop Top Bustier Cropped",
+  "125465778": "Women's Black High Waist Collecting Double Pocket Below Knee Capri Leggings Capri",
+  "664940396": "Navy Blue High Waist Seamless Gathering Short Sports Tights Seamless Biker",
+  "120101310": "Lavender Lightly Supported Covered Sports Bra with Back Detail",
+  "120273863": "White Lightly Supported Back Detailed Covered Crop Top Bustier Cropped",
+  "729649808": "Black Cross Waist Detailed Cross Waist Tights Envelope",
+  "302230814": "Women's Ecru High Waist Ribbed Short Sports Leggings Ribbed Biker",
+  "116896804": "Women's Beige High Waist Loose Cycling Shorts Short Sports Tights Biker Basics",
+  "304364684": "Women's Anthracite 2 Layer Sports Shorts - Tights with Shorts 2 in1",
+  "115469860": "Women's Anthracite High Waist Loose Cycling Shorts Short Sports Tights",
+  "692791737": "Women's Gray High Waist Smoothing Double Pocket Flared Leg Tights Bootcut",
+  "304909286": "Women's Pink Strap Lightly Supported Covered Sports Bra Straps",
+  "86701991": "Women's Navy Blue High Waist Double Pocket Compact Sports Leggings",
+  "701480694": "Blue Gray Padded Back Detailed Covered Sports Bra Strappy Back",
+  "655829041": "Navy Blue Cross Waist Detailed Tights Envelope",
+  "130000406": "Women's Anthracite High Waist Smoothing Double Pocket Flared Leg Tights Bootcut",
+  "154925393": "Lavender V-Neck Lightly Supported Covered Sports Bra Vneck",
+  "664969524": "Pink 2 Layer Tennis Skirt - Sports Skirt Tennis Skirt",
+  "129998182": "Women's Navy Blue High Waist Smoothing Double Pocket Flared Leg Tights Bootcut",
+  "304364653": "Women's Gray 2 Layer Sports Shorts - Tights with Shorts 2in1",
+  "308170887": "Women's Pink 2 Layer Sports Shorts - Tights with Shorts 2in1",
+  "834004529": "X Melody Black Fitted T-Shirt Short Fitted",
+  "701542395": "Black Supported Covered Sports Bra with Back Detail",
+  "834011598": "X Melodi Black Spanish Flared Jersey Trousers",
+  "707066322": "Gray 2 Layer Pleated Tennis Skirt - Sports Skirt Tennis Skirt2",
+  "120593574": "Beige Lightly Supported Back Detailed Covered Crop Top Bustier Cropped",
+  "772312424": "x Melodi Gray Cotton Thick Strap Crop Top Tank",
+  "120593525": "Navy Blue Lightly Supported Back Detailed Covered Crop Top Bustier Cropped",
+  "127061975": "Women's Navy Blue High Waist Smoothing Double Pocket Below Knee Capri Leggings Capri",
+  "664938067": "White 2 Layer Tennis Skirt - Shorts Skirt - Sports Skirt Tennis Skirt",
+  "155570909": "Anthracite V-Neck Lightly Supported Covered Sports Bra Vneck",
+  "665022268": "Black 2 Layer Tennis Skirt - Shorts Skirt - Sports Skirt Tennis Skirt",
+  "698127332": "White Padded Back Detailed Covered Sports Bra Strappy Back",
+  "125467238": "Women's Lavender High Waist Smoothing Double Pocket Below Knee Capri Leggings Capri",
+  "772024314": "x Melodi Black Tennis Dress Sports Dress Tennis Dress",
+  "304366648": "Women's White 2 Layer Sports Shorts - Tights with Shorts 2in1",
+  "125467332": "Women's Beige High Waist Smoothing Double Pocket Below Knee Capri Leggings Capri",
+  "701478956": "Navy Blue Padded Back Detailed Covered Sports Bra Strappy Back",
+  "834010134": "X Melodi Navy Blue Spanish Flared Jersey Trousers",
+  "304365085": "Women's Black 2 Layer Sports Shorts - Tights with Shorts 2in1",
+  "705484745": "Black 2 Layer Pleated Tennis Skirt - Sports Skirt Tennis Skirt2",
+  "649970242": "Navy Blue High Waist Sports Tights Basics",
+  "182766677": "Women's Melange Gray Elastic Leg Jogger Sweatpants",
+  "154923203": "Coral V-Neck Lightly Supported Covered Sports Bra Vneck",
+  "739819840": "Mink Seamless Soft Textured Sports T-Shirt Crop Top",
+  "833037197": "Women's Lilac Strappy Lightly Supported Covered Sports Bra Straps",
+  "739416538": "Black Seamless Soft Textured Sports T-Shirt Crop Top",
+  "120199038": "Coral Lightly Supported Back Detailed Covered Crop Top Bustier Cropped",
+  "120275043": "Anthracite Lightly Supported Back Detailed Covered Crop Top Bustier Cropped",
+  "125467249": "Women's Coral High Waist Smoothing Double Pocket Below Knee Capri Leggings Capri",
+  "304364402": "Women's Black Strap Ribbed Square Neck Crop Top Bustier Square",
+  "655396326": "Anthracite Cross Waist Detailed Tights Envelope",
+  "655379767": "Black Elastic Waist Shalwar Look Harem Pants Yoga Joggers",
+  "304916070": "Women's Lilac Pocket Elastic Waist Basic Fit Sports Shorts Shorts",
+  "701480658": "Dusty Rose Supported Back Detailed Covered Sports Bra Strappy Back",
+  "847775174": "Black Flexible and Supportive Sports Leggings Basic Seamless",
+  "117047042": "Women's Anthracite High Waist Slim-fitting Sports Leggings Basics",
+  "834269789": "Grey Biker Shorts Short Sport Leggings Envelope Biker",
+  "701482807": "Khaki Supported Back Detailed Covered Sports Bra Strappy Back",
+  "664941140": "Anthracite Lightly Supported Covered Gathered Front Crop Top Bustier Low Scoop",
+  "181688640": "Women's Black Elastic Leg Jogger Sweatpants Drawstring",
+  "181687574": "Women's Green Leg Elastic Jogger Sweatpants Drawstring",
+  "125467283": "Women's Anthracite High Waist Slim Double Pocket Below Knee Capri Leggings Capri",
+  "834014564": "X Melodi Gray Melange Long Sleeve Short Blouse Long Fitted",
+  "664938794": "Black Lightly Supported Covered Gathered Front Crop Top Bustier Low Scoop",
+  "304364112": "Women's Navy Blue 2 Layer Sports Shorts - Tights with Shorts 2in1",
+  "834014535": "X Melodi Gray Melange Fitted T-Shirt Short Fitted",
+  "834012876": "X Melodi White Long Sleeve Short Blouse Long Fitted",
+  "771891257": "x Melodi Ecru Contrast Piping and Zipper Detailed Bodysuit",
+  "664945361": "Navy Blue 2 Layer Tennis Skirt - Shorts Skirt - Sports Skirt Tennis Skirt",
+  "659945710": "Black Hooded Soft Textured Crop Sweatshirt Cropped Sweat",
+  "655447804": "Anthracite Shalwar Look Sweatpants with Elastic Waist",
+  "655423584": "Navy Blue Elastic Waist Shalwar Look Harem Pants Yoga Joggers",
+  "304916358": "Women's Pink Pocket Elastic Waist Basic Fit Sports Shorts Shorts",
+  "155676981": "White V-Neck Lightly Supported Covered Sports Bra Vneck",
+  "847776016": "Gray Stretchy and Toning Sports Leggings Basic Seamless",
+  "705942995": "White 2 Layer Pleated Tennis Skirt - Sports Skirt Tennis Skirt2",
+  "304364534": "Women's Navy Blue Strappy Ribbed Square Neck Crop Top Bustier Square",
+  "115469768": "Women's Navy Blue High Waist Comfortable Cycling Shorts Short Sports Tights",
+  "701977543": "Claret Red Elastic Waist Shalwar Look Harem Pants Yoga Joggers",
+  "739417327": "White Seamless Soft Textured Sports T-Shirt Crop Top",
+  "702042870": "Mink Waist Elastic Shalwar Look Harem Pants Yoga Joggers",
+  "182890351": "Women's Black Hooded Oversize Ribbed Zippered Knitted Sweatshirt",
+  "686017948": "Khaki Elastic Waist Shalwar Look Harem Pants Yoga Joggers",
+  "181892378": "Women's Beige Elastic Jogger Sweatpants Drawstring",
+  "181683610": "Women's Dusty Rose Cuff Elastic Jogger Sweatpants Drawstring",
+  "664946293": "Navy Blue Lightly Supported Covered Gathered Front Crop Top Bustier Low Scoop",
+  "117361457": "Women's Beige High Waist Fitness Leggings Basics"
  },
  "snapshots": [
   {
@@ -3423,485 +3429,93 @@
   {
    "date": "2026-07-01",
    "products": {
-    "903874990": {
-     "rc": 540,
-     "o3": 250,
-     "b": 2400,
-     "f": 102300,
-     "v": 1900,
-     "p": 814.5
-    },
-    "1140323837": {
-     "rc": 30,
-     "o3": null,
-     "b": 704,
-     "f": 8700,
-     "v": 1600,
-     "p": 719.5
-    },
-    "129998832": {
-     "rc": 11208,
-     "o3": null,
-     "b": 1600,
-     "f": 384800,
-     "v": 1200,
-     "p": 749.5
-    },
-    "154459170": {
-     "rc": 9605,
-     "o3": null,
-     "b": 789,
-     "f": 150000,
-     "v": 428,
-     "p": 734.5
-    },
-    "1045500350": {
-     "rc": 279,
-     "o3": null,
-     "b": 536,
-     "f": 48800,
-     "v": 1000,
-     "p": 624.5
-    },
-    "904602868": {
-     "rc": 2529,
-     "o3": 1500,
-     "b": 14700,
-     "f": 222200,
-     "v": 3800,
-     "p": 514.5
-    },
-    "834007684": {
-     "rc": 4109,
-     "o3": null,
-     "b": 849,
-     "f": 277500,
-     "v": 941,
-     "p": 784.5
-    },
-    "834011598": {
-     "rc": 2832,
-     "o3": null,
-     "b": 976,
-     "f": 145300,
-     "v": 735,
-     "p": 784.5
-    },
-    "1140323897": {
-     "rc": 29,
-     "o3": null,
-     "b": 648,
-     "f": 9000,
-     "v": 491,
-     "p": 719.5
-    },
-    "1140323930": {
-     "rc": 43,
-     "o3": null,
-     "b": 499,
-     "f": 10700,
-     "v": 465,
-     "p": 719.5
-    },
-    "1140323876": {
-     "rc": 16,
-     "o3": null,
-     "b": 349,
-     "f": 2900,
-     "v": 1300,
-     "p": 674.5
-    },
-    "1045500574": {
-     "rc": 286,
-     "o3": null,
-     "b": 848,
-     "f": 49400,
-     "v": 777,
-     "p": 624.5
-    },
-    "736364167": {
-     "rc": 1097,
-     "o3": null,
-     "b": 459,
-     "f": 82600,
-     "v": 679,
-     "p": 599.5
-    },
-    "903872945": {
-     "rc": 113,
-     "o3": null,
-     "b": null,
-     "f": 18200,
-     "v": null,
-     "p": 894.5
-    },
-    "901446700": {
-     "rc": 606,
-     "o3": null,
-     "b": 962,
-     "f": 76200,
-     "v": 678,
-     "p": 779.5
-    },
-    "154385500": {
-     "rc": 3412,
-     "o3": null,
-     "b": 362,
-     "f": 65100,
-     "v": null,
-     "p": 734.5
-    },
-    "308170887": {
-     "rc": 574,
-     "o3": null,
-     "b": 414,
-     "f": 59400,
-     "v": 1000,
-     "p": 734.5
-    },
-    "97827284": {
-     "rc": 943,
-     "o3": null,
-     "b": null,
-     "f": 45700,
-     "v": 318,
-     "p": 619.5
-    },
-    "1140323852": {
-     "rc": 6,
-     "o3": null,
-     "b": null,
-     "f": 6600,
-     "v": 582,
-     "p": 849.5
-    },
-    "344201097": {
-     "rc": 1379,
-     "o3": null,
-     "b": 500,
-     "f": 92200,
-     "v": 609,
-     "p": 584.5
-    },
-    "1140402581": {
-     "rc": 31,
-     "o3": null,
-     "b": 544,
-     "f": 10800,
-     "v": 717,
-     "p": 799.5
-    },
-    "1140323566": {
-     "rc": 27,
-     "o3": null,
-     "b": 393,
-     "f": 6100,
-     "v": 458,
-     "p": 564.5
-    },
-    "1140323872": {
-     "rc": 26,
-     "o3": null,
-     "b": null,
-     "f": 5100,
-     "v": 622,
-     "p": 674.5
-    },
-    "1140323739": {
-     "rc": 17,
-     "o3": null,
-     "b": null,
-     "f": 1500,
-     "v": null,
-     "p": 614.5
-    },
-    "834004529": {
-     "rc": 1011,
-     "o3": null,
-     "b": null,
-     "f": 44400,
-     "v": null,
-     "p": 514.5
-    },
-    "1140486909": {
-     "rc": 12,
-     "o3": null,
-     "b": null,
-     "f": 5900,
-     "v": null,
-     "p": 769.5
-    },
-    "901071773": {
-     "rc": 717,
-     "o3": null,
-     "b": 375,
-     "f": 87000,
-     "v": 393,
-     "p": 784.5
-    },
-    "125465778": {
-     "rc": 832,
-     "o3": null,
-     "b": null,
-     "f": 21500,
-     "v": null,
-     "p": 659.5
-    },
-    "304364684": {
-     "rc": 511,
-     "o3": null,
-     "b": 383,
-     "f": 25100,
-     "v": 612,
-     "p": 734.5
-    },
     "115481492": {
-     "rc": 627,
+     "rc": 628,
      "o3": null,
      "b": null,
      "f": 27600,
-     "v": 308,
-     "p": 484.5
+     "v": null,
+     "p": 10.99
     },
-    "155813505": {
-     "rc": 537,
+    "304912565": {
+     "rc": 1296,
      "o3": null,
      "b": null,
-     "f": 30500,
+     "f": null,
      "v": null,
-     "p": 584.5
+     "p": 12.99
     },
-    "945480081": {
-     "rc": 189,
-     "o3": null,
-     "b": null,
-     "f": 18800,
-     "v": null,
-     "p": 549.5
-    },
-    "772024314": {
-     "rc": 209,
-     "o3": null,
-     "b": 311,
-     "f": 42500,
-     "v": 421,
-     "p": 994.5
-    },
-    "304909286": {
-     "rc": 316,
-     "o3": null,
-     "b": null,
-     "f": 19200,
-     "v": null,
-     "p": 584.5
-    },
-    "736250093": {
-     "rc": 1966,
-     "o3": null,
-     "b": null,
-     "f": 128100,
-     "v": null,
-     "p": 599.5
-    },
-    "664969524": {
-     "rc": 176,
+    "649970162": {
+     "rc": 391,
      "o3": null,
      "b": null,
      "f": 9300,
      "v": null,
-     "p": 342.15
+     "p": 11.99
     },
-    "655829041": {
-     "rc": 1597,
+    "120101108": {
+     "rc": 290,
      "o3": null,
      "b": null,
-     "f": 61700,
+     "f": 13300,
      "v": null,
-     "p": 549.5
+     "p": 12.38
+    },
+    "304912405": {
+     "rc": 652,
+     "o3": null,
+     "b": null,
+     "f": 28500,
+     "v": null,
+     "p": 17.05
     },
     "120274055": {
-     "rc": 596,
+     "rc": 598,
      "o3": null,
      "b": null,
      "f": 31500,
      "v": null,
-     "p": 584.5
+     "p": 16.3
     },
-    "1140323675": {
-     "rc": 19,
+    "125465778": {
+     "rc": 829,
      "o3": null,
      "b": null,
-     "f": 4000,
+     "f": 21500,
      "v": null,
-     "p": 614.5
+     "p": 13.45
     },
-    "304371408": {
-     "rc": 133,
+    "664940396": {
+     "rc": 74,
      "o3": null,
      "b": null,
-     "f": 14800,
-     "v": 363,
-     "p": 734.5
-    },
-    "1047170750": {
-     "rc": 48,
-     "o3": null,
-     "b": null,
-     "f": 6100,
+     "f": 4100,
      "v": null,
-     "p": 284.5
+     "p": 15.09
     },
-    "1140323878": {
-     "rc": 33,
+    "120101310": {
+     "rc": 234,
      "o3": null,
      "b": null,
-     "f": 3100,
-     "v": 327,
-     "p": 849.5
-    },
-    "901077842": {
-     "rc": 426,
-     "o3": null,
-     "b": null,
-     "f": 20500,
+     "f": 8600,
      "v": null,
-     "p": 514.5
+     "p": 13.75
     },
-    "1142355827": {
-     "rc": 15,
+    "120273863": {
+     "rc": 279,
      "o3": null,
      "b": null,
-     "f": 4500,
+     "f": 9800,
      "v": null,
-     "p": 634.5
+     "p": 18.81
     },
-    "1140323792": {
-     "rc": 21,
+    "729649808": {
+     "rc": 4722,
      "o3": null,
-     "b": null,
-     "f": 2800,
-     "v": 328,
-     "p": 614.5
-    },
-    "304365085": {
-     "rc": 1150,
-     "o3": null,
-     "b": 320,
-     "f": 60300,
-     "v": 579,
-     "p": 734.5
-    },
-    "707066322": {
-     "rc": 78,
-     "o3": null,
-     "b": null,
-     "f": 4600,
-     "v": null,
-     "p": 376.68
-    },
-    "1045513205": {
-     "rc": 706,
-     "o3": null,
-     "b": null,
-     "f": 87400,
-     "v": null,
-     "p": 879.5
-    },
-    "945607417": {
-     "rc": 88,
-     "o3": null,
-     "b": null,
-     "f": 7500,
-     "v": null,
-     "p": 549.5
-    },
-    "86406024": {
-     "rc": 2432,
-     "o3": null,
-     "b": null,
-     "f": 71900,
-     "v": null,
-     "p": 724.5
-    },
-    "945651489": {
-     "rc": 60,
-     "o3": null,
-     "b": null,
-     "f": 6400,
-     "v": null,
-     "p": 594.5
-    },
-    "120593414": {
-     "rc": 187,
-     "o3": null,
-     "b": null,
-     "f": 10300,
-     "v": null,
-     "p": 584.5
-    },
-    "1140323801": {
-     "rc": 19,
-     "o3": null,
-     "b": null,
-     "f": 1800,
-     "v": 386,
-     "p": 674.5
-    },
-    "1140323682": {
-     "rc": 4,
-     "o3": null,
-     "b": null,
-     "f": 908,
-     "v": null,
-     "p": 619.5
-    },
-    "736364157": {
-     "rc": 546,
-     "o3": null,
-     "b": null,
-     "f": 39700,
-     "v": null,
-     "p": 599.5
-    },
-    "947445481": {
-     "rc": 34,
-     "o3": null,
-     "b": null,
-     "f": 3500,
-     "v": null,
-     "p": 619.5
-    },
-    "736364369": {
-     "rc": 142,
-     "o3": null,
-     "b": null,
-     "f": 10300,
-     "v": null,
-     "p": 599.5
-    },
-    "947445642": {
-     "rc": 64,
-     "o3": null,
-     "b": null,
-     "f": 5600,
-     "v": null,
-     "p": 489.5
-    },
-    "1140323620": {
-     "rc": 21,
-     "o3": null,
-     "b": null,
-     "f": 1900,
-     "v": null,
-     "p": 564.5
-    },
-    "772024287": {
-     "rc": 70,
-     "o3": null,
-     "b": null,
-     "f": 13800,
-     "v": 487,
-     "p": 994.5
+     "b": 744,
+     "f": 195800,
+     "v": 457,
+     "p": 20.53
     },
     "302230814": {
      "rc": 107,
@@ -3909,55 +3523,103 @@
      "b": null,
      "f": 8400,
      "v": null,
-     "p": 519.5
+     "p": 16.65
     },
-    "1140323664": {
-     "rc": 18,
+    "116896804": {
+     "rc": 194,
      "o3": null,
      "b": null,
-     "f": 1400,
+     "f": 5000,
      "v": null,
-     "p": 564.5
+     "p": 8.99
     },
-    "1142355991": {
-     "rc": 19,
+    "304364684": {
+     "rc": 513,
+     "o3": null,
+     "b": 388,
+     "f": 25100,
+     "v": 518,
+     "p": 17.65
+    },
+    "115469860": {
+     "rc": 79,
      "o3": null,
      "b": null,
-     "f": 1900,
+     "f": 1700,
      "v": null,
-     "p": 634.5
+     "p": 10.93
     },
-    "664938067": {
-     "rc": 366,
+    "692791737": {
+     "rc": 965,
      "o3": null,
      "b": null,
-     "f": 30700,
+     "f": 75800,
      "v": null,
-     "p": 345.9
+     "p": 24.72
     },
-    "304364112": {
-     "rc": 461,
+    "304909286": {
+     "rc": 315,
      "o3": null,
      "b": null,
-     "f": 23200,
+     "f": 19200,
      "v": null,
-     "p": 734.5
+     "p": 14.47
     },
-    "834012875": {
-     "rc": 420,
+    "86701991": {
+     "rc": 645,
      "o3": null,
      "b": null,
-     "f": 14100,
+     "f": 15800,
      "v": null,
-     "p": 514.5
+     "p": 21.39
     },
-    "901427614": {
-     "rc": 42,
+    "701480694": {
+     "rc": 444,
      "o3": null,
      "b": null,
-     "f": 13300,
+     "f": 31100,
      "v": null,
-     "p": 954.5
+     "p": 8.99
+    },
+    "655829041": {
+     "rc": 1600,
+     "o3": null,
+     "b": null,
+     "f": 61700,
+     "v": null,
+     "p": 26.83
+    },
+    "130000406": {
+     "rc": 836,
+     "o3": null,
+     "b": null,
+     "f": 27900,
+     "v": null,
+     "p": 27.26
+    },
+    "154925393": {
+     "rc": 150,
+     "o3": null,
+     "b": null,
+     "f": 5500,
+     "v": null,
+     "p": 24.64
+    },
+    "664969524": {
+     "rc": 176,
+     "o3": null,
+     "b": null,
+     "f": 9300,
+     "v": null,
+     "p": 14.95
+    },
+    "129998182": {
+     "rc": 2997,
+     "o3": null,
+     "b": 437,
+     "f": 114900,
+     "v": 326,
+     "p": 30.19
     },
     "304364653": {
      "rc": 161,
@@ -3965,39 +3627,87 @@
      "b": null,
      "f": 8500,
      "v": null,
-     "p": 734.5
+     "p": 17.43
     },
-    "154925393": {
-     "rc": 151,
+    "308170887": {
+     "rc": 573,
+     "o3": null,
+     "b": 351,
+     "f": 59500,
+     "v": 940,
+     "p": 18.77
+    },
+    "834004529": {
+     "rc": 1012,
+     "o3": null,
+     "b": null,
+     "f": 44300,
+     "v": null,
+     "p": 25.31
+    },
+    "701542395": {
+     "rc": 1191,
+     "o3": null,
+     "b": null,
+     "f": 67400,
+     "v": null,
+     "p": 14.28
+    },
+    "834011598": {
+     "rc": 2838,
+     "o3": null,
+     "b": 994,
+     "f": 145400,
+     "v": 817,
+     "p": 11.68
+    },
+    "707066322": {
+     "rc": 78,
+     "o3": null,
+     "b": null,
+     "f": 4600,
+     "v": null,
+     "p": 16.4
+    },
+    "120593574": {
+     "rc": 158,
      "o3": null,
      "b": null,
      "f": 5500,
      "v": null,
-     "p": 584.5
+     "p": 20.37
     },
-    "304366648": {
-     "rc": 626,
+    "772312424": {
+     "rc": 76,
      "o3": null,
      "b": null,
-     "f": 37700,
+     "f": 6300,
      "v": null,
-     "p": 734.5
+     "p": 10.37
     },
-    "699273269": {
-     "rc": 166,
+    "120593525": {
+     "rc": 355,
+     "o3": null,
+     "b": null,
+     "f": 11100,
+     "v": null,
+     "p": 17.71
+    },
+    "127061975": {
+     "rc": 366,
      "o3": null,
      "b": null,
      "f": 6100,
      "v": null,
-     "p": 289.35
+     "p": 13.79
     },
-    "834012095": {
-     "rc": 45,
+    "664938067": {
+     "rc": 366,
      "o3": null,
      "b": null,
-     "f": 6600,
+     "f": 30700,
      "v": null,
-     "p": 799.5
+     "p": 15.99
     },
     "155570909": {
      "rc": 146,
@@ -4005,103 +3715,159 @@
      "b": null,
      "f": 6200,
      "v": null,
-     "p": 584.5
+     "p": 17.42
     },
-    "156043784": {
-     "rc": 726,
-     "o3": null,
-     "b": null,
-     "f": 24100,
-     "v": null,
-     "p": 584.5
-    },
-    "1045513204": {
-     "rc": 238,
-     "o3": null,
-     "b": null,
-     "f": 29000,
-     "v": null,
-     "p": 879.5
-    },
-    "129999160": {
-     "rc": 340,
-     "o3": null,
-     "b": null,
-     "f": 17600,
-     "v": null,
-     "p": 749.5
-    },
-    "1045513767": {
-     "rc": 58,
-     "o3": null,
-     "b": null,
-     "f": 10600,
-     "v": null,
-     "p": 994.5
-    },
-    "1045498667": {
-     "rc": 154,
+    "665022268": {
+     "rc": 524,
      "o3": null,
      "b": null,
      "f": 27900,
      "v": null,
-     "p": 994.5
+     "p": 15.74
     },
-    "772023039": {
-     "rc": 61,
+    "698127332": {
+     "rc": 570,
      "o3": null,
      "b": null,
-     "f": 7200,
+     "f": 16200,
      "v": null,
-     "p": 564.5
+     "p": 15.04
     },
-    "120101108": {
-     "rc": 290,
+    "125467238": {
+     "rc": 93,
      "o3": null,
      "b": null,
-     "f": 13200,
+     "f": 1900,
      "v": null,
-     "p": 584.5
+     "p": 17.74
     },
-    "834013993": {
-     "rc": 337,
+    "772024314": {
+     "rc": 209,
+     "o3": null,
+     "b": 309,
+     "f": 42500,
+     "v": 424,
+     "p": 33.87
+    },
+    "304366648": {
+     "rc": 626,
      "o3": null,
      "b": null,
-     "f": 11800,
+     "f": 37700,
      "v": null,
-     "p": 514.5
+     "p": 18.85
+    },
+    "125467332": {
+     "rc": 77,
+     "o3": null,
+     "b": null,
+     "f": 1700,
+     "v": null,
+     "p": 17.45
+    },
+    "701478956": {
+     "rc": 589,
+     "o3": null,
+     "b": null,
+     "f": 30000,
+     "v": null,
+     "p": 12.58
+    },
+    "834010134": {
+     "rc": 485,
+     "o3": null,
+     "b": null,
+     "f": 23300,
+     "v": null,
+     "p": 15.57
+    },
+    "304365085": {
+     "rc": 1150,
+     "o3": null,
+     "b": 314,
+     "f": 60300,
+     "v": 428,
+     "p": 14.22
+    },
+    "705484745": {
+     "rc": 220,
+     "o3": null,
+     "b": null,
+     "f": 14500,
+     "v": null,
+     "p": 17.85
+    },
+    "649970242": {
+     "rc": 307,
+     "o3": null,
+     "b": null,
+     "f": 8400,
+     "v": null,
+     "p": 14.71
+    },
+    "182766677": {
+     "rc": 135,
+     "o3": null,
+     "b": null,
+     "f": 5200,
+     "v": null,
+     "p": 17.85
+    },
+    "154923203": {
+     "rc": 180,
+     "o3": null,
+     "b": null,
+     "f": 4000,
+     "v": null,
+     "p": 16.36
     },
     "739819840": {
-     "rc": 29,
+     "rc": 30,
      "o3": null,
      "b": null,
-     "f": 769,
+     "f": 768,
      "v": null,
-     "p": 254.07
+     "p": 14.09
     },
-    "304912323": {
-     "rc": 173,
+    "833037197": {
+     "rc": 28,
      "o3": null,
      "b": null,
-     "f": 8800,
+     "f": 1600,
      "v": null,
-     "p": 584.5
+     "p": 14.07
     },
-    "772023688": {
-     "rc": 181,
+    "739416538": {
+     "rc": 163,
      "o3": null,
      "b": null,
-     "f": 21400,
+     "f": 9700,
      "v": null,
-     "p": 554.5
+     "p": 14.99
     },
-    "120273863": {
-     "rc": 278,
+    "120199038": {
+     "rc": 141,
      "o3": null,
      "b": null,
-     "f": 9800,
+     "f": 2500,
      "v": null,
-     "p": 584.5
+     "p": 12.27
+    },
+    "120275043": {
+     "rc": 228,
+     "o3": null,
+     "b": null,
+     "f": 12800,
+     "v": null,
+     "p": 13.17
+    },
+    "125467249": {
+     "rc": 94,
+     "o3": null,
+     "b": null,
+     "f": 1100,
+     "v": null,
+     "p": 13.81
     },
     "304364402": {
      "rc": 451,
@@ -4109,15 +3875,303 @@
      "b": null,
      "f": 17300,
      "v": null,
-     "p": 519.5
+     "p": 15.29
     },
-    "1140323649": {
-     "rc": 15,
+    "655396326": {
+     "rc": 215,
      "o3": null,
      "b": null,
-     "f": 1100,
+     "f": 4900,
      "v": null,
-     "p": 564.5
+     "p": 17.14
+    },
+    "655379767": {
+     "rc": 1091,
+     "o3": null,
+     "b": null,
+     "f": 29000,
+     "v": null,
+     "p": 17.89
+    },
+    "304916070": {
+     "rc": 17,
+     "o3": null,
+     "b": null,
+     "f": 525,
+     "v": null,
+     "p": 13.99
+    },
+    "701480658": {
+     "rc": 373,
+     "o3": null,
+     "b": null,
+     "f": 11500,
+     "v": null,
+     "p": 12.37
+    },
+    "847775174": {
+     "rc": 54,
+     "o3": null,
+     "b": null,
+     "f": 3400,
+     "v": null,
+     "p": 11.92
+    },
+    "117047042": {
+     "rc": 145,
+     "o3": null,
+     "b": null,
+     "f": 5300,
+     "v": null,
+     "p": 16.44
+    },
+    "834269789": {
+     "rc": 34,
+     "o3": null,
+     "b": null,
+     "f": 3800,
+     "v": null,
+     "p": 8
+    },
+    "701482807": {
+     "rc": 344,
+     "o3": null,
+     "b": null,
+     "f": 15100,
+     "v": null,
+     "p": 14.87
+    },
+    "664941140": {
+     "rc": 59,
+     "o3": null,
+     "b": null,
+     "f": 1200,
+     "v": null,
+     "p": 15.03
+    },
+    "181688640": {
+     "rc": 173,
+     "o3": null,
+     "b": null,
+     "f": 5800,
+     "v": null,
+     "p": 26.23
+    },
+    "181687574": {
+     "rc": 24,
+     "o3": null,
+     "b": null,
+     "f": 582,
+     "v": null,
+     "p": 17.89
+    },
+    "125467283": {
+     "rc": 175,
+     "o3": null,
+     "b": null,
+     "f": 3600,
+     "v": null,
+     "p": 13.35
+    },
+    "834014564": {
+     "rc": 2556,
+     "o3": null,
+     "b": null,
+     "f": 161000,
+     "v": null,
+     "p": 21.88
+    },
+    "664938794": {
+     "rc": 105,
+     "o3": null,
+     "b": null,
+     "f": 2200,
+     "v": null,
+     "p": 14.93
+    },
+    "304364112": {
+     "rc": 461,
+     "o3": null,
+     "b": null,
+     "f": 23200,
+     "v": null,
+     "p": 14.22
+    },
+    "834014535": {
+     "rc": 1143,
+     "o3": null,
+     "b": null,
+     "f": 65200,
+     "v": null,
+     "p": 27.18
+    },
+    "834012876": {
+     "rc": 508,
+     "o3": null,
+     "b": null,
+     "f": 23200,
+     "v": null,
+     "p": 14.43
+    },
+    "771891257": {
+     "rc": 45,
+     "o3": null,
+     "b": null,
+     "f": 6300,
+     "v": null,
+     "p": 25.45
+    },
+    "664945361": {
+     "rc": 146,
+     "o3": null,
+     "b": null,
+     "f": 3600,
+     "v": null,
+     "p": 18.85
+    },
+    "659945710": {
+     "rc": 39,
+     "o3": null,
+     "b": null,
+     "f": 2700,
+     "v": null,
+     "p": 26.22
+    },
+    "655447804": {
+     "rc": 311,
+     "o3": null,
+     "b": null,
+     "f": 7400,
+     "v": null,
+     "p": 14.44
+    },
+    "655423584": {
+     "rc": 500,
+     "o3": null,
+     "b": null,
+     "f": 10500,
+     "v": null,
+     "p": 15.52
+    },
+    "304916358": {
+     "rc": 9,
+     "o3": null,
+     "b": null,
+     "f": 738,
+     "v": null,
+     "p": 10.83
+    },
+    "155676981": {
+     "rc": 283,
+     "o3": null,
+     "b": null,
+     "f": 6700,
+     "v": null,
+     "p": 15.56
+    },
+    "847776016": {
+     "rc": 27,
+     "o3": null,
+     "b": null,
+     "f": 1000,
+     "v": null,
+     "p": 16.46
+    },
+    "705942995": {
+     "rc": 93,
+     "o3": null,
+     "b": null,
+     "f": 5700,
+     "v": null,
+     "p": 11.99
+    },
+    "304364534": {
+     "rc": 208,
+     "o3": null,
+     "b": null,
+     "f": 9200,
+     "v": null,
+     "p": 9.33
+    },
+    "115469768": {
+     "rc": 131,
+     "o3": null,
+     "b": null,
+     "f": 4500,
+     "v": null,
+     "p": 8.99
+    },
+    "701977543": {
+     "rc": 277,
+     "o3": null,
+     "b": null,
+     "f": 4000,
+     "v": null,
+     "p": 16.18
+    },
+    "739417327": {
+     "rc": 105,
+     "o3": null,
+     "b": null,
+     "f": 3800,
+     "v": null,
+     "p": 11.95
+    },
+    "702042870": {
+     "rc": 204,
+     "o3": null,
+     "b": null,
+     "f": 4100,
+     "v": null,
+     "p": 16.01
+    },
+    "182890351": {
+     "rc": 164,
+     "o3": null,
+     "b": null,
+     "f": 4700,
+     "v": null,
+     "p": 21.43
+    },
+    "686017948": {
+     "rc": 197,
+     "o3": null,
+     "b": null,
+     "f": 4500,
+     "v": null,
+     "p": 17.45
+    },
+    "181892378": {
+     "rc": 41,
+     "o3": null,
+     "b": null,
+     "f": 953,
+     "v": null,
+     "p": 23.56
+    },
+    "181683610": {
+     "rc": 47,
+     "o3": null,
+     "b": null,
+     "f": 1300,
+     "v": null,
+     "p": 15
+    },
+    "664946293": {
+     "rc": 70,
+     "o3": null,
+     "b": null,
+     "f": 2700,
+     "v": null,
+     "p": 11.94
+    },
+    "117361457": {
+     "rc": 99,
+     "o3": null,
+     "b": null,
+     "f": 3600,
+     "v": null,
+     "p": 13.01
     }
    }
   }

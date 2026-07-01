@@ -55,29 +55,59 @@ def _load_env_file():
 
 
 _load_env_file()
+# Trendyol Turkiye disini engelledigi icin istekler Turkiye cikisli bir proxy
+# servisi uzerinden yapilir. Oncelik SCRAPFLY (datacenter+ASP ile istek basina
+# 1 kredi, 1000 kredi bedava); yoksa SCRAPEDO (ucretsizde residential=10 kredi).
+SCRAPFLY_TOKEN = os.environ.get("SCRAPFLY_TOKEN")
 SCRAPEDO_TOKEN = os.environ.get("SCRAPEDO_TOKEN")
+# Cloudflare ilk istekte bir gecis cerezi (cf_clearance) veriyor; sonraki
+# sayfalar bu cerez/IP olmadan 403 aliyor. Scrapfly session'i ayni IP + cerez
+# havuzunu koruyarak sayfalamayi calistirir. Her calisma icin ayri session adi.
+_SCRAPFLY_SESSION = "losojos" + str(int(time.time()))
 
 
-def _get(url):
-    """Trendyol Turkiye disindan engelledigi icin, SCRAPEDO_TOKEN tanimliysa
-    istekler Scrape.do uzerinden Turkiye cikisli olarak yapilir."""
-    if SCRAPEDO_TOKEN:
-        target = urllib.parse.quote(url, safe="")
-        proxied = (f"https://api.scrape.do/?token={SCRAPEDO_TOKEN}"
-                   f"&url={target}&geoCode=tr&super=true")
-        req = urllib.request.Request(proxied, headers={
+def _using_proxy():
+    return bool(SCRAPFLY_TOKEN or SCRAPEDO_TOKEN)
+
+
+def _get(url, validate=None):
+    """Trendyol Turkiye disindan engelledigi icin istekler Turkiye cikisli bir
+    proxy servisi uzerinden yapilir.
+
+    SCRAPFLY (tercih edilen): datacenter proxy + anti-bot bypass (asp) + country=tr.
+    Test edildi: hem marka sayfasi HTML'i hem sosyal-kanit API'si icin istek
+    basina yalnizca 1 kredi. Yanit bir JSON zarfi icinde gelir; asil icerik
+    `result.content` alanindadir, onu don.
+
+    SCRAPEDO (yedek): geoCode=tr&super=true (residential, istek basina 10 kredi;
+    ucretsiz planda datacenter+geoCode Pro plan gerektirdigi icin residential
+    zorunlu). (ScrapingAnt denendi ama TR proxy'si olmadigi icin elendi.)"""
+    if not _using_proxy():
+        req = urllib.request.Request(url, headers={
+            "User-Agent": UA,
             "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "tr-TR,tr;q=0.9",
+            "Referer": "https://www.trendyol.com/",
         })
-        with urllib.request.urlopen(req, timeout=60) as r:
+        with urllib.request.urlopen(req, timeout=30) as r:
             return r.read().decode("utf-8", "replace")
 
-    req = urllib.request.Request(url, headers={
-        "User-Agent": UA,
+    target = urllib.parse.quote(url, safe="")
+    if SCRAPFLY_TOKEN:
+        proxied = (f"https://api.scrapfly.io/scrape?key={SCRAPFLY_TOKEN}"
+                   f"&url={target}&country=tr&proxy_pool=public_datacenter_pool&asp=true"
+                   f"&session={_SCRAPFLY_SESSION}&session_sticky_proxy=true")
+        req = urllib.request.Request(proxied, headers={"Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=120) as r:
+            envelope = json.loads(r.read().decode("utf-8", "replace"))
+        return (envelope.get("result") or {}).get("content", "") or ""
+
+    proxied = (f"https://api.scrape.do/?token={SCRAPEDO_TOKEN}"
+               f"&url={target}&geoCode=tr&super=true")
+    req = urllib.request.Request(proxied, headers={
         "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "tr-TR,tr;q=0.9",
-        "Referer": "https://www.trendyol.com/",
     })
-    with urllib.request.urlopen(req, timeout=30) as r:
+    with urllib.request.urlopen(req, timeout=90) as r:
         return r.read().decode("utf-8", "replace")
 
 
@@ -156,7 +186,7 @@ def fetch_catalog_html(products):
     while pi <= MAX_PAGES:
         url = f"https://www.trendyol.com/los-ojos-x-b147875?pi={pi}"
         try:
-            html = _get(url)
+            html = _get(url, validate=lambda b: "__single-search-result__PROPS" in b)
             ps = _extract_props_json(html)
             if not ps:
                 raise ValueError("PROPS JSON bulunamadi")
@@ -208,8 +238,8 @@ def fetch_catalog_html(products):
 
 
 def fetch_catalog():
-    if SCRAPEDO_TOKEN:
-        # apigw.trendyol.com Scrape.do uzerinden hep 502 (ROTATION_FAILED) donuyor,
+    if _using_proxy():
+        # apigw.trendyol.com proxy uzerinden cogunlukla 502 (ROTATION_FAILED) donuyor,
         # bosuna kota harcamamak icin dogrudan HTML yontemine gidiyoruz.
         return fetch_catalog_html({})
 
@@ -268,7 +298,7 @@ def fetch_social(product_ids):
         url = (f"{SOCIAL_API}?contentIds={ids}&channelId=1&storefrontId=1"
                f"&culture=tr-TR&countryCode=TR")
         try:
-            data = json.loads(_get(url))
+            data = json.loads(_get(url, validate=lambda b: '"data"' in b))
         except Exception as e:
             print(f"  ! sosyal kanit grubu alinamadi: {e}")
             time.sleep(REQUEST_PAUSE)
